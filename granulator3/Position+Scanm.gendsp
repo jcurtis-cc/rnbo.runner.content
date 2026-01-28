@@ -1,0 +1,227 @@
+{
+	"patcher" : 	{
+		"fileversion" : 1,
+		"appversion" : 		{
+			"major" : 9,
+			"minor" : 1,
+			"revision" : 0,
+			"architecture" : "x64",
+			"modernui" : 1
+		}
+,
+		"classnamespace" : "dsp.gen",
+		"rect" : [ 179.0, 178.0, 2042.0, 1093.0 ],
+		"gridsize" : [ 15.0, 15.0 ],
+		"assistshowspatchername" : 0,
+		"commentary" : "",
+		"showcommentary" : 0,
+		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-10",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 654.0, 15.0, 28.0, 22.0 ],
+					"text" : "in 8"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-11",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 563.428571428571445, 15.0, 28.0, 22.0 ],
+					"text" : "in 7"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-8",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 472.857142857142833, 15.0, 28.0, 22.0 ],
+					"text" : "in 6"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-9",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 382.285714285714278, 15.0, 28.0, 22.0 ],
+					"text" : "in 5"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-2",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 291.714285714285722, 15.0, 28.0, 22.0 ],
+					"text" : "in 4"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-7",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 654.0, 807.0, 35.0, 22.0 ],
+					"text" : "out 2"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-6",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 110.571428571428569, 15.0, 28.0, 22.0 ],
+					"text" : "in 2"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-5",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 201.142857142857139, 15.0, 28.0, 22.0 ],
+					"text" : "in 3"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-1",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 20.0, 15.0, 28.0, 22.0 ],
+					"text" : "in 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"code" : "Buffer SoundFile();\nBuffer RTGViz();\n\nHistory invRate,cachedSize,cachedRate,invMs,invSams,relativeVariation;\n\nHistory randomVariation,scanPositionL,scanPositionR,\n\tpositionNote,smoothedModPos,scanKeyFollow;\n\nParam pFileSR(44100);\nParam pSmooth;\n\nParam pPosition(0.5);\nParam pScanLoopOn(0);\nParam pScanKeyOn(0);\nParam pScanRate(0);\nParam pScanDistance(0);\n\nParam pGlobalVariation,pVariationToPosition,pKeyToPosition,pVelToPosition,\n\tpNotePressToPosition,pNoteSlideToPosition,pNotePBToPosition,\n\tpRandToPosition,pLFOToPosition,pEnv2ToPosition;\n\nParam pVelToScan,pSlideToScan,pEnv2ToScan,pLFOToScan;\n\nParam pNotePress,pNoteSlide,pNotePB;\n\n// --- signal inputs ---\ntrigger = in1;\nLFOL = in2;\nLFOR = in3;\nenv2 = in4;\nvariationL = in5;\nvariationR = in6;\nrpRelativeKey = in7;\nrpRelativeVelocity = in8;\n\nfileSizeSamps = dim(SoundFile);\nnoiseGen = abs(noise());\n\nif (fileSizeSamps != cachedSize || samplerate != cachedRate){\n\tcachedSize = fileSizeSamps;\n\tcachedRate = samplerate;\n\n\tinvRate = pFileSR / samplerate;\n\tlengthMs = 1000 * (fileSizeSamps / samplerate);\n\tinvMs = 1 / lengthMs;\n\tinvSams = 1 / fileSizeSamps;\n\tinvMtof = 1 / mtof(0); // here to prevent another branching\n}\n\nif (pGlobalVariation != 0 || pVariationToPosition != 0){\n\trelativeVariation = (pGlobalVariation * pVariationToPosition) * invMs; \n\trelativeVariation = relativeVariation * invRate;\n}\n\nscanKeyFollow = mtof(rpRelativeKey * pScanKeyOn) * invMtof;\n\npositionNote = (1 + rpRelativeVelocity) * pVelToPosition + \n\tmtof(rpRelativeKey * pKeyToPosition) * invMtof + noise() * pRandToPosition;\n\n//  --- Scan ---\nif (trigger > 0){\n\tscanPositionL = 0;  \n\tscanPositionR = 0;  \n}\n\n// ---- position ----\nmodPos = pPosition + \n\tpNotePress * pNotePressToPosition +\n\tpNoteSlide * pNoteSlideToPosition +\n\tpNotePBToPosition * pNotePB;\n\npSmoothX = pSmooth * (1 - trigger);\nsmoothedModPos = modPos * (1 - pSmoothX) + pSmoothX * smoothedModPos;\npositionMono =  positionNote + smoothedModPos + env2 * pEnv2ToPosition;\n\npositionL =  positionMono + \n\tLFOL * pLFOToPosition + \n\tnoiseGen * variationL * relativeVariation;\n\npositionR =  positionMono + LFOR * pLFOToPosition + \n\tnoiseGen * variationR * relativeVariation;\n\ncScanRate = pScanRate * invRate;\n\nvelModScan =  rpRelativeVelocity * pVelToScan + (1 - pVelToScan);\nenvModScan = env2 * pEnv2ToScan + (1 - pEnv2ToScan);\nslideModScan = pNoteSlide * pSlideToScan + (1 - pSlideToScan);\nnormScan = (velModScan * envModScan * slideModScan) * cScanRate * invSams;\n\nnormScanRateL = normScan * (1 + (LFOL * pLFOToScan));\nnormScanRateR = normScan * (1 + (LFOR * pLFOToScan));\n\nscanRateL =  normScanRateL * scanKeyFollow;\nscanRateR =  normScanRateR * scanKeyFollow;\n\nif (pScanLoopOn >0){\n\tscanPositionL = mod(scanPositionL + scanRateL, pScanDistance);\n\tscanPositionR = mod(scanPositionR + scanRateR, pScanDistance);\n} else {\n\tscanPositionL = clip(scanPositionL + scanRateL, 0, pScanDistance);\n\tscanPositionR = clip(scanPositionR + scanRateR, 0, pScanDistance);\n}\n\nout1 = mod(1 + positionL + scanPositionL, 1);\nout2 = mod(1 + positionR + scanPositionR, 1);",
+					"fontface" : 0,
+					"fontname" : "<Monospaced>",
+					"fontsize" : 12.0,
+					"id" : "obj-3",
+					"maxclass" : "codebox",
+					"numinlets" : 8,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 20.0, 52.0, 653.0, 746.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-4",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 20.0, 807.0, 35.0, 22.0 ],
+					"text" : "out 1"
+				}
+
+			}
+ ],
+		"lines" : [ 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 0 ],
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 7 ],
+					"source" : [ "obj-10", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 6 ],
+					"source" : [ "obj-11", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 3 ],
+					"source" : [ "obj-2", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-4", 0 ],
+					"source" : [ "obj-3", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-7", 0 ],
+					"source" : [ "obj-3", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 2 ],
+					"source" : [ "obj-5", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 1 ],
+					"source" : [ "obj-6", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 5 ],
+					"source" : [ "obj-8", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 4 ],
+					"source" : [ "obj-9", 0 ]
+				}
+
+			}
+ ],
+		"editing_bgcolor" : [ 0.647058823529412, 0.576470588235294, 0.47843137254902, 1.0 ],
+		"oscsendudpport" : 8001
+	}
+
+}

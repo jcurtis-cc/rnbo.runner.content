@@ -1,0 +1,243 @@
+{
+	"patcher" : 	{
+		"fileversion" : 1,
+		"appversion" : 		{
+			"major" : 8,
+			"minor" : 6,
+			"revision" : 0,
+			"architecture" : "x64",
+			"modernui" : 1
+		}
+,
+		"classnamespace" : "dsp.gen",
+		"rect" : [ 34.0, 100.0, 688.0, 848.0 ],
+		"bglocked" : 0,
+		"openinpresentation" : 0,
+		"default_fontsize" : 12.0,
+		"default_fontface" : 0,
+		"default_fontname" : "Arial",
+		"gridonopen" : 1,
+		"gridsize" : [ 15.0, 15.0 ],
+		"gridsnaponopen" : 1,
+		"objectsnaponopen" : 1,
+		"statusbarvisible" : 2,
+		"toolbarvisible" : 1,
+		"lefttoolbarpinned" : 0,
+		"toptoolbarpinned" : 0,
+		"righttoolbarpinned" : 0,
+		"bottomtoolbarpinned" : 0,
+		"toolbars_unpinned_last_save" : 0,
+		"tallnewobj" : 0,
+		"boxanimatetime" : 200,
+		"enablehscroll" : 1,
+		"enablevscroll" : 1,
+		"devicewidth" : 0.0,
+		"description" : "",
+		"digest" : "",
+		"tags" : "",
+		"style" : "",
+		"subpatcher_template" : "",
+		"assistshowspatchername" : 0,
+		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-10",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 635.0, 824.0, 35.0, 22.0 ],
+					"text" : "out 4",
+					"textcolor" : [ 0.992156862745098, 1.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-9",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 431.0, 824.0, 35.0, 22.0 ],
+					"text" : "out 3",
+					"textcolor" : [ 0.992156862745098, 1.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-8",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 635.0, 9.0, 28.0, 22.0 ],
+					"text" : "in 5",
+					"textcolor" : [ 0.992156862745098, 1.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-6",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 482.0, 9.0, 28.0, 22.0 ],
+					"text" : "in 4",
+					"textcolor" : [ 0.992156862745098, 1.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-2",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 329.0, 9.0, 28.0, 22.0 ],
+					"text" : "in 3",
+					"textcolor" : [ 0.992156862745098, 1.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-7",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 227.0, 824.0, 35.0, 22.0 ],
+					"text" : "out 2",
+					"textcolor" : [ 0.992156862745098, 1.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-5",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 176.0, 9.0, 28.0, 22.0 ],
+					"text" : "in 2",
+					"textcolor" : [ 0.992156862745098, 1.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-1",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 23.0, 9.0, 28.0, 22.0 ],
+					"text" : "in 1",
+					"textcolor" : [ 0.992156862745098, 1.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"code" : "History cachedSamplerate,srInv,mtofInv,cachedModSum,FMPitch,LFOL,LFOR;\nHistory phase,phase4,phase4b,waveL,waveR,shL,shR,randVar,increment,qBeat,waveLevel;\nHistory pitchLinearScaling(1);\n\nParam pAmount(1);\nParam pRate(0.2);\nParam pBeatTime(4);\nParam pRatio(1);\nParam pGlobalTime(8);\n\nParam pShape,pStereo,pPhase,pLFOQuant,pTimeMode;\n\n// --- MPE ---\nParam pNotePress,pNoteSlide,pNotePB;\n\n// --- Modulations ---\nParam pLFOKeyToRate,pLFOVelocityToRate,\n\tpNotePressToRate,pNoteSlideToRate,pNotePBToRate,\n\t\tpLFOEnv2ToRate,pLFORandToRate;\n\nParam pLFOKeyToAmount,pLFOVelocityToAmount,\n\tpNotePressToAmount,pNoteSlideToAmount,\n\tpLFOEnv2ToAmount,pLFOToAmp;\n\n// --- signal inputs ---\ntrigger = in1;\nenv2 = in2;\nglobalBeatPulse = in3;\nrpRelativeKey = in4;\nrpRelativeVelocity = in5;\n\nif (samplerate != cachedSamplerate){\n\tcachedSamplerate = samplerate;\n\tsrInv = 1/samplerate;\n\tmtofInv = 1/mtof(0);\n}\n// ------------- trigger -------------\nif (trigger > 0){\n\trandVar = noise();\n\tif (pPhase > 0){\n\t\tphase = (pPhase - 1) * 0.25;\n\t}\n}\n\n// --- speed modulators & scaling ---\nkeyRateMod = rpRelativeKey * pLFOKeyToRate;\nvelRateMod = rpRelativeVelocity * pLFOVelocityToRate;\npressRateMod = pNotePress * pNotePressToRate;\nslideRateMod = pNoteSlide * pNoteSlideToRate;\nnotePBRateMod = pNotePB * pNotePBToRate;\nenv2RateMod = env2 * pLFOEnv2ToRate;\nrandRateMod = randVar * pLFORandToRate;\n\nmodSum = keyRateMod + velRateMod + pressRateMod + slideRateMod +\n\tnotePBRateMod + env2RateMod + randRateMod;\n\nif (modSum != cachedModSum){\n\tcachedModSum = modSum;\n\tpitchLinearScaling = mtof(modSum) * mtofInv;\n}\n\n// --- amp modulation & scaling ---\nkeyAmpMod = (rpRelativeKey * 0.28) * pLFOKeyToAmount; \nvelAmpMod = (rpRelativeVelocity * 0.18) * pLFOVelocityToAmount;\npressAmpMod = 1 - (1 - pNotePress) * pNotePressToAmount;\nslideAmpMod = 1 - (1 - pNoteSlide) * pNoteSlideToAmount;\n\nenvFix = (pLFOEnv2ToAmount < 0);\nenv2AmpMod = 1 - ((1 - env2) * pLFOEnv2ToAmount) + (pLFOEnv2ToAmount*envFix); //fixed gen env\n\nwaveLevel = dbtoa(keyAmpMod + velAmpMod) * pressAmpMod * slideAmpMod * env2AmpMod;\n\nif (pTimeMode == 0){\n\tincrement = (pRate * pitchLinearScaling) * srInv;\n} else if (pTimeMode == 1){ // beatsync calculations\n\tif (globalBeatPulse > 0){ // those happen only on beat times so that we stay in sync\n\t\tmodBeat = clip(round(pBeatTime / pitchLinearScaling, 1), 1, 32);\n\t\tqBeat = (pGlobalTime / modBeat) * srInv;\n\t}\n\tincrement = qBeat;\n} else if (pTimeMode == 2){ // FM\n\tFMPitch = mtof(modSum + 60) * pRatio;\n\tincrement = FMPitch * srInv;\n}\n\n// --- phase ---\nphase  = mod(phase + increment, 1);\nphaseL = mod(phase + pStereo, 1);\nphaseR = mod(phase + 1 - pStereo, 1);\n\n// --- waves ---\nif (pShape == 0){ // sine wave\n\twaveL = cycle(phaseL - 0.25, index = \"phase\");\n\twaveR = cycle(phaseR - 0.25, index = \"phase\");\n} else if (pShape == 1){ // triangle\n\twaveL = fold(phaseL - 0.25, 0.5) * 4 - 3;\n\twaveR = fold(phaseR - 0.25, 0.5) * 4 - 3;\n} else if (pShape == 2){ // ramp up \n\tif(pTimeMode < 2){\n\t\twaveL = phaseL; // * 2 - 1;\n\t\twaveR = phaseR; // * 2 - 1;\n\t} else {\n\t\twaveL = phaseL * 2 - 1;\n\t\twaveR = phaseR * 2 - 1;\n\t}\n} else if (pShape == 3) { // ramp down \n\tif(pTimeMode < 2){\n\t\twaveL = (1 - phaseL); // * -2 + 1;\n\t\twaveR = (1 - phaseR); // * -2 + 1;\n\t} else {\n\t\twaveL = (1 - phaseL) * -2 + 1;\n\t\twaveR = (1 - phaseR) * -2 + 1;\n\t}\n} else if (pShape == 4){ // square\n\tif(pTimeMode < 2){\n\t\twaveL = (phaseL < 0.5); //*2 -1;\n\t\twaveR = (phaseR < 0.5); //*2 -1;\n\t} else {\n\t\twaveL = (phaseL < 0.5) * 2 -1;\n\t\twaveR = (phaseR < 0.5) * 2 -1;\n\t}\t\n} else if (pShape == 5) { // random / S&H\n\tphase4 = mod(phase, 0.25);\t\n\tif (phase4 < phase4b){\t\n\t\tnoiseM = noise();\n\t\tnoiseS = noise();\n\t\twaveL = noiseM * (1 - pStereo * 4) + noiseS * pStereo * 4;\n\t\twaveR = noiseM * (1 - pStereo * 4) - noiseS * pStereo * 4;\n\t}\n\tphase4b = phase4;\n} else { // soft random move\n\tphase4 = mod(phase, 0.25);\t\n\tif (phase4 < phase4b){\t\n\t\tnoiseM = noise();\n\t\tnoiseS = noise();\n\t\tshL = noiseM * (1 - pStereo * 4) + noiseS * pStereo * 4;\n\t\tshR = noiseM * (1 - pStereo * 4) - noiseS * pStereo * 4;\n\t}\n\tphase4b = phase4;\n\ta = clip(10 * increment,0,1); // ensures it does not blow up with very high frequency values\n\twaveL = waveL * (1 - a) + shL * a;\n\twaveR = waveR * (1 - a) + shR * a;\n}\n\nquantizedL = round(waveL, 0.000001 + pLFOQuant);\nquantizedR = round(waveR, 0.000001 + pLFOQuant);\n\nout1 = quantizedL * waveLevel * pAmount;\nout2 = quantizedR * waveLevel * pAmount;\n\nif (pLFOToAmp != 0){\n\tif (pShape >= 2 || pShape <= 4){ // scale unpipolar waves between 0 and 1\n\tout3 = 0.5 * (1 - quantizedL) * waveLevel * pAmount;\n\tout4 = 0.5 * (1 - quantizedR) * waveLevel * pAmount;\n\t} else if (pShape < 2 || pShape == 5){ // make sine, tri and s&h unipolar\n\t\t// normalize bipolar waves for Amp mod\n\t\tnormalizedL = (quantizedL * 0.5) + 0.5;\n\t\tnormalizedR = (quantizedR * 0.5) + 0.5;\n\t\tout3 = normalizedL * waveLevel * pAmount;\n\t\tout4 = normalizedR * waveLevel * pAmount;\n\t} else { // scale random so it does not explode AM\n\t\tnormalizedL = (quantizedL * 0.5) + 0.5;\n\t\tnormalizedR = (quantizedR * 0.5) + 0.5;\n\t\tout3 = normalizedL * waveLevel * pAmount;\n\t\tout4 = normalizedR * waveLevel * pAmount;\n\t}\n}\n",
+					"fontface" : 0,
+					"fontname" : "<Monospaced>",
+					"fontsize" : 12.0,
+					"id" : "obj-3",
+					"maxclass" : "codebox",
+					"numinlets" : 5,
+					"numoutlets" : 4,
+					"outlettype" : [ "", "", "", "" ],
+					"patching_rect" : [ 23.0, 37.0, 631.0, 776.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-4",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 23.0, 824.0, 35.0, 22.0 ],
+					"text" : "out 1",
+					"textcolor" : [ 0.992156862745098, 1.0, 0.0, 1.0 ]
+				}
+
+			}
+ ],
+		"lines" : [ 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 0 ],
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 2 ],
+					"source" : [ "obj-2", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-10", 0 ],
+					"source" : [ "obj-3", 3 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-4", 0 ],
+					"source" : [ "obj-3", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-7", 0 ],
+					"source" : [ "obj-3", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-9", 0 ],
+					"source" : [ "obj-3", 2 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 1 ],
+					"source" : [ "obj-5", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 3 ],
+					"source" : [ "obj-6", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 4 ],
+					"source" : [ "obj-8", 0 ]
+				}
+
+			}
+ ],
+		"saved_attribute_attributes" : 		{
+			"default_plcolor" : 			{
+				"expression" : ""
+			}
+
+		}
+
+	}
+
+}

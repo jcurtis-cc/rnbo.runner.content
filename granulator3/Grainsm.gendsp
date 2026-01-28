@@ -1,0 +1,964 @@
+{
+	"patcher" : 	{
+		"fileversion" : 1,
+		"appversion" : 		{
+			"major" : 9,
+			"minor" : 1,
+			"revision" : 0,
+			"architecture" : "x64",
+			"modernui" : 1
+		}
+,
+		"classnamespace" : "dsp.gen",
+		"rect" : [ 78.0, 281.0, 1657.0, 965.0 ],
+		"gridsize" : [ 15.0, 15.0 ],
+		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-17",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 949.0, 5.0, 35.0, 22.0 ],
+					"text" : "in 12"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-14",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 864.090909090909122, 5.0, 35.0, 22.0 ],
+					"text" : "in 11"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-11",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 694.272727272727252, 5.0, 28.0, 22.0 ],
+					"text" : "in 9"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-13",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 779.18181818181813, 5.0, 35.0, 22.0 ],
+					"text" : "in 10"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-12",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 949.0, 796.0, 42.0, 22.0 ],
+					"text" : "out 2"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-9",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 524.454545454545496, 5.0, 28.0, 22.0 ],
+					"text" : "in 7"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-10",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 609.363636363636374, 5.0, 28.0, 22.0 ],
+					"text" : "in 8"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-7",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 354.636363636363626, 5.0, 28.0, 22.0 ],
+					"text" : "in 5"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-8",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 439.545454545454561, 5.0, 28.0, 22.0 ],
+					"text" : "in 6"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-5",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 184.818181818181813, 5.0, 28.0, 22.0 ],
+					"text" : "in 3"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-6",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 269.727272727272748, 5.0, 28.0, 22.0 ],
+					"text" : "in 4"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-1",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 15.0, 6.0, 28.0, 22.0 ],
+					"text" : "in 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-2",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 99.909090909090907, 5.0, 28.0, 22.0 ],
+					"text" : "in 2"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"code" : "//  THIS ONE HAS NO PARAMETERS. ALL STATES ARE AUDIO SIGNALS / BUFFERS \nBuffer Playback();\nBuffer RTGViz();\n\nHistory debug;\n\nHistory RTPosA;\nHistory RTAmpA;\nHistory RTPosB;\nHistory RTAmpB;\n\nHistory viewDownsampleIndex;\n\n// ----- CLOUD mode specific parameter storage -----\nData aReadOutPointer_L(64);  \nData aWindowRamp_L(64); \nData aPosition_L(64); \nData aGrainSizeSamples_L(64); \nData aVolume_L(64); \nData aPitch_L(64);  \n\nData aReadOutPointer_R(64); \nData aWindowRamp_R(64); \nData aPosition_R(64); \nData aGrainSizeSamples_R(64);  \nData aVolume_R(64); \nData aPitch_R(64); \n\n// --- CLASSIC mode specific parameter storage -----\nHistory grainSizeSamples_L(0);\nHistory grainSizeSamples_R(0);\n\nHistory grainReadOutPointerA_L(0);\nHistory grainReadOutPointerB_L(0);\nHistory grainReadOutPointerA_R(0);\nHistory grainReadOutPointerB_R(0);\n\nHistory positionA_L(0);\nHistory positionB_L(0);\nHistory positionA_R(0);\nHistory positionB_R(0);\n\nHistory windowRampA_L(0);\nHistory windowRampB_L(0);\nHistory windowRampA_R(0);\nHistory windowRampB_R(0);\n\nHistory volumeA_L(0);\nHistory volumeB_L(0);\nHistory volumeA_R(0);\nHistory volumeB_R(0);\n\n// ----- CLOUD mode specific parameter storage -----\nHistory cloudVolumeCompensation(0);\nHistory density(1);\nHistory window_L;\nHistory window_R;\n\nHistory outL;\nHistory outR;\n\n// ----- LOOP mode specific parameter storage -----\nHistory currentDirection_L;\nHistory currentDirection_R;\nHistory currentGain_L;\nHistory currentGain_R;\nHistory currentPosition_L;\nHistory currentPosition_R;\nHistory maxFadeLength_L;\nHistory maxFadeLength_R;\nHistory doNewLoopFlag_L;\nHistory doNewLoopFlag_R;\nHistory currentFadeOutPosition_L;\nHistory currentFadeOutPosition_R;\nHistory fadeOutGain_L;\nHistory fadeOutGain_R;\nHistory fadeLength_L;\nHistory fadeLength_R;\nHistory loopStart_L;\nHistory loopStart_R;\nHistory loopEnd_L;\nHistory loopEnd_R;\nHistory fadePointer_L;\nHistory fadePointer_R;\nHistory fadeRate_L;\nHistory fadeRate_R;\nHistory previousDirection_L;\nHistory previousDirection_R;\n\nHistory chanceReverse;\n\n// ----  Parameters which do not need to be updated sample accurate ----\nParam pFileSR(44100);\nParam pFileSamps(0);\n\nParam pStereoOn(0);\nParam voice(0);\n\nParam pMode(0); \t\t\t// Enum 0 = Classic, 1 = Cloud, 2 = Loop\nParam pDensity(5); \t\t\t// ( 1 - 32 ) number of grain streams in Cloud mode\nParam pChanceReverse (0); \t// ( 0...1 ) chance of reverse playback in Loop mode\nParam pGrainPitchFlux (0);  // ( range unclear, per grain pitch variation in Cloud mode )\nParam pVolumeVariation(0);\n\n// ----  signal inputs ----\nTrigger = in1;  \t\t\t// one sample pulse at note start\npPitchL = in2;\t\t\t\t// linear playback speed factor, 1 = normal playbac, 0.5 is 1 Octave lower \npPitchR = in3;\npPositionL = in4;\t\t\t// ( 0...1)  relative grain start position in file\npPositionR = in5;\npGrainSizeL = in6;\t\t\t// ( 0...1) relative grain size \npGrainSizeR = in7;\npGrainShapeL = in8;\t\t\t// ( 0...1) in Classic this defines window shape, from percussive attack to smooth to inverted \npGrainShapeR = in9;\t\t\t// in Loop mode this is the % of crossfade time.\nvariationL = in10;\t\t\nvariationR = in11;\n\n// ------  sample data ----\npPitchL = pPitchL * (pFileSR/samplerate);\npPitchR = pPitchR * (pFileSR/samplerate);\n\n// ----  downsamplingloop ----\nviewDownsampleIndex = mod(viewDownsampleIndex+1,100);\n\nampNoise = noise()-0.75;\n //////////////////////////////////////////////////////////////////////////////\n///////////////////////////////  CLASSIC  ////////////////////////////////////\n//////////////////////////////////////////////////////////////////////////////\nif (pMode == 0)\n{ \n// ----  note_on init ----\nif (Trigger>0)\n\t{\n\tgrainReadOutPointerA_L = 0;\n\tgrainReadOutPointerB_L = 0;\n\twindowRampA_L = 1;\n\twindowRampB_L = 0.5;\n\tpositionB_L = pPositionL;\n\tgrainReadOutPointerA_R = 0;\n\tgrainReadOutPointerB_R = 0;\n\twindowRampA_R = 1;\n\twindowRampB_R = 0.5;\n\tpositionB_R = pPositionR;\n\t}\n\t\n// ---- check edges ----\nif (windowRampA_L >= 1)\n\t{\n\twindowRampA_L\t\t\t= 0;\t\n\tpositionA_L \t\t\t= pPositionL;\n\tgrainReadOutPointerA_L \t= 0;\n\tgrainSizeSamples_L \t\t= pGrainSizeL * pFileSamps;\n\tvolumeA_L   \t\t\t= dbtoa(pVolumeVariation * variationL * ampNoise);\n\t}\nif (windowRampB_L >= 1)\n\t{\n\twindowRampB_L \t\t\t= 0;\t\n\tpositionB_L \t\t\t= pPositionL;\n\tgrainReadOutPointerB_L \t= 0;\n\tgrainSizeSamples_L \t\t= pGrainSizeL * pFileSamps;\n\tvolumeB_L  \t\t\t\t= dbtoa(pVolumeVariation * variationL * ampNoise);\n\t}\t\nif (windowRampA_R >= 1)\n\t{\n\twindowRampA_R\t\t\t= 0;\t\n\tpositionA_R \t\t\t= pPositionR;\n\tgrainReadOutPointerA_R \t= 0;\n\tgrainSizeSamples_R \t\t= pGrainSizeR * pFileSamps;\n\tvolumeA_R   \t\t\t= dbtoa(pVolumeVariation * variationR * ampNoise);\n\t}\nif (windowRampB_R >= 1)\n\t{\n\twindowRampB_R \t\t\t= 0;\t\n\tpositionB_R\t\t\t\t= pPositionR;\n\tgrainReadOutPointerB_R \t= 0;\n\tgrainSizeSamples_R \t\t= pGrainSizeR * pFileSamps;\n\tvolumeB_R  \t\t\t\t= dbtoa(pVolumeVariation * variationR * ampNoise);\n\t}\t\n\t\t\n// --- calculate window shape ----\nshapeL = 0.1+9.9*(pGrainShapeL)/(10-9 *pGrainShapeL);\nshapeR = 0.1+9.9*(pGrainShapeR)/(10-9 *pGrainShapeR);\t\t\t\nshapeL = pow(shapeL,1.5);\nshapeR = pow(shapeR,1.5);\t\t\t\t\n\t\t\n// --- calculate grain output ----\nwindowA_L = fastsin(pow(windowRampA_L,shapeL)*pi);\nwindowB_L = fastsin(pow(windowRampB_L,shapeL)*pi);\nwindowA_R = fastsin(pow(windowRampA_R,shapeR)*pi);\nwindowB_R = fastsin(pow(windowRampB_R,shapeR)*pi);\n\ngrainA_L = sample(Playback,positionA_L + grainReadOutPointerA_L,0);\ngrainB_L = sample(Playback,positionB_L + grainReadOutPointerB_L,0);\ngrainA_R = sample(Playback,positionA_R + grainReadOutPointerA_R,pStereoOn);\ngrainB_R = sample(Playback,positionB_R + grainReadOutPointerB_R,pStereoOn);\n\noutL = windowA_L*grainA_L*volumeA_L + windowB_L*grainB_L*volumeB_L;\noutR = windowA_R*grainA_R*volumeA_R + windowB_R*grainB_R*volumeB_R;\n\n// ---- advance inner grain playback head ----\ngrainReadOutPointerA_L = grainReadOutPointerA_L + pPitchL/pFileSamps;\ngrainReadOutPointerB_L = grainReadOutPointerB_L + pPitchL/pFileSamps;\ngrainReadOutPointerA_R = grainReadOutPointerA_R + pPitchR/pFileSamps;\ngrainReadOutPointerB_R = grainReadOutPointerB_R + pPitchR/pFileSamps;\n\n// --- advance window ramp ---\nwindowRampA_L = windowRampA_L + (abs(pPitchL)/grainSizeSamples_L);\nwindowRampB_L = windowRampB_L + (abs(pPitchL)/grainSizeSamples_L);\nwindowRampA_R = windowRampA_R + (abs(pPitchL)/grainSizeSamples_R);\nwindowRampB_R = windowRampB_R + (abs(pPitchL)/grainSizeSamples_R);\n\n// --- grain visualisation data collection ----\nif (viewDownsampleIndex == 0)\n\t{\n\tpoke(RTGViz,windowA_L * in12,voice*2);\n\tpoke(RTGViz,positionA_L+ grainReadOutPointerA_L,voice*2+32);\n\tpoke(RTGViz,windowB_L *in12,voice*2+1);\n\tpoke(RTGViz,positionB_L+ grainReadOutPointerB_L,voice*2+32+1);\n\t}\n\n}\n//////////////////////////////////////////////////////////////////////////////\n///////////////////////////////  CLOUDS  /////////////////////////////////////\n//////////////////////////////////////////////////////////////////////////////\n\nif (pMode == 1)\n{ \noutL = 0;\noutR = 0;\n\ngrainPitchFlux = mtof(noise()*pGrainPitchFlux)/mtof(0) -1;\n\t\n// ----  note_on init ----\nif (Trigger>0)\n{\ndensity = pDensity;\ncloudVolumeCompensation = 0.9 * pow(2,(1/pDensity));  \n\nfor (i = 0;i < density; i=i+1)\n\n\t{\n\tpoke(aReadOutPointer_L,0,i);\n\tpoke(aWindowRamp_L,1-(i*1/pDensity),i);\t\n\tpoke(aGrainSizeSamples_L,pGrainSizeL * pFileSamps * (1+sqrt(i)),i);\n\tpoke(aPitch_L,grainPitchFlux*in10,i);\n\tpoke(aVolume_L,0,i);\n\t\n\tpoke(aReadOutPointer_R,0,i);\n\tpoke(aWindowRamp_R,1-(i*1/pDensity),i);\t\n\tpoke(aGrainSizeSamples_R,pGrainSizeR * pFileSamps * (1+sqrt(i)) ,i);\n\tpoke(aPitch_R,grainPitchFlux*in11,i);\n\tpoke(aVolume_R,0,i);\n\t}\n\t\npoke(aVolume_L,dbtoa(pVolumeVariation * variationL * ampNoise),0);\npoke(aVolume_R,dbtoa(pVolumeVariation * variationR * ampNoise),0);\n \n}\n\t\nfor (i = 0; i < density; i=i+1)\n\t{\t\n\t\n\t// ---- check edges ----\n\tif (peek(aWindowRamp_L,i) >= 1)\n\t\t{\n\t\tpoke(aWindowRamp_L,0,i);\t\n\t\tpoke(aPosition_L,pPositionL,i);\n\t\tpoke(aReadOutPointer_L,0,i);\n\t\tpoke(aGrainSizeSamples_L,pGrainSizeL  * pFileSamps * (1+sqrt(i)),i); // * (1 + i*pGrainShapeL / 100) * pFileSamps,i);\n\t\tpoke(aVolume_L,dbtoa(pVolumeVariation * variationL * ampNoise),i);\n\t\tpoke(aPitch_L,grainPitchFlux*in10,i);\n\t\t}\n\tif (peek(aWindowRamp_R,i) >= 1)\n\t\t{\n\t\tpoke(aWindowRamp_R,0,i);\t\n\t\tpoke(aPosition_R,pPositionR,i);\n\t\tpoke(aReadOutPointer_R,0,i);\n\t\tpoke(aGrainSizeSamples_R,pGrainSizeR  * pFileSamps * (1+sqrt(i)),i); // *  (1 + i*pGrainShapeR / 100) * pFileSamps,i);\n\t\tpoke(aVolume_R,dbtoa(pVolumeVariation * variationR * ampNoise),i);\n\t\tpoke(aPitch_R,grainPitchFlux*in11,i);\n\t\t}\n\n\t// --- calculate grain output ----\n\twindow_L = fastsin(peek(aWindowRamp_L,i)*pi);\n\twindow_R = fastsin(peek(aWindowRamp_R,i)*pi);\n\n\t\n\tgrain_L = sample(Playback,peek(aPosition_L,i) + peek(aReadOutPointer_L,i),0);\n\tgrain_R = sample(Playback,peek(aPosition_R,i) + peek(aReadOutPointer_R,i),pStereoOn);\n\toutL = outL + window_L*grain_L*peek(aVolume_L,i)*cloudVolumeCompensation;\n\toutR = outR + window_R*grain_R*peek(aVolume_R,i)*cloudVolumeCompensation;\n\t\n\t\n\t\t// --- grain visualisation data collection ----\n\tif ((i<2)&&(viewDownsampleIndex == 0))\n\t\t{\n\t\tpoke(RTGViz,1 * in12,voice*2+i);\n\t\tpoke(RTGViz,peek(aPosition_L,i) + peek(aReadOutPointer_L,i),voice*2+32+i);\n\t\t}\n\t\n\t// ---- advance inner grain playback head ----\n\tpoke(aReadOutPointer_L, peek(aReadOutPointer_L,i,0) + (pPitchL+peek(aPitch_L,i))/pFileSamps,i);\n\tpoke(aReadOutPointer_R, peek(aReadOutPointer_R,i,0) + (pPitchR+peek(aPitch_R,i))/pFileSamps,i);\n\n\t// --- advance window ramp ---\n\tpoke(aWindowRamp_L,peek(aWindowRamp_L,i)+ (pPitchL+peek(aPitch_L,i))/peek(aGrainSizeSamples_L,i),i);\n\tpoke(aWindowRamp_R,peek(aWindowRamp_R,i)+ (pPitchR+peek(aPitch_R,i))/peek(aGrainSizeSamples_R,i),i);\n\t}\n\n}\n\n//////////////////////////////////////////////////////////////////////////////\n///////////////////////////////   LOOP   /////////////////////////////////////\n//////////////////////////////////////////////////////////////////////////////\n\nif (pMode == 2)\n\t{\n\tchanceReverse = (abs(noise()) > pChanceReverse) * 2 - 1;\n\nif (Trigger>0)\n\t{\n\tcurrentDirection_L \t= chanceReverse;\n\tcurrentDirection_R \t= chanceReverse;\n\tcurrentGain_L \t\t= 0;  // we start with silence\n\tcurrentGain_R\t\t= 0;  // we start with silence\n\tcurrentPosition_L \t= pPositionL;\n\tcurrentPosition_R \t= pPositionR;\n\tmaxFadeLength_L\t\t= 0; // we make fastest possible fade after start.\n\tmaxFadeLength_R\t\t= 0; // we make fastest possible fade after start.\n\tdoNewLoopFlag_L \t= 1; // the only things that matters, it starts the first 'real' segment\n\tdoNewLoopFlag_R \t= 1; // the only things that matters, it starts the first 'real' segment\n\t}\n\t\n\tif (doNewLoopFlag_L == 1)\n\t{\n\t// nove data from player to fade player\t\n\tpreviousDirection_L \t\t= currentDirection_L;\n\tcurrentFadeOutPosition_L \t= currentPosition_L;\n\tfadeOutGain_L \t\t\t\t= currentGain_L;\n\t\n\t// ---------------   define new loop segment -------------------\t\n \tcurrentGain_L \t\t\t= dbtoa(pVolumeVariation * variationL * ampNoise);\n\tcurrentDirection_L \t\t= chanceReverse;  \n\n\t// fade must no exeed max. possible length of fade for previous segment:\n\tfadeLength_L = clip(pGrainShapeL * pGrainSizeL,0,maxFadeLength_L); \n\t\n\tif (currentDirection_L > 0)\n\t\t{\n\t\t// start position of new loop must leave room for loop and fade\n\t\tmaxPosition \t= 1 - (pGrainSizeL + fadeLength_L);\n\t\tloopStart_L  \t= clip(pPositionL,0,maxPosition);\n\t\tloopEnd_L \t\t= loopStart_L + pGrainSizeL;\n\n\t\t// max fade length for next running segment must not exeed file end\n\t\tmaxFadeLength_L\t= 1 - loopEnd_L;\n\t\t}\n\telse\n\t\t{\n\t\t// start position of new loop must leave room for loop and fade\n\t\tminPosition \t= fadeLength_L;\n\t\tmaxPosition\t\t= 1 - pGrainSizeL;\n\t\tloopEnd_L \t\t= clip(pPositionL,minPosition,maxPosition);\n\t\tloopStart_L \t= loopEnd_L + pGrainSizeL;\n\t\t\n\t\t// max fade length for next running segment must not exeed file start\n\t\tmaxFadeLength_L   = loopStart_L;\n\t\t}\n\t\t\n\t// set values for upcoming crossfade process\n\tcurrentPosition_L \t= loopStart_L;\n\tfadePointer_L \t\t= 0; \n\tdoNewLoopFlag_L \t= 0;\n\tdebug \t\t\t\t= debug+1;\n \t}\n\nif (doNewLoopFlag_R == 1)\n\t{\n\t// nove data from player to fade player\t\n\tpreviousDirection_R\t\t\t= currentDirection_R;\n\tcurrentFadeOutPosition_R \t= currentPosition_R;\n\tfadeOutGain_R \t\t\t\t= currentGain_R;\n\t\n\t// ---------------   define new loop segment -------------------\t\n \tcurrentGain_R \t\t\t= dbtoa(pVolumeVariation * variationL * ampNoise);\n\tcurrentDirection_R \t\t= chanceReverse;  \n\n\t// fade must no exeed max. possible length of fade for previous segment:\n\tfadeLength_R = clip(pGrainShapeR * pGrainSizeR,0,maxFadeLength_R); \n\t\n\tif (currentDirection_R > 0)\n\t\t{\n\t\t// start position of new loop must leave room for loop and fade\n\t\tmaxPosition \t= 1 - (pGrainSizeR + fadeLength_R);\n\t\tloopStart_R \t= clip(pPositionR,0,maxPosition);\n\t\tloopEnd_R\t\t= loopStart_R + pGrainSizeR;\n\n\t\t// max fade length for next running segment must not exeed file end\n\t\tmaxFadeLength_R\t= 1 - loopEnd_R;\n\t\t}\n\telse\n\t\t{\n\t\t// start position of new loop must leave room for loop and fade\n\t\tminPosition \t= fadeLength_R;\n\t\tmaxPosition\t\t= 1 - pGrainSizeR;\n\t\tloopEnd_R \t\t= clip(pPositionR,minPosition,maxPosition);\n\t\tloopStart_R \t= loopEnd_R + pGrainSizeR;\n\t\t\n\t\t// max fade length for next running segment must not exeed file start\n\t\tmaxFadeLength_R   = loopStart_R;\n\t\t}\n\t\t\n\t// set values for upcoming crossfade process\n\tcurrentPosition_R \t= loopStart_R;\n\tfadePointer_R \t\t= 0; \n\tdoNewLoopFlag_R \t= 0;\n \t}\n\n\n// ---------- player  LEFT -----------\nif (fadePointer_L < 1)\n\t{\n\tA\t\t= fadeOutGain_L  * sample(Playback,currentFadeOutPosition_L,0);\n\tB \t\t= currentGain_L  * sample(Playback,currentPosition_L,0);\n\toutL \t= A * fastcos(fadePointer_L*0.5*pi) + B * fastsin(fadePointer_L*0.5*pi);\n\t\n\t// advance fade pointer\n\tfadeRate_L = pPitchL/(fadeLength_L*pFileSamps);\n\tif (fadeLength_L==0)\n\t\t{\n\t\tfadeRate_L = 1;\n\t\t}\n\tfadePointer_L = clip(fadePointer_L + fadeRate_L,0,1);\n\t\n\t// continue move through file in fade out\n\tcurrentFadeOutPosition_L = currentFadeOutPosition_L + (pPitchL/pFileSamps)*previousDirection_L;\n\t}\n\t\nelse  // non fading player for less CPU usage\n\t{\n\toutL =  currentGain_L*sample(Playback,currentPosition_L,0);\n\t}\n\t\n// --- grain visualisation data collection ----\nif (viewDownsampleIndex == 0)\n\t{\n\tpoke(RTGViz,1 * in12,voice*2);\n\tpoke(RTGViz,currentPosition_L,voice*2+32);\n\t}\n\t\t\n// ---------- player  RIGHT -----------\t\nif (fadePointer_R < 1)\n\t{\n\tA\t\t= fadeOutGain_R  * sample(Playback,currentFadeOutPosition_R,pStereoOn);\n\tB \t\t= currentGain_R  * sample(Playback,currentPosition_R,pStereoOn);\n\toutR \t= A * fastcos(fadePointer_R*0.5*pi) + B * fastsin(fadePointer_R*0.5*pi);\n\t\n\t// advance fade pointer\n\tfadeRate_R = pPitchR/(fadeLength_R*pFileSamps);\n\tif (fadeLength_R==0)\n\t\t{\n\t\tfadeRate_R = 1;\n\t\t}\n\tfadePointer_R = clip(fadePointer_R + fadeRate_R,0,1);\n\t\n\t// continue move through file in fade out\n\tcurrentFadeOutPosition_R = currentFadeOutPosition_R + (pPitchR/pFileSamps)*previousDirection_R;\n\t}\n\t\nelse  // non fading player for less CPU usage\n\t{\n\toutR =  currentGain_R*sample(Playback,currentPosition_R,pStereoOn);\n\t}\t\n\ncurrentPosition_L = currentPosition_L + (pPitchL/pFileSamps)*currentDirection_L;\ncurrentPosition_R = currentPosition_R + (pPitchR/pFileSamps)*currentDirection_R;\n\n// check if we reached loop end --> set doNewLoopFlag\na =  (currentDirection_L > 0) * (currentPosition_L > loopEnd_L) + (currentDirection_L < 0) * (currentPosition_L < loopEnd_L);\nif (a>0)\n \t{\n \tdoNewLoopFlag_L = 1;\n \t}\na =  (currentDirection_R > 0) * (currentPosition_R > loopEnd_R) + (currentDirection_R < 0) * (currentPosition_R < loopEnd_R);\nif (a>0)\n \t{\n \tdoNewLoopFlag_R = 1;\n \t}\t\n\n}\n\n////////////////////////////////  Output and That's It  ///////////////////////////\nout1 = outL;\nout2 = outR;",
+					"fontface" : 0,
+					"fontname" : "<Monospaced>",
+					"fontsize" : 12.0,
+					"id" : "obj-3",
+					"maxclass" : "codebox",
+					"numinlets" : 12,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 15.0, 39.0, 953.0, 745.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-4",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 15.0, 796.0, 35.0, 22.0 ],
+					"text" : "out 1"
+				}
+
+			}
+ ],
+		"lines" : [ 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 0 ],
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 7 ],
+					"source" : [ "obj-10", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 8 ],
+					"source" : [ "obj-11", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 9 ],
+					"source" : [ "obj-13", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 10 ],
+					"source" : [ "obj-14", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 11 ],
+					"source" : [ "obj-17", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 1 ],
+					"source" : [ "obj-2", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-12", 0 ],
+					"source" : [ "obj-3", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-4", 0 ],
+					"source" : [ "obj-3", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 2 ],
+					"source" : [ "obj-5", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 3 ],
+					"source" : [ "obj-6", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 4 ],
+					"source" : [ "obj-7", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 5 ],
+					"source" : [ "obj-8", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 6 ],
+					"source" : [ "obj-9", 0 ]
+				}
+
+			}
+ ],
+		"styles" : [ 			{
+				"name" : "AudioStatus_Menu",
+				"default" : 				{
+					"bgfillcolor" : 					{
+						"angle" : 270.0,
+						"autogradient" : 0,
+						"color" : [ 0.294118, 0.313726, 0.337255, 1 ],
+						"color1" : [ 0.454902, 0.462745, 0.482353, 0.0 ],
+						"color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
+						"proportion" : 0.39,
+						"type" : "color"
+					}
+
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "Audiomix",
+				"default" : 				{
+					"bgfillcolor" : 					{
+						"angle" : 270.0,
+						"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
+						"color1" : [ 0.376471, 0.384314, 0.4, 1.0 ],
+						"color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
+						"proportion" : 0.39,
+						"type" : "gradient"
+					}
+
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "Luca",
+				"default" : 				{
+					"accentcolor" : [ 0.32549, 0.345098, 0.372549, 1.0 ],
+					"bgcolor" : [ 0.904179, 0.895477, 0.842975, 0.56 ],
+					"bgfillcolor" : 					{
+						"angle" : 270.0,
+						"autogradient" : 0,
+						"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
+						"color1" : [ 0.862745, 0.870588, 0.878431, 1.0 ],
+						"color2" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
+						"proportion" : 0.39,
+						"type" : "gradient"
+					}
+,
+					"color" : [ 0.475135, 0.293895, 0.251069, 1.0 ],
+					"elementcolor" : [ 0.786675, 0.801885, 0.845022, 1.0 ],
+					"fontname" : [ "Open Sans Semibold" ],
+					"selectioncolor" : [ 0.720698, 0.16723, 0.080014, 1.0 ],
+					"textcolor_inverse" : [ 0.239216, 0.254902, 0.278431, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "M4L 10 Bold",
+				"default" : 				{
+					"fontface" : [ 1 ],
+					"fontsize" : [ 10.0 ],
+					"patchlinecolor" : [ 0.0, 0.0, 0.0, 0.25 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "Matt",
+				"default" : 				{
+					"fontface" : [ 1 ],
+					"fontsize" : [ 10.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "Max 12 Regular",
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "Max For Live",
+				"default" : 				{
+					"patchlinecolor" : [ 0.239216, 0.254902, 0.278431, 0.631373 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "RH",
+				"default" : 				{
+					"bgcolor" : [ 0.556646, 0.551429, 0.519943, 1.0 ],
+					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "WTF",
+				"default" : 				{
+					"accentcolor" : [ 0.50764, 0.065317, 0.112129, 1.0 ],
+					"bgcolor" : [ 0.163647, 0.174699, 0.17409, 1.0 ],
+					"bgfillcolor" : 					{
+						"angle" : 270.0,
+						"autogradient" : 0,
+						"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
+						"color1" : [ 0.32549, 0.345098, 0.372549, 1.0 ],
+						"color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
+						"proportion" : 0.39,
+						"type" : "gradient"
+					}
+,
+					"color" : [ 0.113725, 0.580392, 0.737255, 1.0 ],
+					"elementcolor" : [ 0.461105, 0.492646, 0.591878, 1.0 ],
+					"fontname" : [ "HydrogenType" ],
+					"fontsize" : [ 18.0 ],
+					"patchlinecolor" : [ 0.231373, 0.121569, 0.305882, 0.9 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "classic",
+				"default" : 				{
+					"accentcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ],
+					"bgcolor" : [ 0.83978, 0.839941, 0.839753, 1.0 ],
+					"bgfillcolor" : 					{
+						"angle" : 270.0,
+						"color" : [ 0.839216, 0.839216, 0.839216, 1.0 ],
+						"color1" : [ 0.83978, 0.839941, 0.839753, 1.0 ],
+						"color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
+						"proportion" : 0.39,
+						"type" : "color"
+					}
+,
+					"color" : [ 0.498039, 0.498039, 0.498039, 1.0 ],
+					"fontname" : [ "Geneva" ],
+					"fontsize" : [ 9.0 ],
+					"patchlinecolor" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "classicButton",
+				"default" : 				{
+					"color" : [ 1.0, 0.890196, 0.090196, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "classicDial",
+				"default" : 				{
+					"color" : [ 1.0, 0.890196, 0.090196, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "classicGain~",
+				"default" : 				{
+					"color" : [ 0.380392, 0.380392, 0.380392, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "classicGswitch",
+				"default" : 				{
+					"accentcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "classicGswitch2",
+				"default" : 				{
+					"accentcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "classicKslider",
+				"default" : 				{
+					"bgcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"color" : [ 1.0, 1.0, 1.0, 1.0 ],
+					"elementcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ],
+					"selectioncolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "classicLed",
+				"default" : 				{
+					"color" : [ 1.0, 0.0, 0.0, 1.0 ],
+					"elementcolor" : [ 0.6, 0.0, 0.0, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "classicMatrixctrl",
+				"default" : 				{
+					"color" : [ 1.0, 0.0, 0.0, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "classicMeter~",
+				"default" : 				{
+					"bgcolor" : [ 0.380392, 0.380392, 0.380392, 1.0 ],
+					"elementcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "classicNodes",
+				"default" : 				{
+					"color" : [ 0.839216, 0.839216, 0.839216, 1.0 ],
+					"elementcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ],
+					"fontsize" : [ 9.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "classicNslider",
+				"default" : 				{
+					"color" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "classicNumber",
+				"default" : 				{
+					"selectioncolor" : [ 1.0, 0.890196, 0.0, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "classicPictslider",
+				"default" : 				{
+					"elementcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "classicPreset",
+				"default" : 				{
+					"color" : [ 1.0, 0.890196, 0.090196, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "classicScope~",
+				"default" : 				{
+					"bgcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ],
+					"color" : [ 0.462745, 0.933333, 0.0, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "classicTab",
+				"default" : 				{
+					"color" : [ 0.498039, 0.498039, 0.498039, 1.0 ],
+					"elementcolor" : [ 0.839216, 0.839216, 0.839216, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "classicTextbutton",
+				"default" : 				{
+					"accentcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"color" : [ 1.0, 1.0, 1.0, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "classicToggle",
+				"default" : 				{
+					"color" : [ 0.380392, 0.380392, 0.380392, 1.0 ],
+					"elementcolor" : [ 0.376471, 0.384314, 0.4, 0.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "classicUmenu",
+				"default" : 				{
+					"color" : [ 1.0, 1.0, 1.0, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "classicWaveform~",
+				"default" : 				{
+					"color" : [ 0.380392, 0.380392, 0.380392, 1.0 ],
+					"selectioncolor" : [ 0.498039, 0.498039, 0.498039, 0.5 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "dark-night-patch",
+				"default" : 				{
+					"accentcolor" : [ 0.952941, 0.564706, 0.098039, 1.0 ],
+					"bgfillcolor" : 					{
+						"angle" : 270.0,
+						"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
+						"color1" : [ 0.376471, 0.384314, 0.4, 1.0 ],
+						"color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
+						"proportion" : 0.39,
+						"type" : "gradient"
+					}
+,
+					"patchlinecolor" : [ 0.439216, 0.74902, 0.254902, 0.898039 ],
+					"textcolor" : [ 0.862745, 0.870588, 0.878431, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "jpatcher001",
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "jpatcher002",
+				"default" : 				{
+					"bgfillcolor" : 					{
+						"angle" : 270.0,
+						"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
+						"color1" : [ 0.32549, 0.345098, 0.372549, 0.0 ],
+						"color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
+						"proportion" : 0.39,
+						"type" : "color"
+					}
+,
+					"clearcolor" : [ 0.32549, 0.345098, 0.372549, 0.0 ],
+					"fontname" : [ "Ableton Sans Book" ],
+					"fontsize" : [ 9.5 ],
+					"patchlinecolor" : [ 0.65098, 0.65098, 0.65098, 0.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "jpink",
+				"default" : 				{
+					"accentcolor" : [ 0.619608, 0.0, 0.360784, 1.0 ],
+					"bgcolor" : [ 0.862745, 0.870588, 0.878431, 1.0 ],
+					"bgfillcolor" : 					{
+						"angle" : 270.0,
+						"autogradient" : 0,
+						"color" : [ 0.619608, 0.0, 0.360784, 1.0 ],
+						"color1" : [ 0.376471, 0.384314, 0.4, 1.0 ],
+						"color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
+						"proportion" : 0.39,
+						"type" : "color"
+					}
+,
+					"clearcolor" : [ 0.113725, 0.607843, 0.607843, 1.0 ],
+					"color" : [ 0.619608, 0.0, 0.360784, 1.0 ],
+					"elementcolor" : [ 0.619608, 0.0, 0.360784, 1.0 ],
+					"patchlinecolor" : [ 0.65, 0.65, 0.65, 1.0 ],
+					"selectioncolor" : [ 0.619608, 0.0, 0.360784, 1.0 ],
+					"textcolor" : [ 0.619608, 0.0, 0.360784, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "ksliderWhite",
+				"default" : 				{
+					"color" : [ 1.0, 1.0, 1.0, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "lightbutton",
+				"default" : 				{
+					"bgcolor" : [ 0.309495, 0.299387, 0.299789, 1.0 ],
+					"elementcolor" : [ 0.654902, 0.572549, 0.376471, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "multi001",
+				"button" : 				{
+					"bgcolor" : [ 0.322969, 0.31519, 0.325025, 1.0 ],
+					"color" : [ 0.702269, 0.811747, 0.303388, 1.0 ],
+					"elementcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+,
+				"newobj" : 				{
+					"bgcolor" : [ 0.862745, 0.870588, 0.878431, 1.0 ],
+					"fontface" : [ 0 ]
+				}
+,
+				"message" : 				{
+					"bgfillcolor" : 					{
+						"angle" : 270.0,
+						"autogradient" : 0,
+						"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
+						"color1" : [ 0.862745, 0.870588, 0.878431, 1.0 ],
+						"color2" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
+						"proportion" : 0.39,
+						"type" : "gradient"
+					}
+,
+					"fontface" : [ 0 ],
+					"fontname" : [ "Arial" ]
+				}
+,
+				"comment" : 				{
+					"fontface" : [ 0 ]
+				}
+,
+				"number" : 				{
+					"textcolor_inverse" : [ 0.836576, 0.903148, 0.643029, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 1
+			}
+, 			{
+				"name" : "newobjBlue-1",
+				"default" : 				{
+					"accentcolor" : [ 0.317647, 0.654902, 0.976471, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "newobjBrown-1",
+				"default" : 				{
+					"accentcolor" : [ 0.654902, 0.572549, 0.376471, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "newobjCyan-1",
+				"default" : 				{
+					"accentcolor" : [ 0.029546, 0.773327, 0.821113, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "newobjGreen-1",
+				"default" : 				{
+					"accentcolor" : [ 0.0, 0.533333, 0.168627, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "newobjRed-1",
+				"default" : 				{
+					"accentcolor" : [ 0.784314, 0.145098, 0.023529, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "newobjYellow-1",
+				"default" : 				{
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
+					"fontsize" : [ 12.059008 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "newobjYellow-2",
+				"default" : 				{
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
+					"fontsize" : [ 12.059008 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "numberGold-1",
+				"default" : 				{
+					"accentcolor" : [ 0.764706, 0.592157, 0.101961, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "purple",
+				"default" : 				{
+					"bgcolor" : [ 0.304029, 0.250694, 0.285628, 1.0 ],
+					"textcolor_inverse" : [ 0.701961, 0.415686, 0.886275, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "receives",
+				"default" : 				{
+					"accentcolor" : [ 0.870588, 0.415686, 0.062745, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "rsliderGold",
+				"default" : 				{
+					"bgcolor" : [ 0.764706, 0.592157, 0.101961, 1.0 ],
+					"color" : [ 0.646639, 0.821777, 0.854593, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "sends",
+				"default" : 				{
+					"accentcolor" : [ 0.0, 0.533333, 0.168627, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "stb001",
+				"default" : 				{
+					"fontface" : [ 1 ],
+					"fontname" : [ "Arial Bold" ],
+					"fontsize" : [ 10.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "tap",
+				"default" : 				{
+					"fontname" : [ "Lato Light" ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "tastefulltoggle",
+				"default" : 				{
+					"bgcolor" : [ 0.185512, 0.263736, 0.260626, 1.0 ],
+					"color" : [ 0.941176, 0.690196, 0.196078, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "tastefultoggle",
+				"default" : 				{
+					"bgcolor" : [ 0.287863, 0.333333, 0.329398, 1.0 ],
+					"color" : [ 0.941176, 0.690196, 0.196078, 1.0 ],
+					"elementcolor" : [ 0.654902, 0.572549, 0.376471, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "templata",
+				"parentstyle" : "",
+				"multi" : 1
+			}
+, 			{
+				"name" : "test",
+				"default" : 				{
+					"fontface" : [ 1 ],
+					"fontsize" : [ 10.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "whitey",
+				"default" : 				{
+					"fontname" : [ "Dirty Ego" ],
+					"fontsize" : [ 36.0 ],
+					"patchlinecolor" : [ 0.199068, 0.062496, 0.060031, 0.9 ],
+					"selectioncolor" : [ 0.011765, 0.396078, 0.752941, 1.0 ],
+					"textcolor_inverse" : [ 0.65098, 0.666667, 0.662745, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+ ],
+		"saved_attribute_attributes" : 		{
+			"default_plcolor" : 			{
+				"expression" : ""
+			}
+
+		}
+,
+		"oscsendudpport" : 8001
+	}
+
+}

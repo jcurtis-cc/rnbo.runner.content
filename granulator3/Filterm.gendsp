@@ -1,0 +1,255 @@
+{
+	"patcher" : 	{
+		"fileversion" : 1,
+		"appversion" : 		{
+			"major" : 8,
+			"minor" : 6,
+			"revision" : 0,
+			"architecture" : "x64",
+			"modernui" : 1
+		}
+,
+		"classnamespace" : "dsp.gen",
+		"rect" : [ 790.0, 100.0, 688.0, 848.0 ],
+		"bglocked" : 0,
+		"openinpresentation" : 0,
+		"default_fontsize" : 12.0,
+		"default_fontface" : 0,
+		"default_fontname" : "Arial",
+		"gridonopen" : 1,
+		"gridsize" : [ 15.0, 15.0 ],
+		"gridsnaponopen" : 1,
+		"objectsnaponopen" : 1,
+		"statusbarvisible" : 2,
+		"toolbarvisible" : 1,
+		"lefttoolbarpinned" : 0,
+		"toptoolbarpinned" : 0,
+		"righttoolbarpinned" : 0,
+		"bottomtoolbarpinned" : 0,
+		"toolbars_unpinned_last_save" : 0,
+		"tallnewobj" : 0,
+		"boxanimatetime" : 200,
+		"enablehscroll" : 1,
+		"enablevscroll" : 1,
+		"devicewidth" : 0.0,
+		"description" : "",
+		"digest" : "",
+		"tags" : "",
+		"style" : "",
+		"subpatcher_template" : "",
+		"assistshowspatchername" : 0,
+		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-10",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 651.0, 5.0, 28.0, 22.0 ],
+					"text" : "in 8"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-11",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 561.0, 5.0, 28.0, 22.0 ],
+					"text" : "in 7"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-8",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 471.0, 5.0, 28.0, 22.0 ],
+					"text" : "in 6"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-9",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 381.0, 5.0, 28.0, 22.0 ],
+					"text" : "in 5"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-2",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 291.0, 5.0, 28.0, 22.0 ],
+					"text" : "in 4"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-6",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 201.0, 5.0, 28.0, 22.0 ],
+					"text" : "in 3"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-7",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 651.0, 805.0, 35.0, 22.0 ],
+					"text" : "out 2"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-5",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 111.0, 5.0, 28.0, 22.0 ],
+					"text" : "in 2"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-1",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 21.0, 5.0, 28.0, 22.0 ],
+					"text" : "in 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"code" : "svf(input,F,Q){\n\tHistory icEq0,icEq1;\n\tHistory freq,res,wc,k,g,gk,g0;\n\t\n\tif (F != freq || Q != res){\n\t\tfreq = F;\n\t\tres = Q;\n\t\twc = 2 * tan(pi * freq / samplerate);\n\t\tk = 1 / res;\n\t\tg = 0.5 * wc;\n\t\tgk = g + k;\n\t\tg0 = g / (g * gk + 1.0);\n    }\n\n\tdiff = input - icEq1;\n\tdv1 = g0 * (diff - gk * icEq0);\n\tdv2 = g0 * (g * diff + icEq0);\n\tv1 = icEq0 + dv1;\n\tv2 = icEq1 + dv2;\n\ticEq0 += 2 * dv1;\n\ticEq1 += 2 * dv2;\n\t\n    return v2,v1,k;  // lp,bp,k\n}\n\nHistory smoothLFOL,smoothLFOR,modFreqL,modFreqR,\n\tfilterOutL,filterOutR,filterOutL2,filterOutR2,\n\tinterimL,interimR,F1L,F2L,F1R,F2R,smoothFreq;\n\nParam pType1(1);\nParam pType2(0);\nParam pFrequency(135);\nParam pResonance1(1);\nParam pResonance2(0.707);\nParam pWidth(0);\n\n// ------ MIDI & MPE ------\nParam pNotePress,pNoteSlide,pNotePB;\n\n// --- Modulations ---\nParam pKeyToFrequency,pVelocityToFrequency,\n\tpNotePressToFrequency,pNoteSlideToFrequency,\n\tpNotePitchBendToFrequency;\n\nParam pEnv1ToFrequency,pEnv2ToFrequency,pLFOToFrequency;\n\n// --- inputs ---\nLFOL = in1;\nLFOR = in2;\nenv2 = in3;\nenv1 = in4;\ninL = in5;\ninR = in6;\nrpRelativeKey = in7;\nrpRelativeVelocity = in8;\n\n// output set to input for bypass case\nfilterOutL = inL;\t\nfilterOutR = inR;\n\nif (pType1 > 0){  // is true for all filters but bypass\n\t\n\tmpeFreq = pFrequency +\n\t\tpNotePress * pNotePressToFrequency +\n\t\tpNoteSlide * pNoteSlideToFrequency +\n\t\tpNotePB * pNotePitchBendToFrequency;\n\t\t\n\tsmoothFreq = smoothFreq * 0.98 + mpeFreq * 0.02;\t\t\t\n\n\tmidiFrequency = rpRelativeKey * pKeyToFrequency +\n\t\trpRelativeVelocity * pVelocityToFrequency;\n\t\t\n\tmonoFreqMod = smoothFreq + midiFrequency + env1 * pEnv1ToFrequency + env2 * pEnv2ToFrequency;\n\n\tsmoothLFOL = smoothLFOL * 0.98 + LFOL * 0.02;\n\tsmoothLFOR = smoothLFOR * 0.98 + LFOR * 0.02;\n\t\n\tmodFreqL = monoFreqMod + smoothLFOL * pLFOToFrequency;\n\tmodFreqR = monoFreqMod + smoothLFOR * pLFOToFrequency;\n\n\t// for Filter 1 only : \n\tFilterFreq_L \t= mtof(modFreqL);\n\tFilterFreq_R \t= mtof(modFreqR);\n\n\tF1L = clip(FilterFreq_L, 10, samplerate * 0.45);\n\tF1R = clip(FilterFreq_R, 10, samplerate * 0.45);\n\n\tv2l,v1l,kl = svf(inL, F1L, pResonance1);\n\tv2r,v1r,kr = svf(inR, F1R, pResonance1);\n\n\tif (pType1 == 1){ \n\t\tfilterOutL = v2l;\n\t\tfilterOutR = v2r;\n\t} else if (pType1 == 3){\n\t\tfilterOutL= inL - kl * v1l - v2l;\n\t\tfilterOutR = inR - kr * v1r - v2r;\n\t} else if (pType1 == 2){\n\t\tfilterOutL = v2l + inL - kl * v2l - v1l;\n\t\tfilterOutR = v2r + inR - kr * v2r - v1r;\n\t}\n}\n\ninL = filterOutL;\ninR = filterOutR;\n\nif (pType2 > 0){\n\tFilterFreq2_L = mtof(modFreqL + pWidth);\n\tFilterFreq2_R = mtof(modFreqR + pWidth);\n\t\t\n\tF2L = clip(FilterFreq2_L, 10, samplerate * 0.45);\n\tF2R = clip(FilterFreq2_R, 10, samplerate * 0.45);\n\n\tv2l,v1l,kl = svf(filterOutL, F2L, pResonance2);\n\tv2r,v1r,kr = svf(filterOutR, F2R, pResonance2);\n\n\tif (pType2 == 1){\n\t\tfilterOutL = v2l;\n\t\tfilterOutR = v2r;\n\t} else if (pType2 == 3){\n\t\tfilterOutL = inL - kl * v1l - v2l;\n\t\tfilterOutR = inR - kr * v1r - v2r;\n\t} else if (pType2 == 2){\n\t\tfilterOutL = v2l + inL - kl * v2l - v1l;\n\t\tfilterOutR = v2r + inR - kr * v2r - v1r;\n\t} else if (pType2 == 4){\n\t\tfilterOutL = v1l;\n\t\tfilterOutR = v1r;\n\t}\n}\n\nout1 = filterOutL;\nout2 = filterOutR;\n",
+					"fontface" : 0,
+					"fontname" : "<Monospaced>",
+					"fontsize" : 12.0,
+					"id" : "obj-3",
+					"maxclass" : "codebox",
+					"numinlets" : 8,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 21.0, 37.0, 649.0, 755.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-4",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 21.0, 805.0, 35.0, 22.0 ],
+					"text" : "out 1"
+				}
+
+			}
+ ],
+		"lines" : [ 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 0 ],
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 7 ],
+					"source" : [ "obj-10", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 6 ],
+					"source" : [ "obj-11", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 3 ],
+					"source" : [ "obj-2", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-4", 0 ],
+					"source" : [ "obj-3", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-7", 0 ],
+					"source" : [ "obj-3", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 1 ],
+					"source" : [ "obj-5", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 2 ],
+					"source" : [ "obj-6", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 5 ],
+					"source" : [ "obj-8", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 4 ],
+					"source" : [ "obj-9", 0 ]
+				}
+
+			}
+ ],
+		"saved_attribute_attributes" : 		{
+			"default_plcolor" : 			{
+				"expression" : ""
+			}
+
+		}
+
+	}
+
+}

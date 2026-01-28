@@ -1,0 +1,180 @@
+{
+	"patcher" : 	{
+		"fileversion" : 1,
+		"appversion" : 		{
+			"major" : 8,
+			"minor" : 6,
+			"revision" : 2,
+			"architecture" : "x64",
+			"modernui" : 1
+		}
+,
+		"classnamespace" : "dsp.gen",
+		"rect" : [ 790.0, 100.0, 688.0, 848.0 ],
+		"bglocked" : 0,
+		"openinpresentation" : 0,
+		"default_fontsize" : 12.0,
+		"default_fontface" : 0,
+		"default_fontname" : "Arial",
+		"gridonopen" : 1,
+		"gridsize" : [ 15.0, 15.0 ],
+		"gridsnaponopen" : 1,
+		"objectsnaponopen" : 1,
+		"statusbarvisible" : 2,
+		"toolbarvisible" : 1,
+		"lefttoolbarpinned" : 0,
+		"toptoolbarpinned" : 0,
+		"righttoolbarpinned" : 0,
+		"bottomtoolbarpinned" : 0,
+		"toolbars_unpinned_last_save" : 0,
+		"tallnewobj" : 0,
+		"boxanimatetime" : 200,
+		"enablehscroll" : 1,
+		"enablevscroll" : 1,
+		"devicewidth" : 0.0,
+		"description" : "",
+		"digest" : "",
+		"tags" : "",
+		"style" : "",
+		"subpatcher_template" : "",
+		"assistshowspatchername" : 0,
+		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-2",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 629.0, 14.0, 28.0, 22.0 ],
+					"text" : "in 4",
+					"textcolor" : [ 0.0, 1.0, 0.156862745098039, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-7",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 629.0, 816.0, 35.0, 22.0 ],
+					"text" : "out 2",
+					"textcolor" : [ 0.0, 1.0, 0.156862745098039, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-6",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 223.0, 14.0, 28.0, 22.0 ],
+					"text" : "in 2",
+					"textcolor" : [ 0.0, 1.0, 0.156862745098039, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-5",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 426.0, 14.0, 28.0, 22.0 ],
+					"text" : "in 3",
+					"textcolor" : [ 0.0, 1.0, 0.156862745098039, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-1",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 20.0, 14.0, 28.0, 22.0 ],
+					"text" : "in 1",
+					"textcolor" : [ 0.0, 1.0, 0.156862745098039, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"code" : "History randomVariation,outL,outR,invMtof, relativePitchL, relativePitchR,\n\toutL,outR;\n\nParam pTranspose,pSpread,pTune,pTimeMode;\n\n// ------ MIDI & MPE ------\nParam pRelativeKey,pRelativeVelocity,\n\tpNotePress,pNoteSlide,pNotePB;\n\n// --- Modulations ---\nParam pKeyToPitch,pNotePressAmount,pNotePBAmount,\n\tpEnv2ToPitch,pLFOToPitch,pRandomToPitch;\n\nParam pVelToSpread,pPressToSpread,pSlideToSpread,\n\tpEnv2ToSpread,pLFOToSpread;\n\ntrigger = in1;\nLFOL = in2;\nLFOR = in3;\nenv2 = in4;\n\nif (invMtof == 0){\n\tinvMtof = 1 / mtof(0);\n\t}\n\n// --- NoteOn ---\nif (trigger){\n\trandomVariation = noise();\n\t}\n\n// --- spread ---\nenvSpreadMod = 1 - ((1 - env2) * pEnv2ToSpread);\r\nvelSpreadMod = envSpreadMod  * 1 - ((1 - pRelativeVelocity) * pVelToSpread);\npressSpreadMod = velSpreadMod * 1 - ((1 - pNotePress) * pPressToSpread);\nslideSpreadMod = pressSpreadMod * 1 - ((1 - pNoteSlide) * pSlideToSpread);\n\nLFOSpreadModL = 1 + LFOL * pLFOToSpread;\nLFOSpreadModR = 1 + LFOR * pLFOToSpread;\nspreadModL = slideSpreadMod * LFOSpreadModL;\nspreadModR = slideSpreadMod * LFOSpreadModR;\n\n// --- Pitch Modulation\nkeyPitchMod = pRelativeKey * pKeyToPitch;\nmpePitchMod = pNotePB * pNotePBAmount + pNotePress * pNotePressAmount;\nrandPitchMod = randomVariation * pRandomToPitch;\nenvPitchMod = env2 * pEnv2ToPitch;\npitchScaled = pTranspose + pTune + keyPitchMod + mpePitchMod + randPitchMod + envPitchMod;\n\n// --- Stereo modulation  ---\nif (pTimeMode < 2){\n\trelativePitchL = pitchScaled + pLFOToPitch * LFOL - pSpread * spreadModL;\n\trelativePitchR = pitchScaled + pLFOToPitch * LFOR + pSpread * spreadModR;\n\toutL = mtof(relativePitchL) * invMtof;\n\toutR = mtof(relativePitchR) * invMtof;\n} else {\n\tpitchFactorL = mtof(pitchScaled - pSpread * spreadModL) * invMtof;\n\tpitchFactorR = mtof(pitchScaled + pSpread * spreadModR) * invMtof;\n\tfmModL = pLFOToPitch * LFOL;\n\tfmModR = pLFOToPitch * LFOR;\n\n\toutL = pitchFactorL + fmModL * invMtof;\n\toutR = pitchFactorR + fmModR * invMtof;\n}\n\nout1 = outL;\nout2 = outR;\n",
+					"fontface" : 0,
+					"fontname" : "<Monospaced>",
+					"fontsize" : 12.0,
+					"id" : "obj-3",
+					"maxclass" : "codebox",
+					"numinlets" : 4,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 20.0, 47.0, 628.0, 756.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-4",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 20.0, 816.0, 35.0, 22.0 ],
+					"text" : "out 1",
+					"textcolor" : [ 0.0, 1.0, 0.156862745098039, 1.0 ]
+				}
+
+			}
+ ],
+		"lines" : [ 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 0 ],
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 3 ],
+					"source" : [ "obj-2", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-4", 0 ],
+					"source" : [ "obj-3", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-7", 0 ],
+					"source" : [ "obj-3", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 2 ],
+					"source" : [ "obj-5", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 1 ],
+					"source" : [ "obj-6", 0 ]
+				}
+
+			}
+ ],
+		"bgcolor" : [ 0.501960784313725, 0.501960784313725, 0.501960784313725, 1.0 ],
+		"editing_bgcolor" : [ 0.647058823529412, 0.576470588235294, 0.47843137254902, 1.0 ]
+	}
+
+}

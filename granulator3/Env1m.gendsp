@@ -1,0 +1,129 @@
+{
+	"patcher" : 	{
+		"fileversion" : 1,
+		"appversion" : 		{
+			"major" : 9,
+			"minor" : 1,
+			"revision" : 0,
+			"architecture" : "x64",
+			"modernui" : 1
+		}
+,
+		"classnamespace" : "dsp.gen",
+		"rect" : [ 78.0, 281.0, 1809.0, 984.0 ],
+		"gridsize" : [ 15.0, 15.0 ],
+		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-6",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 612.0, 802.0, 35.0, 22.0 ],
+					"text" : "out 2"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-5",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 612.0, 19.0, 28.0, 22.0 ],
+					"text" : "in 3"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-2",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 314.0, 19.0, 28.0, 22.0 ],
+					"text" : "in 2"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-1",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 16.0, 19.0, 28.0, 22.0 ],
+					"text" : "in 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"code" : "//--- internal registers ---\nHistory currentGain,isAttackFlag;\n\nHistory cachedAttack,cachedDecay,cachedRelease,\n\tattackScaled,decayScaled,releaseScaled,\n\tcachedScaling;\n\nHistory rateScaling(1);\n\nParam pAttack(10); // linear ramp in miliseconds, independent of sample rate\nParam pDecay(1000); // log ramp in milliseconds, independent off sam\nParam pSustain(0);\nParam pRelease(600);\nParam pKeyToRates(0); // scales all evelope rates relative to C3\n\n// ------ MIDI & MPE ------\nParam pNotePress(0);\nParam pNoteSlide(0);\nParam pNotePB(0);\n\npGate = in1; // is 1 as long as note runs\npTrigger = in2; // single sample 1 pulse at note start\nrpRelativeKey = in3;\n\ntrigOut = 0;\n\nsrScaled = samplerate * 0.001;\n\nenvScaling = rpRelativeKey * pKeyToRates;\n\nif (envScaling != cachedScaling || pAttack != cachedAttack || pDecay != cachedDecay || pRelease != cachedRelease){\n\tcachedScaling = envScaling;\n\tcachedAttack = pAttack;\n\tcachedDecay = pDecay;\n\tcachedRelease = pRelease;\n\t\n\trateScaling = mtof(envScaling) / mtof(0);\n\n\tinvAttack = 1 / (pAttack * srScaled);\n\tattackRate  = invAttack;\n\tattackScaled = rateScaling * attackRate;\n\t\n    invDecay = 1 / (pDecay * srScaled);\n\tdecayRate   = (1 - pow(0.001, invDecay));\n\tdecayScaled = rateScaling * decayRate;\n\t\n    invRelease = 1 / (pRelease * srScaled);\n\treleaseRate = (1 - pow(0.001, invRelease));\n\treleaseScaled = rateScaling * releaseRate;\n}\n\n// --- release rate switch --- disabled for Env 2\nreleaseScaledSwitch = releaseScaled * ( 1 + 1 * (currentGain < 0.001));\n\n// note on\nif (pTrigger > 0){\n\tisAttackFlag = 1;\n\t// only set current gain if it is small, allowing for retrigger\n\tif (currentGain <= 0.001) {\n    currentGain  = (pAttack < 0.11); // if Attack time is very fast, we start at 1, else from 0\n    trigOut = 1;\n  }\n}\n\n// attack phase\nif \t((isAttackFlag > 0) && (pGate > 0)){\n\t// linear ramp up\t\n\tcurrentGain = currentGain + attackScaled;\n\t// end attack\n\tif (currentGain > 1){\n\t\tisAttackFlag = 0;\n\t\tcurrentGain  = 1;\n\t}\n} else {\n\t// decay release level/rate switch\t\n\ttargetGain = pSustain * pGate;\n\trate = releaseScaledSwitch * (1 - pGate) + decayScaled * pGate;\n\tdeltaGain = (currentGain - targetGain);\n\t// exponential ramp up\n\tcurrentGain = currentGain - deltaGain * rate;\n}\n\nout1 = \tcurrentGain; \nout2 = trigOut;\n",
+					"fontface" : 0,
+					"fontname" : "<Monospaced>",
+					"fontsize" : 12.0,
+					"id" : "obj-3",
+					"maxclass" : "codebox",
+					"numinlets" : 3,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 16.0, 52.0, 615.0, 739.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-4",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 16.0, 802.0, 35.0, 22.0 ],
+					"text" : "out 1"
+				}
+
+			}
+ ],
+		"lines" : [ 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 0 ],
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 1 ],
+					"source" : [ "obj-2", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-4", 0 ],
+					"source" : [ "obj-3", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-6", 0 ],
+					"source" : [ "obj-3", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 2 ],
+					"source" : [ "obj-5", 0 ]
+				}
+
+			}
+ ],
+		"editing_bgcolor" : [ 0.572549019607843, 0.537254901960784, 0.525490196078431, 1.0 ],
+		"oscsendudpport" : 8001
+	}
+
+}
