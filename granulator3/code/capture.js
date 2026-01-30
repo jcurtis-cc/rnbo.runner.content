@@ -2,6 +2,7 @@
 // out1 indicates that a new capature was made and we should switch to it
 // out2 indicates that the CapturedNoResize buffer was updated and should be redrawn
 @param captureseconds = 1;
+@param capturedelay = 0.0;
 
 @state livebuf = new data("LiveCapture");
 @state capturebuf = new data("Captured");
@@ -23,7 +24,7 @@ let bufframes: Index = dim(livebuf);
 
 //the button on the move makes a click sound, we don't want to include that so we move back in time a little
 
-let offset: Index = mstosamps(50);
+let offset: Index = mstosamps(capturedelay);
 let start: Index = lastcaptureframe - frames - offset;
 if (start < 0) {
   start = start + bufframes;
