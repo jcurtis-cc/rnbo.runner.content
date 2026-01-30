@@ -1,4 +1,4 @@
-// vim: set sw=2 tw=2 expandtab:
+// vim: set sw=2 ts=2 expandtab:
 @state draw = new display("draw", 128, 64);
 @state source = new data("cursors");
 
