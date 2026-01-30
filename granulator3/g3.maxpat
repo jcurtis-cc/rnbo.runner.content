@@ -9,7 +9,7 @@
             "modernui": 1
         },
         "classnamespace": "box",
-        "rect": [ 554.0, 303.0, 1000.0, 780.0 ],
+        "rect": [ 1742.0, 328.0, 1000.0, 780.0 ],
         "boxes": [
             {
                 "box": {
@@ -480,7 +480,7 @@
                             },
                             {
                                 "box": {
-                                    "code": "// vim: set sw=2 tw=2 expandtab:\n@state draw = new display(\"waveform\", 128, 64);\n@state source = new data(\"captured\");\n\n@state captureframes = 0;\n@state dirty = 0;\n@state buf = 0;\n\nfunction in2(n: number) {\n  captureframes = n;\n  dirty = 1;\n}\n\nfunction in3(n: number) {\n  buf = n;\n  dirty = 1;\n}\n\nlet _dummy = in1;\n\nif (draw.ready() && dirty) {\n  draw.clear();\n  if (buf > 0) {\n    let sdim = min(dim(source), captureframes);\n    if (sdim > 2) {\n      let cols = draw.width();\n      let chunksize: Index = ceil(sdim / cols);\n      let rowbytes = draw.rowbytes();\n\n      let rowmid = draw.height() / 2;\n      let rowmid_1 = rowmid - 1;\n\n      for (let i = 0; i < cols; i++) {\n        let offset: Index = i * chunksize;\n        let m = 0.0;\n        for (let c = 0; c < chunksize; c++) {\n          let cindex = c + offset;\n          m = max(m, abs(peek(source, cindex, 0)[0]));\n          m = max(m, abs(peek(source, cindex, 1)[0]));\n        }\n\n        let rows: Index = clamp(rowmid_1 * m, 0, rowmid_1);\n        let bytebit = draw.pixelbytebit(0, i); //compute for first row but we offset below\n\n        //draw from the middle\n        let mask = 1 << bytebit[1];\n        for (let r = 0; r < rows; r++) {\n          //positive from center\n          draw.ormask(bytebit[0] + (rowmid_1 - r) * rowbytes, mask);\n          //negative from center\n          draw.ormask(bytebit[0] + (rowmid + r) * rowbytes, mask);\n        }\n      }\n    }\n  }\n  draw.markdirty();\n  dirty = 0;\n}\n",
+                                    "code": "// vim: set sw=2 tw=2 expandtab:\n@state draw = new display(\"waveform\", 128, 64);\n@state source = new data(\"captured\");\n\n@state captureframes = 0;\n@state dirty = 0;\n@state buf = 0;\n\nfunction in2(n: number) {\n  captureframes = n;\n  dirty = 1;\n}\n\nfunction in3(n: number) {\n  buf = n;\n  dirty = 1;\n}\n\nlet _dummy = in1;\n\nif (draw.ready() && dirty) {\n  draw.clear();\n  if (buf > 0) {\n    let sdim = min(dim(source), captureframes);\n    if (sdim > 2) {\n      let cols = draw.width();\n      let chunksize: Index = ceil(sdim / cols);\n      let rowbytes = draw.rowbytes();\n\n      let rowmid = draw.height() / 2;\n      let rowmid_1 = rowmid - 1;\n\n      for (let i = 0; i < cols; i++) {\n        let offset: Index = i * chunksize;\n        let m = 0.0;\n        for (let c = 0; c < chunksize; c++) {\n          let cindex = c + offset;\n          m = max(m, abs(peek(source, cindex, 0)[0]));\n          m = max(m, abs(peek(source, cindex, 1)[0]));\n        }\n\n        let rows: Index = clamp(rowmid_1 * m, 0, rowmid_1);\n        let bytebit = draw.pixelbytebit(0, i); //compute for first row but we offset below\n\n        //draw from the middle\n        let mask = 1 << bytebit[1];\n        for (let r = 0; r < rows; r++) {\n          //positive from center\n          draw.ormask(bytebit[0] + (rowmid_1 - r) * rowbytes, mask);\n          //negative from center\n          draw.ormask(bytebit[0] + (rowmid + r) * rowbytes, mask);\n        }\n      }\n    }\n  }\n  draw.markdirty();\n  dirty = 0;\n}",
                                     "fontface": 0,
                                     "fontname": "<Monospaced>",
                                     "fontsize": 12.0,
@@ -491,12 +491,12 @@
                                     "patching_rect": [ 745.0, 386.0, 561.0, 570.0 ],
                                     "rnbo_classname": "codebox",
                                     "rnbo_extra_attributes": {
-                                        "code": "// vim: set sw=2 tw=2 expandtab:\n@state draw = new display(\"waveform\", 128, 64);\n@state source = new data(\"captured\");\n\n@state captureframes = 0;\n@state dirty = 0;\n@state buf = 0;\n\nfunction in2(n: number) {\n  captureframes = n;\n  dirty = 1;\n}\n\nfunction in3(n: number) {\n  buf = n;\n  dirty = 1;\n}\n\nlet _dummy = in1;\n\nif (draw.ready() && dirty) {\n  draw.clear();\n  if (buf > 0) {\n    let sdim = min(dim(source), captureframes);\n    if (sdim > 2) {\n      let cols = draw.width();\n      let chunksize: Index = ceil(sdim / cols);\n      let rowbytes = draw.rowbytes();\n\n      let rowmid = draw.height() / 2;\n      let rowmid_1 = rowmid - 1;\n\n      for (let i = 0; i < cols; i++) {\n        let offset: Index = i * chunksize;\n        let m = 0.0;\n        for (let c = 0; c < chunksize; c++) {\n          let cindex = c + offset;\n          m = max(m, abs(peek(source, cindex, 0)[0]));\n          m = max(m, abs(peek(source, cindex, 1)[0]));\n        }\n\n        let rows: Index = clamp(rowmid_1 * m, 0, rowmid_1);\n        let bytebit = draw.pixelbytebit(0, i); //compute for first row but we offset below\n\n        //draw from the middle\n        let mask = 1 << bytebit[1];\n        for (let r = 0; r < rows; r++) {\n          //positive from center\n          draw.ormask(bytebit[0] + (rowmid_1 - r) * rowbytes, mask);\n          //negative from center\n          draw.ormask(bytebit[0] + (rowmid + r) * rowbytes, mask);\n        }\n      }\n    }\n  }\n  draw.markdirty();\n  dirty = 0;\n}\n",
+                                        "code": "// vim: set sw=2 tw=2 expandtab:\n@state draw = new display(\"waveform\", 128, 64);\n@state source = new data(\"captured\");\n\n@state captureframes = 0;\n@state dirty = 0;\n@state buf = 0;\n\nfunction in2(n: number) {\n  captureframes = n;\n  dirty = 1;\n}\n\nfunction in3(n: number) {\n  buf = n;\n  dirty = 1;\n}\n\nlet _dummy = in1;\n\nif (draw.ready() && dirty) {\n  draw.clear();\n  if (buf > 0) {\n    let sdim = min(dim(source), captureframes);\n    if (sdim > 2) {\n      let cols = draw.width();\n      let chunksize: Index = ceil(sdim / cols);\n      let rowbytes = draw.rowbytes();\n\n      let rowmid = draw.height() / 2;\n      let rowmid_1 = rowmid - 1;\n\n      for (let i = 0; i < cols; i++) {\n        let offset: Index = i * chunksize;\n        let m = 0.0;\n        for (let c = 0; c < chunksize; c++) {\n          let cindex = c + offset;\n          m = max(m, abs(peek(source, cindex, 0)[0]));\n          m = max(m, abs(peek(source, cindex, 1)[0]));\n        }\n\n        let rows: Index = clamp(rowmid_1 * m, 0, rowmid_1);\n        let bytebit = draw.pixelbytebit(0, i); //compute for first row but we offset below\n\n        //draw from the middle\n        let mask = 1 << bytebit[1];\n        for (let r = 0; r < rows; r++) {\n          //positive from center\n          draw.ormask(bytebit[0] + (rowmid_1 - r) * rowbytes, mask);\n          //negative from center\n          draw.ormask(bytebit[0] + (rowmid + r) * rowbytes, mask);\n        }\n      }\n    }\n  }\n  draw.markdirty();\n  dirty = 0;\n}",
                                         "nocache": 0,
                                         "hot": 0,
                                         "safemath": 1
                                     },
-                                    "rnbo_serial": 1,
+                                    "rnbo_serial": 4,
                                     "rnbo_uniqueid": "codebox_obj-9",
                                     "rnboinfo": {
                                         "needsInstanceInfo": 1,
@@ -2803,6 +2803,11 @@
                             "isEnum": 0,
                             "parsestring": ""
                         },
+                        "capturedelay": {
+                            "label": "capturedelay",
+                            "isEnum": 0,
+                            "parsestring": ""
+                        },
                         "FilterFrequency": {
                             "label": "FilterFrequency",
                             "isEnum": 0,
@@ -2965,11 +2970,6 @@
                         },
                         "PitchTranspose": {
                             "label": "PitchTranspose",
-                            "isEnum": 0,
-                            "parsestring": ""
-                        },
-                        "capturedelay": {
-                            "label": "capturedelay",
                             "isEnum": 0,
                             "parsestring": ""
                         },
@@ -5090,14 +5090,6 @@
             "obj-1": [ "rnbo~", "rnbo~", 0 ],
             "obj-3": [ "live.gain~", "live.gain~", 0 ],
             "obj-9": [ "rnbo~[6]", "rnbo~", 0 ],
-            "parameterbanks": {
-                "0": {
-                    "index": 0,
-                    "name": "",
-                    "parameters": [ "-", "-", "-", "-", "-", "-", "-", "-" ],
-                    "buttons": [ "-", "-", "-", "-", "-", "-", "-", "-" ]
-                }
-            },
             "inherited_shortname": 1
         },
         "autosave": 0,
