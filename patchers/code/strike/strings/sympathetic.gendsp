@@ -1,0 +1,449 @@
+// === RINGS SYMPATHETIC STRINGS (3 voices) ===                                                      
+//                                                                                                   
+// INPUTS:                                                                                           
+// in1 = audio from main string (feed main string's out1 - out2 here)                                
+// in2 = base frequency in Hz (same as main string)                                                  
+// in3 = structure (0 to 1, controls tuning spread)                                                  
+// in4 = brightness (0 to 1)                                                                         
+// in5 = damping (0 to 1)                                                                            
+// in6 = position (0 to 1)        
+
+Data lut_s1(11, 1);                                                                                  
+Data lut_s2(11, 1);                                                                                  
+Data lut_s3(11, 1);                                                                       
+                                                                                                     
+// === DELAY LINES (3 strings) ===                                                                   
+Delay del1(2048);                                                                                    
+Delay ap_del1(1024);                                                                                 
+Delay del2(2048);                                                                                    
+Delay ap_del2(1024);                                                                                 
+Delay del3(2048);                                                                                    
+Delay ap_del3(1024);                                                                                 
+                                                                                                     
+// === HISTORIES STRING 1 ===                                                                        
+History h_delay1(100);                                                                               
+History h_pos1(0.5);                                                                                 
+History h_disp1(0);                                                                                  
+History fir_x1(0);                                                                                   
+History fir_xx1(0);                                                                                  
+History curved_bridge1(0);                                                                           
+History dc_x1(0);                                                                                    
+History dc_y1(0);                                                                                    
+History svf_ic1eq1(0);                                                                               
+History svf_ic2eq1(0);                                                                               
+History lfo_phase1(0);                                                                               
+                                                                                                     
+// === HISTORIES STRING 2 ===                                                                        
+History h_delay2(100);                                                                               
+History h_pos2(0.5);                                                                                 
+History h_disp2(0);                                                                                  
+History fir_x2(0);                                                                                   
+History fir_xx2(0);                                                                                  
+History curved_bridge2(0);                                                                           
+History dc_x2(0);                                                                                    
+History dc_y2(0);                                                                                    
+History svf_ic1eq2(0);                                                                               
+History svf_ic2eq2(0);                                                                               
+History lfo_phase2(0);                                                                               
+                                                                                                     
+// === HISTORIES STRING 3 ===                                                                        
+History h_delay3(100);                                                                               
+History h_pos3(0.5);                                                                                 
+History h_disp3(0);                                                                                  
+History fir_x3(0);                                                                                   
+History fir_xx3(0);                                                                                  
+History curved_bridge3(0);                                                                           
+History dc_x3(0);                                                                                    
+History dc_y3(0);                                                                                    
+History svf_ic1eq3(0);                                                                               
+History svf_ic2eq3(0);                                                                               
+History lfo_phase3(0);                                                                                                                                                         
+                                                                                                     
+sr = samplerate;                                                                                     
+                                                                                                     
+// === INPUTS ===                                                                                    
+audio_in_raw = in1;                                                                                  
+base_freq = clamp(in2, 20, 4000);                                                                    
+struct_in = clamp(in3, 0, 1);                                                                        
+bright_in = clamp(in4, 0, 1);                                                                        
+damp_in = clamp(in5, 0, 1);                                                                          
+pos_in = clamp(in6, 0, 1);                                                                           
+                                                                                                     
+// === SYMPATHETIC INPUT GAIN ===                                                                    
+audio_in = audio_in_raw * 0.15;                                                                      
+                                                                                                     
+// === SYMPATHETIC BRIGHTNESS (applied twice) ===                                                    
+bright_symp = bright_in * (2 - bright_in);                                                           
+bright_symp = bright_symp * (2 - bright_symp);                                                       
+bright_sq = bright_symp * bright_symp;                                                               
+                                                                                                     
+// === SYMPATHETIC DAMPING (restricted range + per-string increase) ===                              
+damp_base = 0.7 + damp_in * 0.27;                                                                    
+                                                                                                     
+// Per-string damping: higher strings get more damping toward 0.95                                   
+// String indices: 1/4, 2/4, 3/4 (main string would be 0/4)                                          
+damp_symp1 = damp_base + 0.25 * (0.95 - damp_base);                                                  
+damp_symp2 = damp_base + 0.50 * (0.95 - damp_base);                                                  
+damp_symp3 = damp_base + 0.75 * (0.95 - damp_base);                                                  
+                                                                                                     
+/ Select chord (quantized to 11 steps)                                                              
+chord_idx = floor(struct_in * 10.99);                                                                
+chord_idx = clamp(chord_idx, 0, 10);                                                                 
+                                                                                                     
+// Read intervals from LUTs                                                                          
+interval1 = peek(lut_s1, chord_idx, 0);                                                              
+interval2 = peek(lut_s2, chord_idx, 0);                                                              
+interval3 = peek(lut_s3, chord_idx, 0);                                                              
+                                                                                                     
+// Add slight detuning                                                                               
+interval1 = interval1 + 0.013;                                                                       
+interval2 = interval2 + 0.011;                                                                       
+interval3 = interval3 + 0.007;                                                                       
+                                                                                                     
+// === FREQUENCIES ===                                                                               
+freq1 = base_freq * pow(2, interval1 / 12);                                                          
+freq2 = base_freq * pow(2, interval2 / 12);                                                          
+freq3 = base_freq * pow(2, interval3 / 12);                                                          
+                                                                                                     
+freq1 = clamp(freq1, 20, 4000);                                                                      
+freq2 = clamp(freq2, 20, 4000);                                                                      
+freq3 = clamp(freq3, 20, 4000);                                                                       
+                                                                                                     
+                                              
+                                                                                                     
+// Add slight detuning for chorus effect                                                             
+interval1 = interval1 + 0.013;                                                                       
+interval2 = interval2 + 0.011;                                                                       
+interval3 = interval3 + 0.007;                                                                       
+                                                                                                     
+// === FREQUENCIES ===                                                                               
+freq1 = base_freq * pow(2, interval1 / 12);                                                          
+freq2 = base_freq * pow(2, interval2 / 12);                                                          
+freq3 = base_freq * pow(2, interval3 / 12);                                                          
+                                                                                                     
+freq1 = clamp(freq1, 20, 4000);                                                                      
+freq2 = clamp(freq2, 20, 4000);                                                                      
+freq3 = clamp(freq3, 20, 4000);                                                                      
+                                                                                                     
+// === DISPERSION (same mapping as main string) ===                                                  
+dispersion = struct_in < 0.24                                                                        
+    ? (struct_in - 0.24) * 4.166                                                                     
+    : (struct_in > 0.26 ? (struct_in - 0.26) * 1.35135 : 0);                                         
+                                                                                                     
+// === LFO FOR POSITION MODULATION ===                                                               
+lfo_amount = (0.5 - abs(0.5 - pos_in)) * 0.9;                                                        
+                                                                                                     
+lfo_phase1 = lfo_phase1 + 0.2 / sr;                                                                  
+lfo_phase1 = lfo_phase1 - floor(lfo_phase1);                                                         
+lfo1 = sin(lfo_phase1 * TWOPI);                                                                      
+pos1 = pos_in + lfo1 * lfo_amount;                                                                   
+                                                                                                     
+lfo_phase2 = lfo_phase2 + 0.17 / sr;                                                                 
+lfo_phase2 = lfo_phase2 - floor(lfo_phase2);                                                         
+lfo2 = sin(lfo_phase2 * TWOPI);   //cycle(lfo_phase, index="phase")                                                                   
+pos2 = pos_in + lfo2 * lfo_amount;                                                                   
+                                                                                                     
+lfo_phase3 = lfo_phase3 + 0.23 / sr;                                                                 
+lfo_phase3 = lfo_phase3 - floor(lfo_phase3);                                                         
+lfo3 = sin(lfo_phase3 * TWOPI);                                                                      
+pos3 = pos_in + lfo3 * lfo_amount;                                                                   
+                                                                                                     
+// === SHARED CALCULATIONS ===                                                                       
+dc_coef = 1 - 20 / sr;                                                                               
+fir_h0 = (1 + bright_sq) * 0.5;                                                                      
+fir_h1 = (1 - bright_sq) * 0.25;                                                                     
+svf_r = 2;                                                                                           
+                                                                                                     
+// ============================================                                                      
+// === STRING 1 ===                                                                                  
+// ============================================                                                      
+freq_norm1 = freq1 / sr;                                                                             
+target_delay1 = sr / freq1;                                                                          
+target_delay1 = clamp(target_delay1, 8, 2040);                                                       
+                                                                                                     
+delay_now1 = h_delay1 + (target_delay1 - h_delay1) * 0.01;                                           
+h_delay1 = fixdenorm(delay_now1);                                                                    
+                                                                                                     
+clamped_pos1 = 0.5 - 0.98 * abs(pos1 - 0.5);                                                         
+pos_now1 = h_pos1 + (clamped_pos1 - h_pos1) * 0.01;                                                  
+h_pos1 = fixdenorm(pos_now1);                                                                        
+comb_delay1 = max(delay_now1 * pos_now1, 4);                                                         
+                                                                                                     
+disp_now1 = h_disp1 + (dispersion - h_disp1) * 0.01;                                                 
+h_disp1 = fixdenorm(disp_now1);                                                                      
+                                                                                                     
+// String 1 damping calculations                                                                     
+lf_damping1 = damp_symp1 * (2 - damp_symp1);                                                         
+rt60_base1 = 0.07 * pow(2, lf_damping1 * 8) * sr;                                                    
+cutoff_raw1 = 24 + damp_symp1 * damp_symp1 * 48 + bright_sq * 24;                                    
+damping_cutoff1 = min(cutoff_raw1, 84);                                                              
+svf_shift1 = peek(svf_shift_lut, damping_cutoff1, 0, interp="linear");                               
+damping_comp1 = 1 - svf_shift1;                                                                      
+                                                                                                     
+iir_freq1 = freq_norm1 * pow(2, damping_cutoff1 / 12);                                               
+iir_freq1 = clamp(iir_freq1, 0.01, 0.499);                                                           
+                                                                                                     
+rt60_ratio1 = -10 * delay_now1 / rt60_base1;                                                         
+rt60_ratio1 = max(rt60_ratio1, -10.58);                                                              
+damping_coeff1 = pow(2, rt60_ratio1);                                                                
+damping_coeff1 = clamp(damping_coeff1, 0.0, 1.0);                                                    
+                                                                                                     
+stretch_pt1 = disp_now1 > 0 ? disp_now1 * (2 - disp_now1) * 0.475 : 0;                               
+bridge_cv_raw1 = disp_now1 < 0 ? -disp_now1 : 0;                                                     
+ac_block_amt1 = bridge_cv_raw1;                                                                      
+bridge_cv1 = bridge_cv_raw1 * bridge_cv_raw1 * 0.01;                                                 
+ap_gain1 = disp_now1 > 0 ? -0.618 * disp_now1 / (0.15 + abs(disp_now1)) : 0;                         
+                                                                                                     
+delay_fm1 = 1 - clamp(curved_bridge1, -5, 5) * bridge_cv1;                                           
+del1_calc = delay_now1 * damping_comp1 - 1;                                                          
+del1_calc = del1_calc * delay_fm1;                                                                   
+del1_calc = clamp(del1_calc, 4, 2040);                                                               
+                                                                                                     
+ap_d1 = del1_calc * stretch_pt1;                                                                     
+main_d1 = del1_calc - ap_d1;                                                                         
+main_d1 = max(main_d1, 4);                                                                           
+                                                                                                     
+s1 = del1.read(main_d1, interp="spline");                                                            
+                                                                                                     
+ap_read1 = 0;                                                                                        
+ap_write1 = 0;                                                                                       
+ap_out1 = s1;                                                                                        
+if (disp_now1 > 0.01 && ap_d1 >= 4 && main_d1 >= 4) {                                                
+    ap_read1 = ap_del1.read(ap_d1, interp="spline");                                                 
+    ap_write1 = s1 + ap_gain1 * ap_read1;                                                            
+    ap_out1 = ap_read1 - ap_gain1 * ap_write1;                                                       
+    ap_del1.write(ap_write1);                                                                        
+    s1 = ap_out1;                                                                                    
+}                                                                                                    
+                                                                                                     
+s_ac1 = s1 - dc_x1 + dc_coef * dc_y1;                                                                
+dc_x1 = fixdenorm(s1);                                                                               
+dc_y1 = fixdenorm(s_ac1);                                                                            
+s1 = s1 + ac_block_amt1 * (s_ac1 - s1);                                                              
+                                                                                                     
+bval1 = abs(s1) - 0.025;                                                                             
+bsign1 = s1 > 0 ? 1 : -1.5;                                                                          
+new_bridge1 = (abs(bval1) + bval1) * bsign1;                                                         
+curved_bridge1 = fixdenorm(disp_now1 < 0 ? clamp(new_bridge1, -5, 5) : 0);                           
+                                                                                                     
+s1 = s1 + audio_in;                                                                                  
+                                                                                                     
+fir_out1 = damping_coeff1 * (fir_h0 * fir_x1 + fir_h1 * (s1 + fir_xx1));                             
+fir_xx1 = fixdenorm(fir_x1);                                                                         
+fir_x1 = fixdenorm(s1);                                                                              
+s1 = fir_out1;                                                                                       
+                                                                                                     
+svf_g1 = tan(PI * iir_freq1);                                                                        
+svf_h1_coef = 1 / (1 + svf_r * svf_g1 + svf_g1 * svf_g1);                                            
+                                                                                                     
+hp1 = (s1 - svf_r * svf_ic1eq1 - svf_g1 * svf_ic1eq1 - svf_ic2eq1) * svf_h1_coef;                    
+bp1 = svf_g1 * hp1 + svf_ic1eq1;                                                                     
+svf_ic1eq1 = fixdenorm(svf_g1 * hp1 + bp1);                                                          
+lp1 = svf_g1 * bp1 + svf_ic2eq1;                                                                     
+svf_ic2eq1 = fixdenorm(svf_g1 * bp1 + lp1);                                                          
+                                                                                                     
+s1 = lp1;                                                                                            
+s1 = tanh(s1 * 0.5) * 2;                                                                             
+del1.write(s1);                                                                                      
+                                                                                                     
+out1_s1 = s1;                                                                                        
+out2_s1 = del1.read(comb_delay1, interp="spline");                                                   
+                                                                                                     
+// ============================================                                                      
+// === STRING 2 ===                                                                                  
+// ============================================                                                      
+freq_norm2 = freq2 / sr;                                                                             
+target_delay2 = sr / freq2;                                                                          
+target_delay2 = clamp(target_delay2, 8, 2040);                                                       
+                                                                                                     
+delay_now2 = h_delay2 + (target_delay2 - h_delay2) * 0.01;                                           
+h_delay2 = fixdenorm(delay_now2);                                                                    
+                                                                                                     
+clamped_pos2 = 0.5 - 0.98 * abs(pos2 - 0.5);                                                         
+pos_now2 = h_pos2 + (clamped_pos2 - h_pos2) * 0.01;                                                  
+h_pos2 = fixdenorm(pos_now2);                                                                        
+comb_delay2 = max(delay_now2 * pos_now2, 4);                                                         
+                                                                                                     
+disp_now2 = h_disp2 + (dispersion - h_disp2) * 0.01;                                                 
+h_disp2 = fixdenorm(disp_now2);                                                                      
+                                                                                                     
+// String 2 damping calculations                                                                     
+lf_damping2 = damp_symp2 * (2 - damp_symp2);                                                         
+rt60_base2 = 0.07 * pow(2, lf_damping2 * 8) * sr;                                                    
+cutoff_raw2 = 24 + damp_symp2 * damp_symp2 * 48 + bright_sq * 24;                                    
+damping_cutoff2 = min(cutoff_raw2, 84);                                                              
+svf_shift2 = peek(svf_shift_lut, damping_cutoff2, 0, interp="linear");                               
+damping_comp2 = 1 - svf_shift2;                                                                      
+                                                                                                     
+iir_freq2 = freq_norm2 * pow(2, damping_cutoff2 / 12);                                               
+iir_freq2 = clamp(iir_freq2, 0.01, 0.499);                                                           
+                                                                                                     
+rt60_ratio2 = -10 * delay_now2 / rt60_base2;                                                         
+rt60_ratio2 = max(rt60_ratio2, -10.58);                                                              
+damping_coeff2 = pow(2, rt60_ratio2);                                                                
+damping_coeff2 = clamp(damping_coeff2, 0.0, 1.0);                                                    
+                                                                                                     
+stretch_pt2 = disp_now2 > 0 ? disp_now2 * (2 - disp_now2) * 0.475 : 0;                               
+bridge_cv_raw2 = disp_now2 < 0 ? -disp_now2 : 0;                                                     
+ac_block_amt2 = bridge_cv_raw2;                                                                      
+bridge_cv2 = bridge_cv_raw2 * bridge_cv_raw2 * 0.01;                                                 
+ap_gain2 = disp_now2 > 0 ? -0.618 * disp_now2 / (0.15 + abs(disp_now2)) : 0;                         
+                                                                                                     
+delay_fm2 = 1 - clamp(curved_bridge2, -5, 5) * bridge_cv2;                                           
+del2_calc = delay_now2 * damping_comp2 - 1;                                                          
+del2_calc = del2_calc * delay_fm2;                                                                   
+del2_calc = clamp(del2_calc, 4, 2040);                                                               
+                                                                                                     
+ap_d2 = del2_calc * stretch_pt2;                                                                     
+main_d2 = del2_calc - ap_d2;                                                                         
+main_d2 = max(main_d2, 4);                                                                           
+                                                                                                     
+s2 = del2.read(main_d2, interp="spline");                                                            
+                                                                                                     
+ap_read2 = 0;                                                                                        
+ap_write2 = 0;                                                                                       
+ap_out2 = s2;                                                                                        
+if (disp_now2 > 0.01 && ap_d2 >= 4 && main_d2 >= 4) {                                                
+    ap_read2 = ap_del2.read(ap_d2, interp="spline");                                                 
+    ap_write2 = s2 + ap_gain2 * ap_read2;                                                            
+    ap_out2 = ap_read2 - ap_gain2 * ap_write2;                                                       
+    ap_del2.write(ap_write2);                                                                        
+    s2 = ap_out2;                                                                                    
+}                                                                                                    
+                                                                                                     
+s_ac2 = s2 - dc_x2 + dc_coef * dc_y2;                                                                
+dc_x2 = fixdenorm(s2);                                                                               
+dc_y2 = fixdenorm(s_ac2);                                                                            
+s2 = s2 + ac_block_amt2 * (s_ac2 - s2);                                                              
+                                                                                                     
+bval2 = abs(s2) - 0.025;                                                                             
+bsign2 = s2 > 0 ? 1 : -1.5;                                                                          
+new_bridge2 = (abs(bval2) + bval2) * bsign2;                                                         
+curved_bridge2 = fixdenorm(disp_now2 < 0 ? clamp(new_bridge2, -5, 5) : 0);                           
+                                                                                                     
+s2 = s2 + audio_in;                                                                                  
+                                                                                                     
+fir_out2 = damping_coeff2 * (fir_h0 * fir_x2 + fir_h1 * (s2 + fir_xx2));                             
+fir_xx2 = fixdenorm(fir_x2);                                                                         
+fir_x2 = fixdenorm(s2);                                                                              
+s2 = fir_out2;                                                                                       
+                                                                                                     
+svf_g2 = tan(PI * iir_freq2);                                                                        
+svf_h2_coef = 1 / (1 + svf_r * svf_g2 + svf_g2 * svf_g2);                                            
+                                                                                                     
+hp2 = (s2 - svf_r * svf_ic1eq2 - svf_g2 * svf_ic1eq2 - svf_ic2eq2) * svf_h2_coef;                    
+bp2 = svf_g2 * hp2 + svf_ic1eq2;                                                                     
+svf_ic1eq2 = fixdenorm(svf_g2 * hp2 + bp2);                                                          
+lp2 = svf_g2 * bp2 + svf_ic2eq2;                                                                     
+svf_ic2eq2 = fixdenorm(svf_g2 * bp2 + lp2);                                                          
+                                                                                                     
+s2 = lp2;                                                                                            
+s2 = tanh(s2 * 0.5) * 2;                                                                             
+del2.write(s2);                                                                                      
+                                                                                                     
+out1_s2 = s2;                                                                                        
+out2_s2 = del2.read(comb_delay2, interp="spline");                                                   
+                                                                                                     
+// ============================================                                                      
+// === STRING 3 ===                                                                                  
+// ============================================                                                      
+freq_norm3 = freq3 / sr;                                                                             
+target_delay3 = sr / freq3;                                                                          
+target_delay3 = clamp(target_delay3, 8, 2040);                                                       
+                                                                                                     
+delay_now3 = h_delay3 + (target_delay3 - h_delay3) * 0.01;                                           
+h_delay3 = fixdenorm(delay_now3);                                                                    
+                                                                                                     
+clamped_pos3 = 0.5 - 0.98 * abs(pos3 - 0.5);                                                         
+pos_now3 = h_pos3 + (clamped_pos3 - h_pos3) * 0.01;                                                  
+h_pos3 = fixdenorm(pos_now3);                                                                        
+comb_delay3 = max(delay_now3 * pos_now3, 4);                                                         
+                                                                                                     
+disp_now3 = h_disp3 + (dispersion - h_disp3) * 0.01;                                                 
+h_disp3 = fixdenorm(disp_now3);                                                                      
+                                                                                                     
+// String 3 damping calculations                                                                     
+lf_damping3 = damp_symp3 * (2 - damp_symp3);                                                         
+rt60_base3 = 0.07 * pow(2, lf_damping3 * 8) * sr;                                                    
+cutoff_raw3 = 24 + damp_symp3 * damp_symp3 * 48 + bright_sq * 24;                                    
+damping_cutoff3 = min(cutoff_raw3, 84);                                                              
+svf_shift3 = peek(svf_shift_lut, damping_cutoff3, 0, interp="linear");                               
+damping_comp3 = 1 - svf_shift3;                                                                      
+                                                                                                     
+iir_freq3 = freq_norm3 * pow(2, damping_cutoff3 / 12);                                               
+iir_freq3 = clamp(iir_freq3, 0.01, 0.499);                                                           
+                                                                                                     
+rt60_ratio3 = -10 * delay_now3 / rt60_base3;                                                         
+rt60_ratio3 = max(rt60_ratio3, -10.58);                                                              
+damping_coeff3 = pow(2, rt60_ratio3);                                                                
+damping_coeff3 = clamp(damping_coeff3, 0.0, 1.0);                                                    
+                                                                                                     
+stretch_pt3 = disp_now3 > 0 ? disp_now3 * (2 - disp_now3) * 0.475 : 0;                               
+bridge_cv_raw3 = disp_now3 < 0 ? -disp_now3 : 0;                                                     
+ac_block_amt3 = bridge_cv_raw3;                                                                      
+bridge_cv3 = bridge_cv_raw3 * bridge_cv_raw3 * 0.01;                                                 
+ap_gain3 = disp_now3 > 0 ? -0.618 * disp_now3 / (0.15 + abs(disp_now3)) : 0;                         
+                                                                                                     
+delay_fm3 = 1 - clamp(curved_bridge3, -5, 5) * bridge_cv3;                                           
+del3_calc = delay_now3 * damping_comp3 - 1;                                                          
+del3_calc = del3_calc * delay_fm3;                                                                   
+del3_calc = clamp(del3_calc, 4, 2040);                                                               
+                                                                                                     
+ap_d3 = del3_calc * stretch_pt3;                                                                     
+main_d3 = del3_calc - ap_d3;                                                                         
+main_d3 = max(main_d3, 4);                                                                           
+                                                                                                     
+s3 = del3.read(main_d3, interp="spline");                                                            
+                                                                                                     
+ap_read3 = 0;                                                                                        
+ap_write3 = 0;                                                                                       
+ap_out3 = s3;                                                                                        
+if (disp_now3 > 0.01 && ap_d3 >= 4 && main_d3 >= 4) {                                                
+    ap_read3 = ap_del3.read(ap_d3, interp="spline");                                                 
+    ap_write3 = s3 + ap_gain3 * ap_read3;                                                            
+    ap_out3 = ap_read3 - ap_gain3 * ap_write3;                                                       
+    ap_del3.write(ap_write3);                                                                        
+    s3 = ap_out3;                                                                                    
+}                                                                                                    
+                                                                                                     
+s_ac3 = s3 - dc_x3 + dc_coef * dc_y3;                                                                
+dc_x3 = fixdenorm(s3);                                                                               
+dc_y3 = fixdenorm(s_ac3);                                                                            
+s3 = s3 + ac_block_amt3 * (s_ac3 - s3);                                                              
+                                                                                                     
+bval3 = abs(s3) - 0.025;                                                                             
+bsign3 = s3 > 0 ? 1 : -1.5;                                                                          
+new_bridge3 = (abs(bval3) + bval3) * bsign3;                                                         
+curved_bridge3 = fixdenorm(disp_now3 < 0 ? clamp(new_bridge3, -5, 5) : 0);                           
+                                                                                                     
+s3 = s3 + audio_in;                                                                                  
+                                                                                                     
+fir_out3 = damping_coeff3 * (fir_h0 * fir_x3 + fir_h1 * (s3 + fir_xx3));                             
+fir_xx3 = fixdenorm(fir_x3);                                                                         
+fir_x3 = fixdenorm(s3);                                                                              
+s3 = fir_out3;                                                                                       
+                                                                                                     
+svf_g3 = tan(PI * iir_freq3);                                                                        
+svf_h3_coef = 1 / (1 + svf_r * svf_g3 + svf_g3 * svf_g3);                                            
+                                                                                                     
+hp3 = (s3 - svf_r * svf_ic1eq3 - svf_g3 * svf_ic1eq3 - svf_ic2eq3) * svf_h3_coef;                    
+bp3 = svf_g3 * hp3 + svf_ic1eq3;                                                                     
+svf_ic1eq3 = fixdenorm(svf_g3 * hp3 + bp3);                                                          
+lp3 = svf_g3 * bp3 + svf_ic2eq3;                                                                     
+svf_ic2eq3 = fixdenorm(svf_g3 * bp3 + lp3);                                                          
+                                                                                                     
+s3 = lp3;                                                                                            
+s3 = tanh(s3 * 0.5) * 2;                                                                             
+del3.write(s3);                                                                                      
+                                                                                                     
+out1_s3 = s3;                                                                                        
+out2_s3 = del3.read(comb_delay3, interp="spline");                                                   
+                                                                                                     
+// ============================================                                                      
+// === MIX OUTPUTS ===                                                                               
+// ============================================                                                      
+out1 = (out1_s1 + out1_s2 + out1_s3) * 0.5;                                                          
+out2 = (out2_s1 + out2_s2 + out2_s3) * 0.5;  
+                                                        
+                                                                                                     
+

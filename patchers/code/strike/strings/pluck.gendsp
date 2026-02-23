@@ -1,0 +1,68 @@
+// === RINGS PLUCKER ===                                                                     
+//                                                                                                   
+// INPUTS:                                                                                           
+// in1 = trigger/click                                                                               
+// in2 = frequency in Hz                                                                             
+// in3 = brightness (0 to 1)                                                                         
+// in4 = position (0 to 1)                                                                           
+                                                                                                     
+Delay comb_del(256);                                                                                 
+                                                                                                     
+History remaining_samples(0);                                                                        
+History comb_period(0);                                                                              
+History comb_gain(0);                                                                                
+History svf_ic1eq(0);                                                                                
+History svf_ic2eq(0);                                                                                
+                                                                                                     
+sr = samplerate;                                                                                     
+                                                                                                     
+trig = in1;                                                                                          
+freq_hz = clamp(in2, 20, 4000);                                                                      
+bright_in = clamp(in3, 0, 1);                                                                        
+pos_in = clamp(in4, 0, 1);                                                                           
+                                                                                                     
+// === CALCULATE EXCITER CUTOFF (from brightness) ===                                                
+cutoff_shape = bright_in * (2 - bright_in);                                                          
+exciter_cutoff = (freq_hz / sr) * pow(2, (cutoff_shape - 0.5) * 8);                                  
+exciter_cutoff = clamp(exciter_cutoff * 8, 0.01, 0.499);                                             
+                                                                                                     
+// === TRIGGER NEW BURST ===                                                                         
+ratio = 0;                                                                                           
+burst_length = 0;                                                                                    
+comb_p = 0;                                                                                          
+if (trig > 0.5) {                                                                                    
+    ratio = pos_in * 0.9 + 0.05;                                                                     
+    burst_length = (sr / freq_hz) * ratio;                                                           
+    remaining_samples = burst_length;                                                                
+                                                                                                     
+    comb_p = 1 / freq_hz * ratio * sr;                                                               
+    // Halve if too long                                                                             
+    comb_p = comb_p >= 255 ? comb_p * 0.5 : comb_p;                                                  
+    comb_p = comb_p >= 255 ? comb_p * 0.5 : comb_p;                                                  
+    comb_period = comb_p;                                                                            
+    comb_gain = (1 - pos_in) * 0.8;                                                                  
+}                                                                                                    
+                                                                                                     
+// === GENERATE NOISE BURST + COMB FILTER ===                                                        
+noise_in = 0;                                                                                        
+if (remaining_samples > 0) {                                                                         
+    noise_in = noise();                                                                              
+    remaining_samples = remaining_samples - 1;                                                       
+}                                                                                                    
+                                                                                                     
+comb_read = comb_del.read(comb_period, interp="linear");                                             
+exciter_out = noise_in + comb_gain * comb_read;                                                      
+comb_del.write(exciter_out);                                                                         
+                                                                                                     
+// === SVF LOWPASS ON EXCITER (brightness controls cutoff) ===                                       
+svf_g = tan(PI * exciter_cutoff);                                                                    
+svf_r = 1;  // Q = 1.0                                                                               
+svf_h = 1 / (1 + svf_r * svf_g + svf_g * svf_g);                                                     
+                                                                                                     
+hp = (exciter_out - svf_r * svf_ic1eq - svf_g * svf_ic1eq - svf_ic2eq) * svf_h;                      
+bp = svf_g * hp + svf_ic1eq;                                                                         
+svf_ic1eq = fixdenorm(svf_g * hp + bp);                                                              
+lp = svf_g * bp + svf_ic2eq;                                                                         
+svf_ic2eq = fixdenorm(svf_g * bp + lp);                                                              
+                                                                                                     
+out1 = lp;     

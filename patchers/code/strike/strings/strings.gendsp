@@ -1,0 +1,178 @@
+// === RINGS STRING MODEL ===                                                                        
+//                                                                                                   
+// INPUTS:                                                                                           
+// in1 = audio input                                                                                 
+// in2 = frequency in Hz (20-4000)                                                                   
+// in3 = structure (0 to 0.25 for sympathetic mode)                                                     
+// in4 = brightness (0 to 1)                                                                         
+// in5 = damping (0 to 1)                                                                            
+// in6 = position (0 to 1)                                                                           
+                                                                                                     
+Delay main_del(2048);                                                                                
+Delay ap_del(1024);                                                                                  
+                                                                                                     
+History h_delay(100);                                                                                
+History h_pos(0.5);                                                                                  
+History h_disp(0);                                                                                   
+History fir_x(0);                                                                                    
+History fir_xx(0);                                                                                   
+History curved_bridge(0);                                                                            
+History dc_x(0);                                                                                     
+History dc_y(0);                                                                                     
+History svf_ic1eq(0);                                                                                
+History svf_ic2eq(0);                                                                                
+History dispersion_noise(0);                                                                         
+History noise_lpf(0);                                                                                
+                                                                                                     
+sr = samplerate;                                                                                     
+                                                                                                     
+audio_in = in1;                                                                                      
+freq_hz = clamp(in2, 20, 4000);                                                                      
+disp_in = clamp(in3, 0, 1);  
+bright_in = clamp(in4, 0, 1);                                                                        
+damp_in = clamp(in5, 0, 1);                                                                          
+pos_in = clamp(in6, 0, 1);                                                                           
+                                                                                                     
+freq_norm = freq_hz / sr;                                                                            
+                                                                                                     
+// === STRUCTURE TO DISPERSION MAPPING (with dead zone) ===                                          
+// structure < 0.24: negative dispersion (sitar-like)                                                
+// structure 0.24-0.26: no dispersion (dead zone)                                                    
+// structure > 0.26: positive dispersion (inharmonic)                                                
+//dispersion = 0; //= struct_in < 0.24                                                                        
+    //? (struct_in - 0.24) * 4.166                                                                     
+    //: (struct_in > 0.26 ? (struct_in - 0.26) * 1.35135 : 0);   
+                                                                       
+dispersion = (disp_in - 0.24) * 4.166;                                        
+                                                                                                     
+target_delay = sr / freq_hz;                                                                         
+target_delay = clamp(target_delay, 8, 2040);                                                         
+                                                                                                     
+delay_now = h_delay + (target_delay - h_delay) * 0.01;                                               
+h_delay = fixdenorm(delay_now);                                                                      
+                                                                                                     
+clamped_pos = 0.5 - 0.98 * abs(pos_in - 0.5);                                                        
+pos_now = h_pos + (clamped_pos - h_pos) * 0.01;                                                      
+h_pos = fixdenorm(pos_now);                                                                          
+comb_delay = max(delay_now * pos_now, 4);                                                            
+                                                                                                     
+disp_now = h_disp + (dispersion - h_disp) * 0.01;                                                    
+h_disp = fixdenorm(disp_now);                                                                        
+                                                                                                     
+bright_sq = bright_in * bright_in;                                                                   
+                                                                                                     
+// === NOISE FILTER (from brightness) ===                                                            
+noise_filter = pow(2, (bright_in - 1) * 4);                                                          
+                                                                                                     
+cutoff_raw = 24 + damp_in * damp_in * 48 + bright_sq * 24;                                           
+damping_cutoff = min(cutoff_raw, 84);                                                                
+                                                                                                     
+// === IIR CUTOFF SCALES WITH FREQUENCY ===                                                          
+iir_freq = freq_norm * pow(2, damping_cutoff / 12);                                                  
+iir_freq = clamp(iir_freq, 0.01, 0.499);                                                             
+                                                                                                     
+// === DAMPING COEFFICIENT (original formula) ===                                                    
+lf_damping = damp_in * (2 - damp_in);                                                                
+rt60_samples = 0.07 * pow(2, lf_damping * 8) * sr;                                                   
+rt60_ratio = -10 * delay_now / rt60_samples;                                                         
+rt60_ratio = max(rt60_ratio, -10.58);                                                                
+damping_coeff = pow(2, rt60_ratio);                                                                  
+                                                                                                     
+// === INFINITE SUSTAIN CROSSFADE (damping >= 0.95) ===                                              
+to_inf = 0;                                                                                          
+if (damp_in >= 0.95) {                                                                               
+    to_inf = 20 * (damp_in - 0.95);                                                                  
+}                                                                                                    
+damping_coeff = damping_coeff + to_inf * (1 - damping_coeff);                                        
+bright_sq = bright_sq + to_inf * 0.7 * (1 - bright_sq);                                              
+iir_freq = iir_freq + to_inf * (0.4999 - iir_freq);                                                  
+damping_cutoff = damping_cutoff + to_inf * (128 - damping_cutoff);                                   
+                                                                                                     
+// Final clamp                                                                                       
+damping_coeff = clamp(damping_coeff, 0.0, 1.0);                                                      
+                                                                                                     
+// === SVF SHIFT COMPENSATION (AFTER infinite sustain) ===                                           
+svf_shift = peek(svf_shift_lut, damping_cutoff, 0, interp="linear");                                 
+damping_comp = 1 - svf_shift;                                                                        
+                                                                                                     
+// === DISPERSION NOISE (for structure > 0.75, i.e. dispersion > ~0.66) ===                          
+noise_raw = noise();                                                                                 
+noise_raw = noise_raw / (0.2 + noise_filter);                                                        
+dispersion_noise = dispersion_noise + noise_filter * (noise_raw - dispersion_noise);                 
+                                                                                                     
+// Noise kicks in when dispersion > 0.66 (roughly structure > 0.75)                                  
+noise_amount = disp_now > 0.66 ? 4 * (disp_now - 0.66) : 0;                                          
+noise_amount = noise_amount * noise_amount * 0.025;                                                  
+                                                                                                     
+// === TAME THE NOISE ===                                                                            
+noise_lpf_coef = 0.1 + 0.9 / (1 + noise_amount * 20);                                                
+noise_lpf = noise_lpf + noise_lpf_coef * (dispersion_noise - noise_lpf);                             
+noise_lpf = fixdenorm(noise_lpf);                                                                    
+                                                                                                     
+stretch_pt = disp_now > 0 ? disp_now * (2 - disp_now) * 0.475 : 0;                                   
+bridge_cv_raw = disp_now < 0 ? -disp_now : 0;                                                        
+ac_block_amt = bridge_cv_raw;                                                                        
+bridge_cv = bridge_cv_raw * bridge_cv_raw * 0.01;                                                    
+ap_gain = disp_now > 0 ? -0.618 * disp_now / (0.15 + abs(disp_now)) : 0;                             
+                                                                                                     
+delay_fm = 1;                                                                                        
+delay_fm = delay_fm + noise_lpf * noise_amount;                                                      
+delay_fm = delay_fm - clamp(curved_bridge, -5, 5) * bridge_cv;                                       
+                                                                                                     
+del = delay_now * damping_comp - 1;                                                                  
+del = del * delay_fm;                                                                                
+del = clamp(del, 4, 2040);                                                                           
+                                                                                                     
+ap_d = del * stretch_pt;                                                                             
+main_d = del - ap_d;                                                                                 
+main_d = max(main_d, 4);                                                                             
+                                                                                                     
+s = main_del.read(main_d, interp="spline");                                                          
+                                                                                                     
+if (disp_now > 0.01 && ap_d >= 4 && main_d >= 4) {                                                   
+    ap_read = ap_del.read(ap_d, interp="spline");                                                    
+    ap_write = s + ap_gain * ap_read;                                                                
+    ap_out = ap_read - ap_gain * ap_write;                                                           
+    ap_del.write(ap_write);                                                                          
+    s = ap_out;                                                                                      
+}                                                                                                    
+                                                                                                     
+dc_coef = 1 - 20 / sr;                                                                               
+s_ac = s - dc_x + dc_coef * dc_y;                                                                    
+dc_x = fixdenorm(s);                                                                                 
+dc_y = fixdenorm(s_ac);                                                                              
+s = s + ac_block_amt * (s_ac - s);                                                                   
+                                                                                                     
+bval = abs(s) - 0.025;                                                                               
+bsign = s > 0 ? 1 : -1.5;                                                                            
+new_bridge = (abs(bval) + bval) * bsign;                                                             
+curved_bridge = fixdenorm(disp_now < 0 ? clamp(new_bridge, -5, 5) : 0);                              
+                                                                                                     
+s = s + audio_in;                                                                                    
+                                                                                                     
+fir_h0 = (1 + bright_sq) * 0.5;                                                                      
+fir_h1 = (1 - bright_sq) * 0.25;                                                                     
+fir_out = damping_coeff * (fir_h0 * fir_x + fir_h1 * (s + fir_xx));                                  
+fir_xx = fixdenorm(fir_x);                                                                           
+fir_x = fixdenorm(s);                                                                                
+s = fir_out;                                                                                         
+                                                                                                     
+// === 2-POLE SVF LOWPASS ===                                                                        
+svf_g = tan(PI * iir_freq);                                                                          
+svf_r = 2;                                                                                           
+svf_h = 1 / (1 + svf_r * svf_g + svf_g * svf_g);                                                     
+                                                                                                     
+hp = (s - svf_r * svf_ic1eq - svf_g * svf_ic1eq - svf_ic2eq) * svf_h;                                
+bp = svf_g * hp + svf_ic1eq;                                                                         
+svf_ic1eq = fixdenorm(svf_g * hp + bp);                                                              
+lp = svf_g * bp + svf_ic2eq;                                                                         
+svf_ic2eq = fixdenorm(svf_g * bp + lp);                                                              
+                                                                                                     
+s = lp;                                                                                              
+                                                                                                     
+s = tanh(s * 0.5) * 2;                                                                               
+                                                                                                     
+main_del.write(s);                                                                                   
+                                                                                                     
+out1 = s;                                                                                            
+out2 = main_del.read(comb_delay, interp="spline");  
