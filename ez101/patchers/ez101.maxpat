@@ -619,6 +619,142 @@
                         "boxes": [
                             {
                                 "box": {
+                                    "id": "obj-80",
+                                    "maxclass": "comment",
+                                    "numinlets": 1,
+                                    "numoutlets": 0,
+                                    "patching_rect": [ 2616.0, 257.0, 158.0, 21.0 ],
+                                    "text": "jump to user view to start"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-81",
+                                    "maxclass": "newobj",
+                                    "numinlets": 1,
+                                    "numoutlets": 1,
+                                    "outlettype": [ "" ],
+                                    "patching_rect": [ 2616.0, 287.0, 67.0, 23.0 ],
+                                    "rnbo_classname": "loadmess",
+                                    "rnbo_serial": 4,
+                                    "rnbo_uniqueid": "loadmess_obj-81",
+                                    "rnboinfo": {
+                                        "needsInstanceInfo": 1,
+                                        "argnames": {
+                                            "input": {
+                                                "attrOrProp": 1,
+                                                "digest": "Bang to trigger message.",
+                                                "isalias": 0,
+                                                "aliases": [],
+                                                "settable": 0,
+                                                "attachable": 0,
+                                                "isparam": 0,
+                                                "deprecated": 0,
+                                                "touched": 0,
+                                                "inlet": 1,
+                                                "type": "bang"
+                                            },
+                                            "message": {
+                                                "attrOrProp": 1,
+                                                "digest": "Message when patcher is loaded.",
+                                                "defaultarg": 1,
+                                                "isalias": 0,
+                                                "aliases": [],
+                                                "settable": 1,
+                                                "attachable": 0,
+                                                "isparam": 0,
+                                                "deprecated": 0,
+                                                "touched": 0,
+                                                "outlet": 1,
+                                                "type": "list",
+                                                "defaultValue": ""
+                                            },
+                                            "startupbang": {
+                                                "attrOrProp": 1,
+                                                "digest": "startupbang",
+                                                "isalias": 0,
+                                                "aliases": [],
+                                                "attachable": 0,
+                                                "isparam": 0,
+                                                "deprecated": 0,
+                                                "touched": 0,
+                                                "type": "bang"
+                                            }
+                                        },
+                                        "inputs": [
+                                            {
+                                                "name": "input",
+                                                "type": "bang",
+                                                "digest": "Bang to trigger message.",
+                                                "hot": 1,
+                                                "docked": 0
+                                            }
+                                        ],
+                                        "outputs": [
+                                            {
+                                                "name": "message",
+                                                "type": "list",
+                                                "digest": "Message when patcher is loaded.",
+                                                "defaultarg": 1,
+                                                "docked": 0
+                                            }
+                                        ],
+                                        "helpname": "loadmess",
+                                        "aliasOf": "loadmess",
+                                        "classname": "loadmess",
+                                        "operator": 0,
+                                        "versionId": -361086158,
+                                        "changesPatcherIO": 0
+                                    },
+                                    "text": "loadmess 0"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-82",
+                                    "maxclass": "newobj",
+                                    "numinlets": 1,
+                                    "numoutlets": 0,
+                                    "patching_rect": [ 2616.0, 324.0, 217.0, 23.0 ],
+                                    "rnbo_classname": "outport",
+                                    "rnbo_extra_attributes": {
+                                        "meta": ""
+                                    },
+                                    "rnbo_serial": 6,
+                                    "rnbo_uniqueid": "outport_obj-82",
+                                    "text": "outport /rnboctl/show/userview/display"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-57",
+                                    "maxclass": "newobj",
+                                    "numinlets": 2,
+                                    "numoutlets": 1,
+                                    "outlettype": [ "" ],
+                                    "patching_rect": [ 2776.0, 404.0, 60.0, 23.0 ],
+                                    "rnbo_classname": "delay",
+                                    "rnbo_serial": 2,
+                                    "rnbo_uniqueid": "delay_obj-57",
+                                    "text": "delay 100"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-55",
+                                    "maxclass": "newobj",
+                                    "numinlets": 1,
+                                    "numoutlets": 1,
+                                    "outlettype": [ "" ],
+                                    "patching_rect": [ 2776.0, 366.0, 57.0, 23.0 ],
+                                    "rnbo_classname": "loadbang",
+                                    "rnbo_serial": 1,
+                                    "rnbo_uniqueid": "loadbang_obj-55",
+                                    "text": "loadbang"
+                                }
+                            },
+                            {
+                                "box": {
                                     "id": "obj-73",
                                     "maxclass": "newobj",
                                     "numinlets": 2,
@@ -745,7 +881,7 @@
                                     "rnbo_extra_attributes": {
                                         "hot": 0
                                     },
-                                    "rnbo_serial": 2,
+                                    "rnbo_serial": 1,
                                     "rnbo_uniqueid": "-_obj-72",
                                     "text": "- 68"
                                 }
@@ -762,7 +898,7 @@
                                     "rnbo_extra_attributes": {
                                         "length": 0.0
                                     },
-                                    "rnbo_serial": 2,
+                                    "rnbo_serial": 1,
                                     "rnbo_uniqueid": "unpack_obj-66",
                                     "rnboinfo": {
                                         "needsInstanceInfo": 1,
@@ -1437,8 +1573,8 @@
                                                     "patching_rect": [ 100.0, 258.0, 78.0, 23.0 ],
                                                     "rnbo_classname": "message",
                                                     "rnbo_extra_attributes": {
-                                                        "text": "",
-                                                        "storeempty": 0
+                                                        "storeempty": 0,
+                                                        "text": ""
                                                     },
                                                     "rnbo_serial": 1,
                                                     "rnbo_uniqueid": "message_obj-93",
@@ -1455,8 +1591,8 @@
                                                     "patching_rect": [ 50.0, 40.0, 28.0, 23.0 ],
                                                     "rnbo_classname": "in",
                                                     "rnbo_extra_attributes": {
-                                                        "comment": "",
-                                                        "meta": ""
+                                                        "meta": "",
+                                                        "comment": ""
                                                     },
                                                     "rnbo_serial": 1,
                                                     "rnbo_uniqueid": "in_obj-113",
@@ -1534,8 +1670,8 @@
                                                     "patching_rect": [ 129.0, 485.0, 36.0, 23.0 ],
                                                     "rnbo_classname": "out",
                                                     "rnbo_extra_attributes": {
-                                                        "comment": "",
-                                                        "meta": ""
+                                                        "meta": "",
+                                                        "comment": ""
                                                     },
                                                     "rnbo_serial": 1,
                                                     "rnbo_uniqueid": "out_obj-114",
@@ -1708,16 +1844,16 @@
                                     "patching_rect": [ 2231.0, 366.0, 89.0, 23.0 ],
                                     "rnbo_classname": "p",
                                     "rnbo_extra_attributes": {
-                                        "args": [],
-                                        "notecontroller": 0,
-                                        "uidstyle": "auto",
-                                        "polyphony": -1.0,
-                                        "receivemode": "local",
                                         "exposevoiceparams": 0,
-                                        "voicecontrol": "simple"
+                                        "uidstyle": "auto",
+                                        "receivemode": "local",
+                                        "args": [],
+                                        "polyphony": -1.0,
+                                        "voicecontrol": "simple",
+                                        "notecontroller": 0
                                     },
-                                    "rnbo_serial": 8,
-                                    "rnbo_uniqueid": "index-to-note[2]",
+                                    "rnbo_serial": 1,
+                                    "rnbo_uniqueid": "index-to-note",
                                     "rnboinfo": {
                                         "needsInstanceInfo": 1,
                                         "argnames": {
@@ -1905,7 +2041,7 @@
                                         "changesPatcherIO": 0
                                     },
                                     "text": "p index-to-note",
-                                    "varname": "index-to-note[2]"
+                                    "varname": "index-to-note"
                                 }
                             },
                             {
@@ -2392,8 +2528,8 @@
                                                     "patching_rect": [ 50.0, 40.0, 28.0, 23.0 ],
                                                     "rnbo_classname": "in",
                                                     "rnbo_extra_attributes": {
-                                                        "comment": "",
-                                                        "meta": ""
+                                                        "meta": "",
+                                                        "comment": ""
                                                     },
                                                     "rnbo_serial": 1,
                                                     "rnbo_uniqueid": "in_obj-100",
@@ -2471,8 +2607,8 @@
                                                     "patching_rect": [ 50.0, 492.0, 36.0, 23.0 ],
                                                     "rnbo_classname": "out",
                                                     "rnbo_extra_attributes": {
-                                                        "comment": "",
-                                                        "meta": ""
+                                                        "meta": "",
+                                                        "comment": ""
                                                     },
                                                     "rnbo_serial": 1,
                                                     "rnbo_uniqueid": "out_obj-101",
@@ -2615,16 +2751,16 @@
                                     "patching_rect": [ 2231.0, 333.0, 85.0, 23.0 ],
                                     "rnbo_classname": "p",
                                     "rnbo_extra_attributes": {
-                                        "args": [],
-                                        "notecontroller": 0,
-                                        "uidstyle": "auto",
-                                        "polyphony": -1.0,
-                                        "receivemode": "local",
                                         "exposevoiceparams": 0,
-                                        "voicecontrol": "simple"
+                                        "uidstyle": "auto",
+                                        "receivemode": "local",
+                                        "args": [],
+                                        "polyphony": -1.0,
+                                        "voicecontrol": "simple",
+                                        "notecontroller": 0
                                     },
-                                    "rnbo_serial": 9,
-                                    "rnbo_uniqueid": "pad-to-index[1]",
+                                    "rnbo_serial": 2,
+                                    "rnbo_uniqueid": "pad-to-index",
                                     "rnboinfo": {
                                         "needsInstanceInfo": 1,
                                         "argnames": {
@@ -2812,7 +2948,7 @@
                                         "changesPatcherIO": 0
                                     },
                                     "text": "p pad-to-index",
-                                    "varname": "pad-to-index[1]"
+                                    "varname": "pad-to-index"
                                 }
                             },
                             {
@@ -3016,7 +3152,7 @@
                                     "outlettype": [ "" ],
                                     "patching_rect": [ 358.0, 513.0, 88.0, 23.0 ],
                                     "rnbo_classname": "r",
-                                    "rnbo_serial": 10,
+                                    "rnbo_serial": 1,
                                     "rnbo_uniqueid": "r_obj-34",
                                     "text": "r local:to_synth"
                                 }
@@ -3029,7 +3165,7 @@
                                     "numoutlets": 0,
                                     "patching_rect": [ 2099.0, 448.0, 89.0, 23.0 ],
                                     "rnbo_classname": "s",
-                                    "rnbo_serial": 7,
+                                    "rnbo_serial": 1,
                                     "rnbo_uniqueid": "s_obj-33",
                                     "text": "s local:to_synth"
                                 }
@@ -3237,24 +3373,24 @@
                             },
                             {
                                 "box": {
-                                    "code": "@state pad_colors = new FixedUint8Array(32);\r\n@state pad_active = new FixedUint8Array(32);\r\n@state neutral_color = [0.75, 0.75, 0.75];\r\n@state root_color = [0.75, 0., 0.75];\r\n\r\nfunction init() {\r\n    for (let i = 0; i < 32; i++) {\r\n        let idx = (i % 8) + floor(i / 8) * 3;\r\n        if (idx % 7 == 0) {\r\n            pad_colors[i] = 1;\r\n        } else {\r\n            pad_colors[i] = 0;\r\n        }\r\n    }\r\n    update_lights();\r\n}\r\n\r\nfunction update_lights() {\r\n    for (let i = 0; i < 32; i++) {\r\n        let color = neutral_color;\r\n        if (pad_colors[i]) {\r\n            color = root_color;\r\n        }\r\n        \r\n        if (!pad_active[i]) {\r\n            for (let c = 0; c < 3; c++) {\r\n                color[c] = color[c] * 0.25;\r\n            }\r\n        }\r\n        \r\n        listout1 = [0, i, color[0], color[1], color[2]];\r\n    }\r\n}\r\n\r\nlet index = listin1[0];\r\nlet velocity = listin1[1];\r\nfor (let i = 0; i < 32; i++) {\r\n    let idx = (i % 8) + floor(i / 8) * 3;\r\n    if (idx == index) {\r\n        pad_active[i] = (velocity > 0) ? 1 : 0;\r\n    }\r\n}\r\nupdate_lights();",
+                                    "code": "@state pad_colors = new FixedUint8Array(32);\r\n@state pad_active = new FixedUint8Array(32);\r\n@state neutral_color = [0.75, 0.75, 0.75];\r\n@state root_color = [0.75, 0., 0.75];\r\n\r\nfunction init() {\r\n    for (let i = 0; i < 32; i++) {\r\n        let idx = (i % 8) + floor(i / 8) * 3;\r\n        if (idx % 7 == 0) {\r\n            pad_colors[i] = 1;\r\n        } else {\r\n            pad_colors[i] = 0;\r\n        }\r\n    }\r\n    update_lights();\r\n}\r\n\r\nfunction in2(b) {\r\n    update_lights();\r\n}\r\n\r\nfunction update_lights() {\r\n    for (let i = 0; i < 32; i++) {\r\n        let color = neutral_color;\r\n        if (pad_colors[i]) {\r\n            color = root_color;\r\n        }\r\n        \r\n        if (!pad_active[i]) {\r\n            for (let c = 0; c < 3; c++) {\r\n                color[c] = color[c] * 0.25;\r\n            }\r\n        }\r\n        \r\n        listout1 = [0, i, color[0], color[1], color[2]];\r\n    }\r\n}\r\n\r\nlet index = listin1[0];\r\nlet velocity = listin1[1];\r\nfor (let i = 0; i < 32; i++) {\r\n    let idx = (i % 8) + floor(i / 8) * 3;\r\n    if (idx == index) {\r\n        pad_active[i] = (velocity > 0) ? 1 : 0;\r\n    }\r\n}\r\nupdate_lights();",
                                     "fontface": 0,
                                     "fontname": "<Monospaced>",
                                     "fontsize": 12.0,
                                     "id": "obj-116",
                                     "maxclass": "codebox",
-                                    "numinlets": 1,
+                                    "numinlets": 2,
                                     "numoutlets": 1,
                                     "outlettype": [ "" ],
-                                    "patching_rect": [ 2346.0, 119.0, 564.0, 441.0 ],
+                                    "patching_rect": [ 2231.0, 444.0, 564.0, 441.0 ],
                                     "rnbo_classname": "codebox",
                                     "rnbo_extra_attributes": {
                                         "nocache": 0,
+                                        "code": "@state pad_colors = new FixedUint8Array(32);\r\n@state pad_active = new FixedUint8Array(32);\r\n@state neutral_color = [0.75, 0.75, 0.75];\r\n@state root_color = [0.75, 0., 0.75];\r\n\r\nfunction init() {\r\n    for (let i = 0; i < 32; i++) {\r\n        let idx = (i % 8) + floor(i / 8) * 3;\r\n        if (idx % 7 == 0) {\r\n            pad_colors[i] = 1;\r\n        } else {\r\n            pad_colors[i] = 0;\r\n        }\r\n    }\r\n    update_lights();\r\n}\r\n\r\nfunction in2(b) {\r\n    update_lights();\r\n}\r\n\r\nfunction update_lights() {\r\n    for (let i = 0; i < 32; i++) {\r\n        let color = neutral_color;\r\n        if (pad_colors[i]) {\r\n            color = root_color;\r\n        }\r\n        \r\n        if (!pad_active[i]) {\r\n            for (let c = 0; c < 3; c++) {\r\n                color[c] = color[c] * 0.25;\r\n            }\r\n        }\r\n        \r\n        listout1 = [0, i, color[0], color[1], color[2]];\r\n    }\r\n}\r\n\r\nlet index = listin1[0];\r\nlet velocity = listin1[1];\r\nfor (let i = 0; i < 32; i++) {\r\n    let idx = (i % 8) + floor(i / 8) * 3;\r\n    if (idx == index) {\r\n        pad_active[i] = (velocity > 0) ? 1 : 0;\r\n    }\r\n}\r\nupdate_lights();",
                                         "safemath": 1,
-                                        "hot": 0,
-                                        "code": "@state pad_colors = new FixedUint8Array(32);\r\n@state pad_active = new FixedUint8Array(32);\r\n@state neutral_color = [0.75, 0.75, 0.75];\r\n@state root_color = [0.75, 0., 0.75];\r\n\r\nfunction init() {\r\n    for (let i = 0; i < 32; i++) {\r\n        let idx = (i % 8) + floor(i / 8) * 3;\r\n        if (idx % 7 == 0) {\r\n            pad_colors[i] = 1;\r\n        } else {\r\n            pad_colors[i] = 0;\r\n        }\r\n    }\r\n    update_lights();\r\n}\r\n\r\nfunction update_lights() {\r\n    for (let i = 0; i < 32; i++) {\r\n        let color = neutral_color;\r\n        if (pad_colors[i]) {\r\n            color = root_color;\r\n        }\r\n        \r\n        if (!pad_active[i]) {\r\n            for (let c = 0; c < 3; c++) {\r\n                color[c] = color[c] * 0.25;\r\n            }\r\n        }\r\n        \r\n        listout1 = [0, i, color[0], color[1], color[2]];\r\n    }\r\n}\r\n\r\nlet index = listin1[0];\r\nlet velocity = listin1[1];\r\nfor (let i = 0; i < 32; i++) {\r\n    let idx = (i % 8) + floor(i / 8) * 3;\r\n    if (idx == index) {\r\n        pad_active[i] = (velocity > 0) ? 1 : 0;\r\n    }\r\n}\r\nupdate_lights();"
+                                        "hot": 0
                                     },
-                                    "rnbo_serial": 5,
+                                    "rnbo_serial": 6,
                                     "rnbo_uniqueid": "codebox_obj-116",
                                     "rnboinfo": {
                                         "needsInstanceInfo": 1,
@@ -3282,6 +3418,19 @@
                                                 "touched": 0,
                                                 "inlet": 1,
                                                 "type": "list"
+                                            },
+                                            "in2": {
+                                                "attrOrProp": 1,
+                                                "digest": "in2",
+                                                "isalias": 0,
+                                                "aliases": [],
+                                                "settable": 1,
+                                                "attachable": 0,
+                                                "isparam": 0,
+                                                "deprecated": 0,
+                                                "touched": 0,
+                                                "inlet": 1,
+                                                "type": "number"
                                             },
                                             "out1": {
                                                 "attrOrProp": 1,
@@ -3357,6 +3506,12 @@
                                                 "digest": "in1",
                                                 "hot": 1,
                                                 "docked": 0
+                                            },
+                                            {
+                                                "name": "in2",
+                                                "type": "number",
+                                                "digest": "in2",
+                                                "docked": 0
                                             }
                                         ],
                                         "outputs": [
@@ -3409,7 +3564,7 @@
                                                     "rnbo_extra_attributes": {
                                                         "hot": 0
                                                     },
-                                                    "rnbo_serial": 2,
+                                                    "rnbo_serial": 1,
                                                     "rnbo_uniqueid": "+_obj-1",
                                                     "text": "+ 48"
                                                 }
@@ -3542,7 +3697,7 @@
                                                     "rnbo_extra_attributes": {
                                                         "hot": 0
                                                     },
-                                                    "rnbo_serial": 1,
+                                                    "rnbo_serial": 2,
                                                     "rnbo_uniqueid": "+_obj-109",
                                                     "text": "+"
                                                 }
@@ -3943,8 +4098,8 @@
                                                     "patching_rect": [ 100.0, 258.0, 78.0, 23.0 ],
                                                     "rnbo_classname": "message",
                                                     "rnbo_extra_attributes": {
-                                                        "text": "",
-                                                        "storeempty": 0
+                                                        "storeempty": 0,
+                                                        "text": ""
                                                     },
                                                     "rnbo_serial": 1,
                                                     "rnbo_uniqueid": "message_obj-93",
@@ -3961,8 +4116,8 @@
                                                     "patching_rect": [ 50.0, 40.0, 28.0, 23.0 ],
                                                     "rnbo_classname": "in",
                                                     "rnbo_extra_attributes": {
-                                                        "comment": "",
-                                                        "meta": ""
+                                                        "meta": "",
+                                                        "comment": ""
                                                     },
                                                     "rnbo_serial": 1,
                                                     "rnbo_uniqueid": "in_obj-113",
@@ -4040,8 +4195,8 @@
                                                     "patching_rect": [ 129.0, 485.0, 36.0, 23.0 ],
                                                     "rnbo_classname": "out",
                                                     "rnbo_extra_attributes": {
-                                                        "comment": "",
-                                                        "meta": ""
+                                                        "meta": "",
+                                                        "comment": ""
                                                     },
                                                     "rnbo_serial": 1,
                                                     "rnbo_uniqueid": "out_obj-114",
@@ -4214,16 +4369,16 @@
                                     "patching_rect": [ 2099.0, 366.0, 89.0, 23.0 ],
                                     "rnbo_classname": "p",
                                     "rnbo_extra_attributes": {
-                                        "args": [],
-                                        "notecontroller": 0,
-                                        "uidstyle": "auto",
-                                        "polyphony": -1.0,
-                                        "receivemode": "local",
                                         "exposevoiceparams": 0,
-                                        "voicecontrol": "simple"
+                                        "uidstyle": "auto",
+                                        "receivemode": "local",
+                                        "args": [],
+                                        "polyphony": -1.0,
+                                        "voicecontrol": "simple",
+                                        "notecontroller": 0
                                     },
-                                    "rnbo_serial": 1,
-                                    "rnbo_uniqueid": "index-to-note",
+                                    "rnbo_serial": 3,
+                                    "rnbo_uniqueid": "index-to-note[1]",
                                     "rnboinfo": {
                                         "needsInstanceInfo": 1,
                                         "argnames": {
@@ -4411,7 +4566,7 @@
                                         "changesPatcherIO": 0
                                     },
                                     "text": "p index-to-note",
-                                    "varname": "index-to-note"
+                                    "varname": "index-to-note[1]"
                                 }
                             },
                             {
@@ -4898,8 +5053,8 @@
                                                     "patching_rect": [ 50.0, 40.0, 28.0, 23.0 ],
                                                     "rnbo_classname": "in",
                                                     "rnbo_extra_attributes": {
-                                                        "comment": "",
-                                                        "meta": ""
+                                                        "meta": "",
+                                                        "comment": ""
                                                     },
                                                     "rnbo_serial": 1,
                                                     "rnbo_uniqueid": "in_obj-100",
@@ -4977,8 +5132,8 @@
                                                     "patching_rect": [ 50.0, 492.0, 36.0, 23.0 ],
                                                     "rnbo_classname": "out",
                                                     "rnbo_extra_attributes": {
-                                                        "comment": "",
-                                                        "meta": ""
+                                                        "meta": "",
+                                                        "comment": ""
                                                     },
                                                     "rnbo_serial": 1,
                                                     "rnbo_uniqueid": "out_obj-101",
@@ -5121,16 +5276,16 @@
                                     "patching_rect": [ 2099.0, 333.0, 85.0, 23.0 ],
                                     "rnbo_classname": "p",
                                     "rnbo_extra_attributes": {
-                                        "args": [],
-                                        "notecontroller": 0,
-                                        "uidstyle": "auto",
-                                        "polyphony": -1.0,
-                                        "receivemode": "local",
                                         "exposevoiceparams": 0,
-                                        "voicecontrol": "simple"
+                                        "uidstyle": "auto",
+                                        "receivemode": "local",
+                                        "args": [],
+                                        "polyphony": -1.0,
+                                        "voicecontrol": "simple",
+                                        "notecontroller": 0
                                     },
-                                    "rnbo_serial": 2,
-                                    "rnbo_uniqueid": "pad-to-index",
+                                    "rnbo_serial": 4,
+                                    "rnbo_uniqueid": "pad-to-index[1]",
                                     "rnboinfo": {
                                         "needsInstanceInfo": 1,
                                         "argnames": {
@@ -5318,7 +5473,7 @@
                                         "changesPatcherIO": 0
                                     },
                                     "text": "p pad-to-index",
-                                    "varname": "pad-to-index"
+                                    "varname": "pad-to-index[1]"
                                 }
                             },
                             {
@@ -5421,18 +5576,18 @@
                                     "maxclass": "newobj",
                                     "numinlets": 1,
                                     "numoutlets": 0,
-                                    "patching_rect": [ 2346.0, 589.0, 98.0, 23.0 ],
+                                    "patching_rect": [ 2231.0, 914.0, 98.0, 23.0 ],
                                     "rnbo_classname": "p",
                                     "rnbo_extra_attributes": {
-                                        "args": [],
-                                        "notecontroller": 0,
-                                        "uidstyle": "auto",
-                                        "polyphony": -1.0,
-                                        "receivemode": "local",
                                         "exposevoiceparams": 0,
-                                        "voicecontrol": "simple"
+                                        "uidstyle": "auto",
+                                        "receivemode": "local",
+                                        "args": [],
+                                        "polyphony": -1.0,
+                                        "voicecontrol": "simple",
+                                        "notecontroller": 0
                                     },
-                                    "rnbo_serial": 3,
+                                    "rnbo_serial": 5,
                                     "rnbo_uniqueid": "p_obj-6",
                                     "rnboinfo": {
                                         "needsInstanceInfo": 1,
@@ -5625,15 +5780,15 @@
                                     "patching_rect": [ 2099.0, 127.0, 110.0, 23.0 ],
                                     "rnbo_classname": "p",
                                     "rnbo_extra_attributes": {
-                                        "args": [],
-                                        "notecontroller": 0,
-                                        "uidstyle": "auto",
-                                        "polyphony": -1.0,
-                                        "receivemode": "local",
                                         "exposevoiceparams": 0,
-                                        "voicecontrol": "simple"
+                                        "uidstyle": "auto",
+                                        "receivemode": "local",
+                                        "args": [],
+                                        "polyphony": -1.0,
+                                        "voicecontrol": "simple",
+                                        "notecontroller": 0
                                     },
-                                    "rnbo_serial": 4,
+                                    "rnbo_serial": 6,
                                     "rnbo_uniqueid": "p_obj-1",
                                     "rnboinfo": {
                                         "needsInstanceInfo": 1,
@@ -5920,7 +6075,7 @@
                                     "outlettype": [ "" ],
                                     "patching_rect": [ 1166.0, 307.0, 38.0, 23.0 ],
                                     "rnbo_classname": "r",
-                                    "rnbo_serial": 1,
+                                    "rnbo_serial": 2,
                                     "rnbo_uniqueid": "r_obj-67",
                                     "text": "r dual"
                                 }
@@ -5957,9 +6112,9 @@
                                     "rnbo_classname": "codebox",
                                     "rnbo_extra_attributes": {
                                         "nocache": 0,
+                                        "code": "function ncos(phase) { return cos(phase * TWOPI); }\r\nfunction triangle(phase) { return 2 * (0.5 - (abs(phase - 0.5))); }\r\nfunction ramp_down(phase) { return 1 - phase; }\r\nfunction half_trapezoid(phase) { return min(2 + (phase * -2), 1); }\r\n    \r\nfunction Saw(phase, dw)\n{\n    dw = clamp((1 - dw) * 0.5, 0.001, 0.5);\n    dw_i = 0.5 - dw;\n    a = phase * (dw_i / dw);\n    b = (-1 * phase + 1) * (dw_i / (1 - dw));\n    return -ncos(phase + min(a, b));\n}\r\n\r\nfunction Square(phase, dw)\n{\n    dw = clamp (dw, 0.001, 0.96);\n    w = 1 / (1 - dw);\n    a = phase * w;\n    b = 1 - max (phase, a) + (dw * (w / 2));\n    return -ncos(max (min (min (a, b), 0.5), 0));\n}\r\n\r\nfunction Pulse(phase, dw)\n{\n    dw = clamp (dw, 0.001, 0.97);\n    a = 1 / (1 - dw);\n    b = (a / 2) * dw;\n    return -ncos(min (max ((phase * a) - b, 0), 1));\n}\r\n\r\nfunction DblSine (phase, dw)\n{\n    dw = clamp ((1 - dw) * 0.5, 0.005, 0.5);\n    dw_i = 0.5 - dw;\n    a = phase * (dw_i / dw);\n    b = (-1 * phase + 1) * (dw_i / (1 - dw));\n    return -ncos(( phase + min (a, b) % 1) * 2);\n}\r\n\r\nfunction SawPulse (phase, dw)\n{\n    dw = clamp ((1 - dw) * 0.5, 0.001, 0.5);\n    a = (phase < 0.5) ? phase : 0.5 * (phase - 0.5) / dw + 0.5;\n    return -ncos(min (a, 1));\n}\r\n\r\nfunction Reso1 (phase, dw)\n{\n    dw = interp (dw, 1, 16);\n    carrier = -1 * ncos((phase * dw) % 1);\n    win = ramp_down (phase);\n    return ((win * carrier) + win) - 1;\n}\r\n\r\nfunction Reso2 (phase, dw)\n{\n    dw = interp (dw, 1, 16);\n    carrier = -1 * ncos((phase * dw) % 1);\n    win = triangle (phase);\n    return ((win * carrier) + win) - 1;\n}\r\n\r\nfunction Reso3 (phase, dw)\n{\n    dw = interp (dw, 1, 16);\n    carrier = -1 * ncos((phase * dw) % 1);\n    win = half_trapezoid (phase);\n    return ((win * carrier) + win) - 1;\n}\r\n\r\nfunction Shape(phase, dw, s)\r\n{\r\n    if (s < 1) {\r\n        return Saw(phase, dw);\r\n    } else if (s < 2) {\r\n        return Square(phase, dw);\r\n    } else if (s < 3) {\r\n        return Pulse(phase, dw);\r\n    } else if (s < 4) {\r\n        return DblSine(phase, dw);\r\n    } else if (s < 5) {\r\n        return SawPulse(phase, dw);\r\n    } else if (s < 6) {\r\n        return Reso1(phase, dw);\r\n    } else if (s < 7) {\r\n        return Reso2(phase, dw);\r\n    } else {\r\n        return Reso3(phase, dw);\r\n    }\r\n}\r\n\r\nx = in1;\r\nd = in2;\r\ns1 = in3;\r\ns2 = in4;\r\nalt = in5;\r\n\r\nif (alt < 0.5) {\r\n    out1 = Shape(x, d, s1);\r\n} else {\r\n    out1 = Shape(x, d, s2);\r\n}\r\n",
                                         "safemath": 1,
-                                        "hot": 0,
-                                        "code": "function ncos(phase) { return cos(phase * TWOPI); }\r\nfunction triangle(phase) { return 2 * (0.5 - (abs(phase - 0.5))); }\r\nfunction ramp_down(phase) { return 1 - phase; }\r\nfunction half_trapezoid(phase) { return min(2 + (phase * -2), 1); }\r\n    \r\nfunction Saw(phase, dw)\n{\n    dw = clamp((1 - dw) * 0.5, 0.001, 0.5);\n    dw_i = 0.5 - dw;\n    a = phase * (dw_i / dw);\n    b = (-1 * phase + 1) * (dw_i / (1 - dw));\n    return -ncos(phase + min(a, b));\n}\r\n\r\nfunction Square(phase, dw)\n{\n    dw = clamp (dw, 0.001, 0.96);\n    w = 1 / (1 - dw);\n    a = phase * w;\n    b = 1 - max (phase, a) + (dw * (w / 2));\n    return -ncos(max (min (min (a, b), 0.5), 0));\n}\r\n\r\nfunction Pulse(phase, dw)\n{\n    dw = clamp (dw, 0.001, 0.97);\n    a = 1 / (1 - dw);\n    b = (a / 2) * dw;\n    return -ncos(min (max ((phase * a) - b, 0), 1));\n}\r\n\r\nfunction DblSine (phase, dw)\n{\n    dw = clamp ((1 - dw) * 0.5, 0.005, 0.5);\n    dw_i = 0.5 - dw;\n    a = phase * (dw_i / dw);\n    b = (-1 * phase + 1) * (dw_i / (1 - dw));\n    return -ncos(( phase + min (a, b) % 1) * 2);\n}\r\n\r\nfunction SawPulse (phase, dw)\n{\n    dw = clamp ((1 - dw) * 0.5, 0.001, 0.5);\n    a = (phase < 0.5) ? phase : 0.5 * (phase - 0.5) / dw + 0.5;\n    return -ncos(min (a, 1));\n}\r\n\r\nfunction Reso1 (phase, dw)\n{\n    dw = interp (dw, 1, 16);\n    carrier = -1 * ncos((phase * dw) % 1);\n    win = ramp_down (phase);\n    return ((win * carrier) + win) - 1;\n}\r\n\r\nfunction Reso2 (phase, dw)\n{\n    dw = interp (dw, 1, 16);\n    carrier = -1 * ncos((phase * dw) % 1);\n    win = triangle (phase);\n    return ((win * carrier) + win) - 1;\n}\r\n\r\nfunction Reso3 (phase, dw)\n{\n    dw = interp (dw, 1, 16);\n    carrier = -1 * ncos((phase * dw) % 1);\n    win = half_trapezoid (phase);\n    return ((win * carrier) + win) - 1;\n}\r\n\r\nfunction Shape(phase, dw, s)\r\n{\r\n    if (s < 1) {\r\n        return Saw(phase, dw);\r\n    } else if (s < 2) {\r\n        return Square(phase, dw);\r\n    } else if (s < 3) {\r\n        return Pulse(phase, dw);\r\n    } else if (s < 4) {\r\n        return DblSine(phase, dw);\r\n    } else if (s < 5) {\r\n        return SawPulse(phase, dw);\r\n    } else if (s < 6) {\r\n        return Reso1(phase, dw);\r\n    } else if (s < 7) {\r\n        return Reso2(phase, dw);\r\n    } else {\r\n        return Reso3(phase, dw);\r\n    }\r\n}\r\n\r\nx = in1;\r\nd = in2;\r\ns1 = in3;\r\ns2 = in4;\r\nalt = in5;\r\n\r\nif (alt < 0.5) {\r\n    out1 = Shape(x, d, s1);\r\n} else {\r\n    out1 = Shape(x, d, s2);\r\n}\r\n"
+                                        "hot": 0
                                     },
                                     "rnbo_serial": 2,
                                     "rnbo_uniqueid": "codebox_obj-59",
@@ -6277,10 +6432,10 @@
                                     "patching_rect": [ 914.1666666666666, 697.0, 107.0, 23.0 ],
                                     "rnbo_classname": "poke",
                                     "rnbo_extra_attributes": {
-                                        "boundmode": "ignore",
                                         "overdubmode": "accum",
-                                        "channelmode": "ignore",
-                                        "indexmode": "samples"
+                                        "boundmode": "ignore",
+                                        "indexmode": "samples",
+                                        "channelmode": "ignore"
                                     },
                                     "rnbo_serial": 1,
                                     "rnbo_uniqueid": "poke_obj-53",
@@ -6299,7 +6454,7 @@
                                     "rnbo_extra_attributes": {
                                         "hot": 0
                                     },
-                                    "rnbo_serial": 1,
+                                    "rnbo_serial": 2,
                                     "rnbo_uniqueid": "-_obj-52",
                                     "text": "- 1"
                                 }
@@ -6313,7 +6468,7 @@
                                     "outlettype": [ "" ],
                                     "patching_rect": [ 1406.0, 375.0, 35.0, 23.0 ],
                                     "rnbo_classname": "r",
-                                    "rnbo_serial": 2,
+                                    "rnbo_serial": 3,
                                     "rnbo_uniqueid": "r_obj-51",
                                     "text": "r s1b"
                                 }
@@ -6327,7 +6482,7 @@
                                     "outlettype": [ "" ],
                                     "patching_rect": [ 1361.0, 375.0, 34.0, 23.0 ],
                                     "rnbo_classname": "r",
-                                    "rnbo_serial": 3,
+                                    "rnbo_serial": 4,
                                     "rnbo_uniqueid": "r_obj-50",
                                     "text": "r s1a"
                                 }
@@ -6341,7 +6496,7 @@
                                     "outlettype": [ "" ],
                                     "patching_rect": [ 306.0, 513.0, 38.0, 23.0 ],
                                     "rnbo_classname": "r",
-                                    "rnbo_serial": 4,
+                                    "rnbo_serial": 5,
                                     "rnbo_uniqueid": "r_obj-49",
                                     "text": "r dual"
                                 }
@@ -6354,7 +6509,7 @@
                                     "numoutlets": 0,
                                     "patching_rect": [ 1480.0, 246.0, 39.0, 23.0 ],
                                     "rnbo_classname": "s",
-                                    "rnbo_serial": 1,
+                                    "rnbo_serial": 2,
                                     "rnbo_uniqueid": "s_obj-48",
                                     "text": "s dual"
                                 }
@@ -6368,7 +6523,7 @@
                                     "outlettype": [ "" ],
                                     "patching_rect": [ 279.0, 419.0, 35.0, 23.0 ],
                                     "rnbo_classname": "r",
-                                    "rnbo_serial": 5,
+                                    "rnbo_serial": 6,
                                     "rnbo_uniqueid": "r_obj-47",
                                     "text": "r s2b"
                                 }
@@ -6382,7 +6537,7 @@
                                     "outlettype": [ "" ],
                                     "patching_rect": [ 238.0, 419.0, 34.0, 23.0 ],
                                     "rnbo_classname": "r",
-                                    "rnbo_serial": 6,
+                                    "rnbo_serial": 7,
                                     "rnbo_uniqueid": "r_obj-46",
                                     "text": "r s2a"
                                 }
@@ -6396,7 +6551,7 @@
                                     "outlettype": [ "" ],
                                     "patching_rect": [ 201.0, 419.0, 35.0, 23.0 ],
                                     "rnbo_classname": "r",
-                                    "rnbo_serial": 7,
+                                    "rnbo_serial": 8,
                                     "rnbo_uniqueid": "r_obj-45",
                                     "text": "r s1b"
                                 }
@@ -6409,7 +6564,7 @@
                                     "numoutlets": 0,
                                     "patching_rect": [ 1430.0, 210.0, 35.0, 23.0 ],
                                     "rnbo_classname": "s",
-                                    "rnbo_serial": 2,
+                                    "rnbo_serial": 3,
                                     "rnbo_uniqueid": "s_obj-44",
                                     "text": "s s2b"
                                 }
@@ -6422,7 +6577,7 @@
                                     "numoutlets": 0,
                                     "patching_rect": [ 1368.0, 176.0, 34.0, 23.0 ],
                                     "rnbo_classname": "s",
-                                    "rnbo_serial": 3,
+                                    "rnbo_serial": 4,
                                     "rnbo_uniqueid": "s_obj-43",
                                     "text": "s s2a"
                                 }
@@ -6435,7 +6590,7 @@
                                     "numoutlets": 0,
                                     "patching_rect": [ 1315.0, 142.0, 35.0, 23.0 ],
                                     "rnbo_classname": "s",
-                                    "rnbo_serial": 4,
+                                    "rnbo_serial": 5,
                                     "rnbo_uniqueid": "s_obj-42",
                                     "text": "s s1b"
                                 }
@@ -6449,7 +6604,7 @@
                                     "outlettype": [ "" ],
                                     "patching_rect": [ 160.0, 419.0, 34.0, 23.0 ],
                                     "rnbo_classname": "r",
-                                    "rnbo_serial": 8,
+                                    "rnbo_serial": 9,
                                     "rnbo_uniqueid": "r_obj-41",
                                     "text": "r s1a"
                                 }
@@ -6462,7 +6617,7 @@
                                     "numoutlets": 0,
                                     "patching_rect": [ 1263.0, 108.0, 34.0, 23.0 ],
                                     "rnbo_classname": "s",
-                                    "rnbo_serial": 5,
+                                    "rnbo_serial": 6,
                                     "rnbo_uniqueid": "s_obj-40",
                                     "text": "s s1a"
                                 }
@@ -6476,7 +6631,7 @@
                                     "outlettype": [ "" ],
                                     "patching_rect": [ 1258.0, 375.0, 94.0, 23.0 ],
                                     "rnbo_classname": "r",
-                                    "rnbo_serial": 9,
+                                    "rnbo_serial": 10,
                                     "rnbo_uniqueid": "r_obj-39",
                                     "text": "r max-distortion"
                                 }
@@ -6489,7 +6644,7 @@
                                     "numoutlets": 0,
                                     "patching_rect": [ 383.25, 871.0, 94.0, 23.0 ],
                                     "rnbo_classname": "s",
-                                    "rnbo_serial": 6,
+                                    "rnbo_serial": 7,
                                     "rnbo_uniqueid": "s_obj-38",
                                     "text": "s max-distortion"
                                 }
@@ -6548,9 +6703,9 @@
                                     "outlettype": [ "", "", "" ],
                                     "patching_rect": [ 372.75, 708.0, 40.0, 23.0 ],
                                     "rnbo_classname": "uzi",
-                                    "rnbo_serial": 1,
+                                    "rnbo_serial": 3,
                                     "rnbo_uniqueid": "uzi_obj-11",
-                                    "text": "uzi 4"
+                                    "text": "uzi 8"
                                 }
                             },
                             {
@@ -6565,7 +6720,7 @@
                                     "rnbo_extra_attributes": {
                                         "length": 0.0
                                     },
-                                    "rnbo_serial": 1,
+                                    "rnbo_serial": 2,
                                     "rnbo_uniqueid": "unpack_obj-28",
                                     "rnboinfo": {
                                         "needsInstanceInfo": 1,
@@ -6697,10 +6852,10 @@
                                     "patching_rect": [ 484.0, 743.0, 54.0, 23.0 ],
                                     "rnbo_classname": "list.store",
                                     "rnbo_extra_attributes": {
-                                        "preset": 0,
-                                        "maxlistsize": 64,
                                         "order": "",
-                                        "slotcount": 1024
+                                        "preset": 0,
+                                        "slotcount": 1024,
+                                        "maxlistsize": 64
                                     },
                                     "rnbo_serial": 1,
                                     "rnbo_uniqueid": "list.store_obj-25",
@@ -6717,21 +6872,21 @@
                                     "patching_rect": [ 1430.0, 176.0, 627.0, 23.0 ],
                                     "rnbo_classname": "param",
                                     "rnbo_extra_attributes": {
-                                        "maximum": 7.0,
-                                        "preset": 1,
-                                        "unit": "",
                                         "order": "0",
-                                        "minimum": 0.0,
-                                        "exponent": 1.0,
-                                        "fromnormalized": "",
-                                        "ctlin": -1.0,
-                                        "displayorder": "-",
                                         "sendinit": 1,
-                                        "steps": 8.0,
+                                        "minimum": 0.0,
                                         "meta": "",
-                                        "tonormalized": ""
+                                        "tonormalized": "",
+                                        "exponent": 1.0,
+                                        "preset": 1,
+                                        "fromnormalized": "",
+                                        "displayorder": "-",
+                                        "maximum": 7.0,
+                                        "ctlin": -1.0,
+                                        "unit": "",
+                                        "steps": 8.0
                                     },
-                                    "rnbo_serial": 22,
+                                    "rnbo_serial": 1,
                                     "rnbo_uniqueid": "shape2b",
                                     "rnboinfo": {
                                         "needsInstanceInfo": 1,
@@ -7139,21 +7294,21 @@
                                     "patching_rect": [ 1368.0, 142.0, 625.0, 23.0 ],
                                     "rnbo_classname": "param",
                                     "rnbo_extra_attributes": {
-                                        "maximum": 7.0,
-                                        "preset": 1,
-                                        "unit": "",
                                         "order": "0",
-                                        "minimum": 0.0,
-                                        "exponent": 1.0,
-                                        "fromnormalized": "",
-                                        "ctlin": -1.0,
-                                        "displayorder": "-",
                                         "sendinit": 1,
-                                        "steps": 8.0,
+                                        "minimum": 0.0,
                                         "meta": "",
-                                        "tonormalized": ""
+                                        "tonormalized": "",
+                                        "exponent": 1.0,
+                                        "preset": 1,
+                                        "fromnormalized": "",
+                                        "displayorder": "-",
+                                        "maximum": 7.0,
+                                        "ctlin": -1.0,
+                                        "unit": "",
+                                        "steps": 8.0
                                     },
-                                    "rnbo_serial": 21,
+                                    "rnbo_serial": 2,
                                     "rnbo_uniqueid": "shape2a",
                                     "rnboinfo": {
                                         "needsInstanceInfo": 1,
@@ -7561,21 +7716,21 @@
                                     "patching_rect": [ 1480.0, 210.0, 287.0, 23.0 ],
                                     "rnbo_classname": "param",
                                     "rnbo_extra_attributes": {
-                                        "maximum": 1.0,
-                                        "preset": 1,
-                                        "unit": "",
                                         "order": "0",
-                                        "minimum": 0.0,
-                                        "exponent": 1.0,
-                                        "fromnormalized": "",
-                                        "ctlin": -1.0,
-                                        "displayorder": "-",
                                         "sendinit": 1,
-                                        "steps": 2.0,
+                                        "minimum": 0.0,
                                         "meta": "",
-                                        "tonormalized": ""
+                                        "tonormalized": "",
+                                        "exponent": 1.0,
+                                        "preset": 1,
+                                        "fromnormalized": "",
+                                        "displayorder": "-",
+                                        "maximum": 1.0,
+                                        "ctlin": -1.0,
+                                        "unit": "",
+                                        "steps": 2.0
                                     },
-                                    "rnbo_serial": 23,
+                                    "rnbo_serial": 3,
                                     "rnbo_uniqueid": "dual",
                                     "rnboinfo": {
                                         "needsInstanceInfo": 1,
@@ -7983,21 +8138,21 @@
                                     "patching_rect": [ 1315.0, 108.0, 627.0, 23.0 ],
                                     "rnbo_classname": "param",
                                     "rnbo_extra_attributes": {
-                                        "maximum": 7.0,
-                                        "preset": 1,
-                                        "unit": "",
                                         "order": "0",
-                                        "minimum": 0.0,
-                                        "exponent": 1.0,
-                                        "fromnormalized": "",
-                                        "ctlin": -1.0,
-                                        "displayorder": "-",
                                         "sendinit": 1,
-                                        "steps": 8.0,
+                                        "minimum": 0.0,
                                         "meta": "",
-                                        "tonormalized": ""
+                                        "tonormalized": "",
+                                        "exponent": 1.0,
+                                        "preset": 1,
+                                        "fromnormalized": "",
+                                        "displayorder": "-",
+                                        "maximum": 7.0,
+                                        "ctlin": -1.0,
+                                        "unit": "",
+                                        "steps": 8.0
                                     },
-                                    "rnbo_serial": 20,
+                                    "rnbo_serial": 4,
                                     "rnbo_uniqueid": "shape1b",
                                     "rnboinfo": {
                                         "needsInstanceInfo": 1,
@@ -8405,21 +8560,21 @@
                                     "patching_rect": [ 1263.0, 74.0, 625.0, 23.0 ],
                                     "rnbo_classname": "param",
                                     "rnbo_extra_attributes": {
-                                        "maximum": 7.0,
-                                        "preset": 1,
-                                        "unit": "",
                                         "order": "0",
-                                        "minimum": 0.0,
-                                        "exponent": 1.0,
-                                        "fromnormalized": "",
-                                        "ctlin": -1.0,
-                                        "displayorder": "-",
                                         "sendinit": 1,
-                                        "steps": 8.0,
+                                        "minimum": 0.0,
                                         "meta": "",
-                                        "tonormalized": ""
+                                        "tonormalized": "",
+                                        "exponent": 1.0,
+                                        "preset": 1,
+                                        "fromnormalized": "",
+                                        "displayorder": "-",
+                                        "maximum": 7.0,
+                                        "ctlin": -1.0,
+                                        "unit": "",
+                                        "steps": 8.0
                                     },
-                                    "rnbo_serial": 19,
+                                    "rnbo_serial": 5,
                                     "rnbo_uniqueid": "shape1a",
                                     "rnboinfo": {
                                         "needsInstanceInfo": 1,
@@ -8827,12 +8982,12 @@
                                     "patching_rect": [ 1119.5, 697.0, 144.0, 23.0 ],
                                     "rnbo_classname": "buffer~",
                                     "rnbo_extra_attributes": {
-                                        "preset": 0,
-                                        "samplerate": 0.0,
                                         "fill": "",
-                                        "type": "",
                                         "file": "",
-                                        "meta": ""
+                                        "meta": "",
+                                        "samplerate": 0.0,
+                                        "type": "",
+                                        "preset": 0
                                     },
                                     "rnbo_serial": 1,
                                     "rnbo_uniqueid": "buffer~_obj-15",
@@ -9162,9 +9317,9 @@
                                     "rnbo_classname": "codebox",
                                     "rnbo_extra_attributes": {
                                         "nocache": 0,
+                                        "code": "@state draw = new display(\"wavedisplay\", 128, 64);\r\n@state values = new buffer(\"displayvalues\");\r\n\r\nfunction drawVerticalLine(x, y0, y1) {\r\n    for (let i = min(y0, y1); i <= max(y0, y1); i++) {\r\n        let bytebit = draw.pixelbytebit(i, x);\r\n        draw.ormask(bytebit[0], 1 << bytebit[1]);\r\n    }\r\n}\r\n\r\nfunction paint() {\r\n    draw.clear();\r\n    let y0 = 0;\r\n    for (let i = 0; i < 128; i++) {\r\n        let y1 = peek(values, i)[0];\r\n        if (i == 0) { y0 = y1; }\r\n            \r\n        let r0 = clamp(scale(y0, -1, 1, 63, 0, 1), 0, 63);\r\n        let r1 = clamp(scale(y1, -1, 1, 63, 0, 1), 0, 63);\r\n        drawVerticalLine(i, r0, r1);\r\n        y0 = y1;\r\n    }\r\n    draw.markdirty();\r\n}\r\n\r\n\r\nlet _dummy = in1;\n\nif (draw.ready()) {\n    paint();\n}",
                                         "safemath": 1,
-                                        "hot": 0,
-                                        "code": "@state draw = new display(\"wavedisplay\", 128, 64);\r\n@state values = new buffer(\"displayvalues\");\r\n\r\nfunction drawVerticalLine(x, y0, y1) {\r\n    for (let i = min(y0, y1); i <= max(y0, y1); i++) {\r\n        let bytebit = draw.pixelbytebit(i, x);\r\n        draw.ormask(bytebit[0], 1 << bytebit[1]);\r\n    }\r\n}\r\n\r\nfunction paint() {\r\n    draw.clear();\r\n    let y0 = 0;\r\n    for (let i = 0; i < 128; i++) {\r\n        let y1 = peek(values, i)[0];\r\n        if (i == 0) { y0 = y1; }\r\n            \r\n        let r0 = clamp(scale(y0, -1, 1, 63, 0, 1), 0, 63);\r\n        let r1 = clamp(scale(y1, -1, 1, 63, 0, 1), 0, 63);\r\n        drawVerticalLine(i, r0, r1);\r\n        y0 = y1;\r\n    }\r\n    draw.markdirty();\r\n}\r\n\r\n\r\nlet _dummy = in1;\n\nif (draw.ready()) {\n    paint();\n}"
+                                        "hot": 0
                                     },
                                     "rnbo_serial": 3,
                                     "rnbo_uniqueid": "codebox_obj-13",
@@ -9295,10 +9450,10 @@
                                     "patching_rect": [ 914.0, 736.0, 740.0, 23.0 ],
                                     "rnbo_classname": "data",
                                     "rnbo_extra_attributes": {
-                                        "preset": 0,
-                                        "samplerate": 0.0,
                                         "fill": "",
-                                        "file": ""
+                                        "file": "",
+                                        "samplerate": 0.0,
+                                        "preset": 0
                                     },
                                     "rnbo_serial": 1,
                                     "rnbo_uniqueid": "data_obj-7",
@@ -9687,20 +9842,20 @@
                                     "patching_rect": [ 733.0, 156.0, 357.0, 23.0 ],
                                     "rnbo_classname": "param",
                                     "rnbo_extra_attributes": {
-                                        "preset": 1,
-                                        "unit": "",
                                         "order": "0",
-                                        "exponent": 1.0,
-                                        "fromnormalized": "",
-                                        "ctlin": -1.0,
-                                        "displayorder": "-",
                                         "sendinit": 1,
-                                        "enum": "",
-                                        "steps": 0.0,
                                         "meta": "",
-                                        "tonormalized": ""
+                                        "tonormalized": "",
+                                        "exponent": 1.0,
+                                        "preset": 1,
+                                        "fromnormalized": "",
+                                        "displayorder": "-",
+                                        "enum": "",
+                                        "ctlin": -1.0,
+                                        "unit": "",
+                                        "steps": 0.0
                                     },
-                                    "rnbo_serial": 18,
+                                    "rnbo_serial": 6,
                                     "rnbo_uniqueid": "detune-cent",
                                     "rnboinfo": {
                                         "needsInstanceInfo": 1,
@@ -10104,20 +10259,20 @@
                                     "patching_rect": [ 711.0, 116.0, 354.0, 23.0 ],
                                     "rnbo_classname": "param",
                                     "rnbo_extra_attributes": {
-                                        "preset": 1,
-                                        "unit": "",
                                         "order": "0",
-                                        "exponent": 1.0,
-                                        "fromnormalized": "",
-                                        "ctlin": -1.0,
-                                        "displayorder": "-",
                                         "sendinit": 1,
-                                        "enum": "",
-                                        "steps": 0.0,
                                         "meta": "",
-                                        "tonormalized": ""
+                                        "tonormalized": "",
+                                        "exponent": 1.0,
+                                        "preset": 1,
+                                        "fromnormalized": "",
+                                        "displayorder": "-",
+                                        "enum": "",
+                                        "ctlin": -1.0,
+                                        "unit": "",
+                                        "steps": 0.0
                                     },
-                                    "rnbo_serial": 17,
+                                    "rnbo_serial": 7,
                                     "rnbo_uniqueid": "detune-step",
                                     "rnboinfo": {
                                         "needsInstanceInfo": 1,
@@ -10521,20 +10676,20 @@
                                     "patching_rect": [ 689.0, 74.0, 387.0, 23.0 ],
                                     "rnbo_classname": "param",
                                     "rnbo_extra_attributes": {
-                                        "preset": 1,
-                                        "unit": "",
                                         "order": "0",
-                                        "exponent": 1.0,
-                                        "fromnormalized": "",
-                                        "ctlin": -1.0,
-                                        "displayorder": "-",
                                         "sendinit": 1,
-                                        "enum": "",
-                                        "steps": 0.0,
                                         "meta": "",
-                                        "tonormalized": ""
+                                        "tonormalized": "",
+                                        "exponent": 1.0,
+                                        "preset": 1,
+                                        "fromnormalized": "",
+                                        "displayorder": "-",
+                                        "enum": "",
+                                        "ctlin": -1.0,
+                                        "unit": "",
+                                        "steps": 0.0
                                     },
-                                    "rnbo_serial": 16,
+                                    "rnbo_serial": 8,
                                     "rnbo_uniqueid": "detune-octave",
                                     "rnboinfo": {
                                         "needsInstanceInfo": 1,
@@ -11279,19 +11434,19 @@
                                     "patching_rect": [ 154.0, 154.0, 402.0, 23.0 ],
                                     "rnbo_classname": "param",
                                     "rnbo_extra_attributes": {
-                                        "preset": 1,
-                                        "unit": "",
                                         "order": "0",
-                                        "fromnormalized": "",
-                                        "ctlin": -1.0,
-                                        "displayorder": "-",
                                         "sendinit": 1,
-                                        "enum": "",
-                                        "steps": 0.0,
                                         "meta": "",
-                                        "tonormalized": ""
+                                        "tonormalized": "",
+                                        "preset": 1,
+                                        "fromnormalized": "",
+                                        "displayorder": "-",
+                                        "enum": "",
+                                        "ctlin": -1.0,
+                                        "unit": "",
+                                        "steps": 0.0
                                     },
-                                    "rnbo_serial": 14,
+                                    "rnbo_serial": 9,
                                     "rnbo_uniqueid": "lfo-depth",
                                     "rnboinfo": {
                                         "needsInstanceInfo": 1,
@@ -11695,19 +11850,19 @@
                                     "patching_rect": [ 107.0, 74.0, 411.0, 23.0 ],
                                     "rnbo_classname": "param",
                                     "rnbo_extra_attributes": {
-                                        "preset": 1,
-                                        "unit": "",
                                         "order": "0",
-                                        "fromnormalized": "",
-                                        "ctlin": -1.0,
-                                        "displayorder": "-",
                                         "sendinit": 1,
-                                        "enum": "",
-                                        "steps": 0.0,
                                         "meta": "",
-                                        "tonormalized": ""
+                                        "tonormalized": "",
+                                        "preset": 1,
+                                        "fromnormalized": "",
+                                        "displayorder": "-",
+                                        "enum": "",
+                                        "ctlin": -1.0,
+                                        "unit": "",
+                                        "steps": 0.0
                                     },
-                                    "rnbo_serial": 15,
+                                    "rnbo_serial": 10,
                                     "rnbo_uniqueid": "lfo-freq",
                                     "rnboinfo": {
                                         "needsInstanceInfo": 1,
@@ -12111,21 +12266,21 @@
                                     "patching_rect": [ 134.0, 114.0, 555.0, 23.0 ],
                                     "rnbo_classname": "param",
                                     "rnbo_extra_attributes": {
-                                        "maximum": 6.0,
-                                        "preset": 1,
-                                        "unit": "",
                                         "order": "0",
-                                        "minimum": 0.0,
-                                        "exponent": 1.0,
-                                        "fromnormalized": "",
-                                        "ctlin": -1.0,
-                                        "displayorder": "-",
                                         "sendinit": 1,
-                                        "steps": 7.0,
+                                        "minimum": 0.0,
                                         "meta": "",
-                                        "tonormalized": ""
+                                        "tonormalized": "",
+                                        "exponent": 1.0,
+                                        "preset": 1,
+                                        "fromnormalized": "",
+                                        "displayorder": "-",
+                                        "maximum": 6.0,
+                                        "ctlin": -1.0,
+                                        "unit": "",
+                                        "steps": 7.0
                                     },
-                                    "rnbo_serial": 13,
+                                    "rnbo_serial": 11,
                                     "rnbo_uniqueid": "lfo-shape",
                                     "rnboinfo": {
                                         "needsInstanceInfo": 1,
@@ -12555,11 +12710,11 @@
                                                     "patching_rect": [ 976.0, 426.0, 50.0, 23.0 ],
                                                     "rnbo_classname": "number",
                                                     "rnbo_extra_attributes": {
-                                                        "maximum": "<none>",
+                                                        "order": "",
+                                                        "minimum": "<none>",
                                                         "preset": 0,
                                                         "initialFormat": "float",
-                                                        "order": "",
-                                                        "minimum": "<none>"
+                                                        "maximum": "<none>"
                                                     },
                                                     "rnbo_serial": 1,
                                                     "rnbo_uniqueid": "number_obj-16"
@@ -13233,9 +13388,9 @@
                                                     "patching_rect": [ 188.0, 359.0, 42.0, 23.0 ],
                                                     "rnbo_classname": "cycle~",
                                                     "rnbo_extra_attributes": {
-                                                        "interp": "linear",
+                                                        "index": "freq",
                                                         "buffername": "RNBODefaultSinus",
-                                                        "index": "freq"
+                                                        "interp": "linear"
                                                     },
                                                     "rnbo_serial": 1,
                                                     "rnbo_uniqueid": "cycle~_obj-7",
@@ -13698,15 +13853,15 @@
                                     "patching_rect": [ 107.0, 154.0, 31.0, 23.0 ],
                                     "rnbo_classname": "p",
                                     "rnbo_extra_attributes": {
-                                        "args": [],
-                                        "notecontroller": 0,
-                                        "uidstyle": "auto",
-                                        "polyphony": -1.0,
-                                        "receivemode": "local",
                                         "exposevoiceparams": 0,
-                                        "voicecontrol": "simple"
+                                        "uidstyle": "auto",
+                                        "receivemode": "local",
+                                        "args": [],
+                                        "polyphony": -1.0,
+                                        "voicecontrol": "simple",
+                                        "notecontroller": 0
                                     },
-                                    "rnbo_serial": 5,
+                                    "rnbo_serial": 7,
                                     "rnbo_uniqueid": "lfo",
                                     "rnboinfo": {
                                         "needsInstanceInfo": 1,
@@ -13927,8 +14082,8 @@
                                     "patching_rect": [ 107.0, 651.0, 43.0, 23.0 ],
                                     "rnbo_classname": "out~",
                                     "rnbo_extra_attributes": {
-                                        "comment": "",
-                                        "meta": ""
+                                        "meta": "",
+                                        "comment": ""
                                     },
                                     "rnbo_serial": 1,
                                     "rnbo_uniqueid": "out~_obj-77",
@@ -14507,8 +14662,8 @@
                                                                     "patching_rect": [ 50.0, 40.0, 28.0, 23.0 ],
                                                                     "rnbo_classname": "in",
                                                                     "rnbo_extra_attributes": {
-                                                                        "comment": "",
-                                                                        "meta": ""
+                                                                        "meta": "",
+                                                                        "comment": ""
                                                                     },
                                                                     "rnbo_serial": 3,
                                                                     "rnbo_uniqueid": "in_obj-116",
@@ -14586,8 +14741,8 @@
                                                                     "patching_rect": [ 50.0, 536.0, 43.0, 23.0 ],
                                                                     "rnbo_classname": "out~",
                                                                     "rnbo_extra_attributes": {
-                                                                        "comment": "",
-                                                                        "meta": ""
+                                                                        "meta": "",
+                                                                        "comment": ""
                                                                     },
                                                                     "rnbo_serial": 1,
                                                                     "rnbo_uniqueid": "out~_obj-117",
@@ -14785,13 +14940,13 @@
                                                     "patching_rect": [ 15.0, 114.0, 103.0, 23.0 ],
                                                     "rnbo_classname": "p",
                                                     "rnbo_extra_attributes": {
-                                                        "args": [],
-                                                        "notecontroller": 0,
-                                                        "uidstyle": "auto",
-                                                        "polyphony": -1.0,
-                                                        "receivemode": "local",
                                                         "exposevoiceparams": 0,
-                                                        "voicecontrol": "simple"
+                                                        "uidstyle": "auto",
+                                                        "receivemode": "local",
+                                                        "args": [],
+                                                        "polyphony": -1.0,
+                                                        "voicecontrol": "simple",
+                                                        "notecontroller": 0
                                                     },
                                                     "rnbo_serial": 1,
                                                     "rnbo_uniqueid": "aftertouch-filter",
@@ -15521,8 +15676,8 @@
                                                                     "patching_rect": [ 50.0, 40.0, 28.0, 23.0 ],
                                                                     "rnbo_classname": "in",
                                                                     "rnbo_extra_attributes": {
-                                                                        "comment": "",
-                                                                        "meta": ""
+                                                                        "meta": "",
+                                                                        "comment": ""
                                                                     },
                                                                     "rnbo_serial": 3,
                                                                     "rnbo_uniqueid": "in_obj-116",
@@ -15600,8 +15755,8 @@
                                                                     "patching_rect": [ 50.0, 536.0, 43.0, 23.0 ],
                                                                     "rnbo_classname": "out~",
                                                                     "rnbo_extra_attributes": {
-                                                                        "comment": "",
-                                                                        "meta": ""
+                                                                        "meta": "",
+                                                                        "comment": ""
                                                                     },
                                                                     "rnbo_serial": 1,
                                                                     "rnbo_uniqueid": "out~_obj-117",
@@ -15799,13 +15954,13 @@
                                                     "patching_rect": [ 2029.0, 1084.0, 103.0, 23.0 ],
                                                     "rnbo_classname": "p",
                                                     "rnbo_extra_attributes": {
-                                                        "args": [],
-                                                        "notecontroller": 0,
-                                                        "uidstyle": "auto",
-                                                        "polyphony": -1.0,
-                                                        "receivemode": "local",
                                                         "exposevoiceparams": 0,
-                                                        "voicecontrol": "simple"
+                                                        "uidstyle": "auto",
+                                                        "receivemode": "local",
+                                                        "args": [],
+                                                        "polyphony": -1.0,
+                                                        "voicecontrol": "simple",
+                                                        "notecontroller": 0
                                                     },
                                                     "rnbo_serial": 2,
                                                     "rnbo_uniqueid": "aftertouch-filter[1]",
@@ -16070,20 +16225,20 @@
                                                     "patching_rect": [ 15.0, 26.0, 415.0, 23.0 ],
                                                     "rnbo_classname": "param",
                                                     "rnbo_extra_attributes": {
-                                                        "preset": 1,
-                                                        "unit": "",
                                                         "order": "0",
-                                                        "exponent": 1.0,
-                                                        "fromnormalized": "",
-                                                        "ctlin": -1.0,
-                                                        "displayorder": "-",
                                                         "sendinit": 1,
-                                                        "enum": "",
-                                                        "steps": 0.0,
                                                         "meta": "",
-                                                        "tonormalized": ""
+                                                        "tonormalized": "",
+                                                        "exponent": 1.0,
+                                                        "preset": 1,
+                                                        "fromnormalized": "",
+                                                        "displayorder": "-",
+                                                        "enum": "",
+                                                        "ctlin": -1.0,
+                                                        "unit": "",
+                                                        "steps": 0.0
                                                     },
-                                                    "rnbo_serial": 24,
+                                                    "rnbo_serial": 1,
                                                     "rnbo_uniqueid": "ppm-depth",
                                                     "rnboinfo": {
                                                         "needsInstanceInfo": 1,
@@ -16518,20 +16673,20 @@
                                                     "patching_rect": [ 2029.0, 1003.0, 396.0, 23.0 ],
                                                     "rnbo_classname": "param",
                                                     "rnbo_extra_attributes": {
-                                                        "preset": 1,
-                                                        "unit": "",
                                                         "order": "0",
-                                                        "exponent": 1.0,
-                                                        "fromnormalized": "",
-                                                        "ctlin": -1.0,
-                                                        "displayorder": "-",
                                                         "sendinit": 1,
-                                                        "enum": "",
-                                                        "steps": 0.0,
                                                         "meta": "",
-                                                        "tonormalized": ""
+                                                        "tonormalized": "",
+                                                        "exponent": 1.0,
+                                                        "preset": 1,
+                                                        "fromnormalized": "",
+                                                        "displayorder": "-",
+                                                        "enum": "",
+                                                        "ctlin": -1.0,
+                                                        "unit": "",
+                                                        "steps": 0.0
                                                     },
-                                                    "rnbo_serial": 42,
+                                                    "rnbo_serial": 2,
                                                     "rnbo_uniqueid": "dpm-depth",
                                                     "rnboinfo": {
                                                         "needsInstanceInfo": 1,
@@ -17699,19 +17854,19 @@
                                                     "patching_rect": [ 711.0, 108.0, 411.0, 23.0 ],
                                                     "rnbo_classname": "param",
                                                     "rnbo_extra_attributes": {
-                                                        "preset": 1,
-                                                        "unit": "",
                                                         "order": "0",
-                                                        "fromnormalized": "",
-                                                        "ctlin": -1.0,
-                                                        "displayorder": "-",
                                                         "sendinit": 1,
-                                                        "enum": "",
-                                                        "steps": 0.0,
                                                         "meta": "",
-                                                        "tonormalized": ""
+                                                        "tonormalized": "",
+                                                        "preset": 1,
+                                                        "fromnormalized": "",
+                                                        "displayorder": "-",
+                                                        "enum": "",
+                                                        "ctlin": -1.0,
+                                                        "unit": "",
+                                                        "steps": 0.0
                                                     },
-                                                    "rnbo_serial": 25,
+                                                    "rnbo_serial": 3,
                                                     "rnbo_uniqueid": "lfo-delay",
                                                     "rnboinfo": {
                                                         "needsInstanceInfo": 1,
@@ -18216,8 +18371,8 @@
                                                     "patching_rect": [ 1470.0, 983.0, 29.5, 23.0 ],
                                                     "rnbo_classname": "message",
                                                     "rnbo_extra_attributes": {
-                                                        "text": "",
-                                                        "storeempty": 0
+                                                        "storeempty": 0,
+                                                        "text": ""
                                                     },
                                                     "rnbo_serial": 1,
                                                     "rnbo_uniqueid": "message_obj-81",
@@ -18927,19 +19082,19 @@
                                                     "patching_rect": [ 570.0, 529.0, 398.0, 23.0 ],
                                                     "rnbo_classname": "param",
                                                     "rnbo_extra_attributes": {
-                                                        "preset": 1,
-                                                        "unit": "",
                                                         "order": "0",
-                                                        "fromnormalized": "",
-                                                        "ctlin": -1.0,
-                                                        "displayorder": "-",
                                                         "sendinit": 1,
-                                                        "enum": "",
-                                                        "steps": 0.0,
                                                         "meta": "",
-                                                        "tonormalized": ""
+                                                        "tonormalized": "",
+                                                        "preset": 1,
+                                                        "fromnormalized": "",
+                                                        "displayorder": "-",
+                                                        "enum": "",
+                                                        "ctlin": -1.0,
+                                                        "unit": "",
+                                                        "steps": 0.0
                                                     },
-                                                    "rnbo_serial": 27,
+                                                    "rnbo_serial": 4,
                                                     "rnbo_uniqueid": "wave2",
                                                     "rnboinfo": {
                                                         "needsInstanceInfo": 1,
@@ -19343,19 +19498,19 @@
                                                     "patching_rect": [ 264.0, 499.0, 398.0, 23.0 ],
                                                     "rnbo_classname": "param",
                                                     "rnbo_extra_attributes": {
-                                                        "preset": 1,
-                                                        "unit": "",
                                                         "order": "0",
-                                                        "fromnormalized": "",
-                                                        "ctlin": -1.0,
-                                                        "displayorder": "-",
                                                         "sendinit": 1,
-                                                        "enum": "",
-                                                        "steps": 0.0,
                                                         "meta": "",
-                                                        "tonormalized": ""
+                                                        "tonormalized": "",
+                                                        "preset": 1,
+                                                        "fromnormalized": "",
+                                                        "displayorder": "-",
+                                                        "enum": "",
+                                                        "ctlin": -1.0,
+                                                        "unit": "",
+                                                        "steps": 0.0
                                                     },
-                                                    "rnbo_serial": 26,
+                                                    "rnbo_serial": 5,
                                                     "rnbo_uniqueid": "wave1",
                                                     "rnboinfo": {
                                                         "needsInstanceInfo": 1,
@@ -19812,9 +19967,9 @@
                                                                         "text": "*",
                                                                         "patching_rect": [ 99.5, 172.0, 29.5, 22.0 ],
                                                                         "numinlets": 2,
+                                                                        "id": "obj-12",
                                                                         "numoutlets": 1,
-                                                                        "outlettype": [ "" ],
-                                                                        "id": "obj-12"
+                                                                        "outlettype": [ "" ]
                                                                     }
                                                                 },
                                                                 {
@@ -19823,9 +19978,9 @@
                                                                         "text": "+= @max 2",
                                                                         "patching_rect": [ 99.5, 135.0, 71.0, 22.0 ],
                                                                         "numinlets": 2,
+                                                                        "id": "obj-11",
                                                                         "numoutlets": 1,
-                                                                        "outlettype": [ "" ],
-                                                                        "id": "obj-11"
+                                                                        "outlettype": [ "" ]
                                                                     }
                                                                 },
                                                                 {
@@ -19834,9 +19989,9 @@
                                                                         "text": "< 0",
                                                                         "patching_rect": [ 99.5, 99.0, 26.0, 22.0 ],
                                                                         "numinlets": 1,
+                                                                        "id": "obj-10",
                                                                         "numoutlets": 1,
-                                                                        "outlettype": [ "" ],
-                                                                        "id": "obj-10"
+                                                                        "outlettype": [ "" ]
                                                                     }
                                                                 },
                                                                 {
@@ -19845,9 +20000,9 @@
                                                                         "text": "delta",
                                                                         "patching_rect": [ 99.5, 65.0, 35.0, 22.0 ],
                                                                         "numinlets": 1,
+                                                                        "id": "obj-9",
                                                                         "numoutlets": 1,
-                                                                        "outlettype": [ "" ],
-                                                                        "id": "obj-9"
+                                                                        "outlettype": [ "" ]
                                                                     }
                                                                 },
                                                                 {
@@ -19856,9 +20011,9 @@
                                                                         "text": "in 5 @comment Dual Wave Enable",
                                                                         "patching_rect": [ 187.0, 135.0, 195.0, 22.0 ],
                                                                         "numinlets": 0,
+                                                                        "id": "obj-8",
                                                                         "numoutlets": 1,
-                                                                        "outlettype": [ "" ],
-                                                                        "id": "obj-8"
+                                                                        "outlettype": [ "" ]
                                                                     }
                                                                 },
                                                                 {
@@ -19867,9 +20022,9 @@
                                                                         "text": "in 4 @comment Wave 2 (0-7)",
                                                                         "patching_rect": [ 803.0, 135.0, 165.0, 22.0 ],
                                                                         "numinlets": 0,
+                                                                        "id": "obj-7",
                                                                         "numoutlets": 1,
-                                                                        "outlettype": [ "" ],
-                                                                        "id": "obj-7"
+                                                                        "outlettype": [ "" ]
                                                                     }
                                                                 },
                                                                 {
@@ -19878,22 +20033,22 @@
                                                                         "text": "in 3 @comment Wave 1 (0-7)",
                                                                         "patching_rect": [ 612.0, 135.0, 165.0, 22.0 ],
                                                                         "numinlets": 0,
+                                                                        "id": "obj-6",
                                                                         "numoutlets": 1,
-                                                                        "outlettype": [ "" ],
-                                                                        "id": "obj-6"
+                                                                        "outlettype": [ "" ]
                                                                     }
                                                                 },
                                                                 {
                                                                     "box": {
                                                                         "maxclass": "codebox",
                                                                         "patching_rect": [ 50.0, 225.0, 541.0, 671.0 ],
-                                                                        "numinlets": 5,
                                                                         "fontname": "<Monospaced>",
-                                                                        "numoutlets": 1,
                                                                         "fontface": 0,
-                                                                        "outlettype": [ "" ],
+                                                                        "numinlets": 5,
                                                                         "id": "obj-5",
                                                                         "fontsize": 12.0,
+                                                                        "numoutlets": 1,
+                                                                        "outlettype": [ "" ],
                                                                         "code": "ncos(phase) { return cos(phase * TWOPI); }\r\ntriangle(phase) { return 2 * (0.5 - (abs(phase - 0.5))); }\r\nramp_down(phase) { return 1 - phase; }\r\nhalf_trapezoid(phase) { return min(2 + (phase * -2), 1); }\r\n    \r\nSaw(phase, dw)\n{\n    dw = clamp((1 - dw) * 0.5, 0.001, 0.5);\n    dw_i = 0.5 - dw;\n    a = phase * (dw_i / dw);\n    b = (-1 * phase + 1) * (dw_i / (1 - dw));\n    return -ncos(phase + min(a, b));\n}\r\n\r\nSquare(phase, dw)\n{\n    dw = clamp (dw, 0.001, 0.96);\n    w = 1 / (1 - dw);\n    a = phase * w;\n    b = 1 - max (phase, a) + (dw * (w / 2));\n    return -ncos(max (min (min (a, b), 0.5), 0));\n}\r\n\r\nPulse(phase, dw)\n{\n    dw = clamp (dw, 0.001, 0.97);\n    a = 1 / (1 - dw);\n    b = (a / 2) * dw;\n    return -ncos(min (max ((phase * a) - b, 0), 1));\n}\r\n\r\nDblSine (phase, dw)\n{\n    dw = clamp ((1 - dw) * 0.5, 0.005, 0.5);\n    dw_i = 0.5 - dw;\n    a = phase * (dw_i / dw);\n    b = (-1 * phase + 1) * (dw_i / (1 - dw));\n    return -ncos(( phase + min (a, b) % 1) * 2);\n}\r\n\r\nSawPulse (phase, dw)\n{\n    dw = clamp ((1 - dw) * 0.5, 0.001, 0.5);\n    a = (phase < 0.5) ? phase : 0.5 * (phase - 0.5) / dw + 0.5;\n    return -ncos(min (a, 1));\n}\r\n\r\nReso1 (phase, dw)\n{\n    dw = interp (dw, 1, 16);\n    carrier = -ncos((phase * dw) % 1);\n    win = ramp_down (phase);\n    return ((win * carrier) + win) - 1;\n}\r\n\r\nReso2 (phase, dw)\n{\n    dw = interp (dw, 1, 16);\n    carrier = -ncos((phase * dw) % 1);\n    win = triangle (phase);\n    return ((win * carrier) + win) - 1;\n}\r\n\r\nReso3 (phase, dw)\n{\n    dw = interp (dw, 1, 16);\n    carrier = -ncos((phase * dw) % 1);\n    win = half_trapezoid (phase);\n    return ((win * carrier) + win) - 1;\n}\r\n\r\nShape(phase, dw, s)\r\n{\r\n    if (s < 1) {\r\n        return Saw(phase, dw);\r\n    } else if (s < 2) {\r\n        return Square(phase, dw);\r\n    } else if (s < 3) {\r\n        return Pulse(phase, dw);\r\n    } else if (s < 4) {\r\n        return DblSine(phase, dw);\r\n    } else if (s < 5) {\r\n        return SawPulse(phase, dw);\r\n    } else if (s < 6) {\r\n        return Reso1(phase, dw);\r\n    } else if (s < 7) {\r\n        return Reso2(phase, dw);\r\n    } else {\r\n        return Reso3(phase, dw);\r\n    }\r\n}\r\n\r\nx = in1;\r\nd = in2;\r\ns1 = in3;\r\ns2 = in4;\r\nalt = in5;\r\n\r\nif (alt < 0.5) {\r\n    out1 = Shape(x, d, s1);\r\n} else {\r\n    out1 = Shape(x, d, s2);\r\n}\r\n"
                                                                     }
                                                                 },
@@ -19903,9 +20058,9 @@
                                                                         "text": "in 1 @comment Phasor",
                                                                         "patching_rect": [ 50.0, 14.0, 134.0, 22.0 ],
                                                                         "numinlets": 0,
+                                                                        "id": "obj-1",
                                                                         "numoutlets": 1,
-                                                                        "outlettype": [ "" ],
-                                                                        "id": "obj-1"
+                                                                        "outlettype": [ "" ]
                                                                     }
                                                                 },
                                                                 {
@@ -19914,9 +20069,9 @@
                                                                         "text": "in 2 @comment Distortion (0-1)",
                                                                         "patching_rect": [ 409.0, 135.0, 175.0, 22.0 ],
                                                                         "numinlets": 0,
+                                                                        "id": "obj-2",
                                                                         "numoutlets": 1,
-                                                                        "outlettype": [ "" ],
-                                                                        "id": "obj-2"
+                                                                        "outlettype": [ "" ]
                                                                     }
                                                                 },
                                                                 {
@@ -19925,8 +20080,8 @@
                                                                         "text": "out 1",
                                                                         "patching_rect": [ 50.0, 923.0, 35.0, 22.0 ],
                                                                         "numinlets": 1,
-                                                                        "numoutlets": 0,
-                                                                        "id": "obj-4"
+                                                                        "id": "obj-4",
+                                                                        "numoutlets": 0
                                                                     }
                                                                 }
                                                             ],
@@ -20235,19 +20390,19 @@
                                                     "patching_rect": [ 886.0, 574.0, 387.0, 23.0 ],
                                                     "rnbo_classname": "param",
                                                     "rnbo_extra_attributes": {
-                                                        "preset": 1,
-                                                        "unit": "",
                                                         "order": "0",
-                                                        "fromnormalized": "",
-                                                        "ctlin": -1.0,
-                                                        "displayorder": "-",
                                                         "sendinit": 1,
-                                                        "enum": "",
-                                                        "steps": 0.0,
                                                         "meta": "",
-                                                        "tonormalized": ""
+                                                        "tonormalized": "",
+                                                        "preset": 1,
+                                                        "fromnormalized": "",
+                                                        "displayorder": "-",
+                                                        "enum": "",
+                                                        "ctlin": -1.0,
+                                                        "unit": "",
+                                                        "steps": 0.0
                                                     },
-                                                    "rnbo_serial": 44,
+                                                    "rnbo_serial": 6,
                                                     "rnbo_uniqueid": "ring-mod",
                                                     "rnboinfo": {
                                                         "needsInstanceInfo": 1,
@@ -20765,8 +20920,8 @@
                                                     "patching_rect": [ 901.0, 983.0, 29.5, 23.0 ],
                                                     "rnbo_classname": "message",
                                                     "rnbo_extra_attributes": {
-                                                        "text": "",
-                                                        "storeempty": 0
+                                                        "storeempty": 0,
+                                                        "text": ""
                                                     },
                                                     "rnbo_serial": 2,
                                                     "rnbo_uniqueid": "message_obj-49",
@@ -20911,20 +21066,20 @@
                                                     "patching_rect": [ 987.0, 1173.0, 369.0, 23.0 ],
                                                     "rnbo_classname": "param",
                                                     "rnbo_extra_attributes": {
-                                                        "preset": 1,
-                                                        "unit": "",
                                                         "order": "0",
-                                                        "exponent": 1.0,
-                                                        "fromnormalized": "",
-                                                        "ctlin": -1.0,
-                                                        "displayorder": "-",
                                                         "sendinit": 1,
-                                                        "enum": "",
-                                                        "steps": 0.0,
                                                         "meta": "",
-                                                        "tonormalized": ""
+                                                        "tonormalized": "",
+                                                        "exponent": 1.0,
+                                                        "preset": 1,
+                                                        "fromnormalized": "",
+                                                        "displayorder": "-",
+                                                        "enum": "",
+                                                        "ctlin": -1.0,
+                                                        "unit": "",
+                                                        "steps": 0.0
                                                     },
-                                                    "rnbo_serial": 45,
+                                                    "rnbo_serial": 7,
                                                     "rnbo_uniqueid": "pitch-depth",
                                                     "rnboinfo": {
                                                         "needsInstanceInfo": 1,
@@ -21328,20 +21483,20 @@
                                                     "patching_rect": [ 921.0, 1084.0, 373.0, 23.0 ],
                                                     "rnbo_classname": "param",
                                                     "rnbo_extra_attributes": {
-                                                        "preset": 1,
-                                                        "unit": "",
                                                         "order": "0",
-                                                        "exponent": 1.0,
-                                                        "fromnormalized": "",
-                                                        "ctlin": -1.0,
-                                                        "displayorder": "-",
                                                         "sendinit": 1,
-                                                        "enum": "",
-                                                        "steps": 0.0,
                                                         "meta": "",
-                                                        "tonormalized": ""
+                                                        "tonormalized": "",
+                                                        "exponent": 1.0,
+                                                        "preset": 1,
+                                                        "fromnormalized": "",
+                                                        "displayorder": "-",
+                                                        "enum": "",
+                                                        "ctlin": -1.0,
+                                                        "unit": "",
+                                                        "steps": 0.0
                                                     },
-                                                    "rnbo_serial": 34,
+                                                    "rnbo_serial": 8,
                                                     "rnbo_uniqueid": "pitch-sustain",
                                                     "rnboinfo": {
                                                         "needsInstanceInfo": 1,
@@ -21745,19 +21900,19 @@
                                                     "patching_rect": [ 947.0, 1112.0, 472.0, 23.0 ],
                                                     "rnbo_classname": "param",
                                                     "rnbo_extra_attributes": {
-                                                        "preset": 1,
-                                                        "unit": "",
                                                         "order": "0",
-                                                        "fromnormalized": "",
-                                                        "ctlin": -1.0,
-                                                        "displayorder": "-",
                                                         "sendinit": 1,
-                                                        "enum": "",
-                                                        "steps": 0.0,
                                                         "meta": "",
-                                                        "tonormalized": ""
+                                                        "tonormalized": "",
+                                                        "preset": 1,
+                                                        "fromnormalized": "",
+                                                        "displayorder": "-",
+                                                        "enum": "",
+                                                        "ctlin": -1.0,
+                                                        "unit": "",
+                                                        "steps": 0.0
                                                     },
-                                                    "rnbo_serial": 35,
+                                                    "rnbo_serial": 9,
                                                     "rnbo_uniqueid": "pitch-release",
                                                     "rnboinfo": {
                                                         "needsInstanceInfo": 1,
@@ -22161,19 +22316,19 @@
                                                     "patching_rect": [ 895.0, 1057.0, 457.0, 23.0 ],
                                                     "rnbo_classname": "param",
                                                     "rnbo_extra_attributes": {
-                                                        "preset": 1,
-                                                        "unit": "",
                                                         "order": "0",
-                                                        "fromnormalized": "",
-                                                        "ctlin": -1.0,
-                                                        "displayorder": "-",
                                                         "sendinit": 1,
-                                                        "enum": "",
-                                                        "steps": 0.0,
                                                         "meta": "",
-                                                        "tonormalized": ""
+                                                        "tonormalized": "",
+                                                        "preset": 1,
+                                                        "fromnormalized": "",
+                                                        "displayorder": "-",
+                                                        "enum": "",
+                                                        "ctlin": -1.0,
+                                                        "unit": "",
+                                                        "steps": 0.0
                                                     },
-                                                    "rnbo_serial": 33,
+                                                    "rnbo_serial": 10,
                                                     "rnbo_uniqueid": "pitch-decay",
                                                     "rnboinfo": {
                                                         "needsInstanceInfo": 1,
@@ -22577,19 +22732,19 @@
                                                     "patching_rect": [ 878.0, 1029.0, 454.0, 23.0 ],
                                                     "rnbo_classname": "param",
                                                     "rnbo_extra_attributes": {
-                                                        "preset": 1,
-                                                        "unit": "",
                                                         "order": "0",
-                                                        "fromnormalized": "",
-                                                        "ctlin": -1.0,
-                                                        "displayorder": "-",
                                                         "sendinit": 1,
-                                                        "enum": "",
-                                                        "steps": 0.0,
                                                         "meta": "",
-                                                        "tonormalized": ""
+                                                        "tonormalized": "",
+                                                        "preset": 1,
+                                                        "fromnormalized": "",
+                                                        "displayorder": "-",
+                                                        "enum": "",
+                                                        "ctlin": -1.0,
+                                                        "unit": "",
+                                                        "steps": 0.0
                                                     },
-                                                    "rnbo_serial": 32,
+                                                    "rnbo_serial": 11,
                                                     "rnbo_uniqueid": "pitch-attack",
                                                     "rnboinfo": {
                                                         "needsInstanceInfo": 1,
@@ -23020,20 +23175,20 @@
                                                     "patching_rect": [ 1599.0, 1162.0, 345.0, 23.0 ],
                                                     "rnbo_classname": "param",
                                                     "rnbo_extra_attributes": {
-                                                        "preset": 1,
-                                                        "unit": "",
                                                         "order": "0",
-                                                        "exponent": 1.0,
-                                                        "fromnormalized": "",
-                                                        "ctlin": -1.0,
-                                                        "displayorder": "-",
                                                         "sendinit": 1,
-                                                        "enum": "",
-                                                        "steps": 0.0,
                                                         "meta": "",
-                                                        "tonormalized": ""
+                                                        "tonormalized": "",
+                                                        "exponent": 1.0,
+                                                        "preset": 1,
+                                                        "fromnormalized": "",
+                                                        "displayorder": "-",
+                                                        "enum": "",
+                                                        "ctlin": -1.0,
+                                                        "unit": "",
+                                                        "steps": 0.0
                                                     },
-                                                    "rnbo_serial": 46,
+                                                    "rnbo_serial": 12,
                                                     "rnbo_uniqueid": "dcw-depth",
                                                     "rnboinfo": {
                                                         "needsInstanceInfo": 1,
@@ -23479,20 +23634,20 @@
                                                     "patching_rect": [ 1484.0, 1290.0, 326.0, 23.0 ],
                                                     "rnbo_classname": "param",
                                                     "rnbo_extra_attributes": {
-                                                        "preset": 1,
-                                                        "unit": "",
                                                         "order": "0",
-                                                        "exponent": 1.0,
-                                                        "fromnormalized": "",
-                                                        "ctlin": -1.0,
-                                                        "displayorder": "-",
                                                         "sendinit": 1,
-                                                        "enum": "",
-                                                        "steps": 0.0,
                                                         "meta": "",
-                                                        "tonormalized": ""
+                                                        "tonormalized": "",
+                                                        "exponent": 1.0,
+                                                        "preset": 1,
+                                                        "fromnormalized": "",
+                                                        "displayorder": "-",
+                                                        "enum": "",
+                                                        "ctlin": -1.0,
+                                                        "unit": "",
+                                                        "steps": 0.0
                                                     },
-                                                    "rnbo_serial": 47,
+                                                    "rnbo_serial": 13,
                                                     "rnbo_uniqueid": "dcw-base",
                                                     "rnboinfo": {
                                                         "needsInstanceInfo": 1,
@@ -23940,21 +24095,21 @@
                                                     "patching_rect": [ 1194.0, 609.0, 396.0, 23.0 ],
                                                     "rnbo_classname": "param",
                                                     "rnbo_extra_attributes": {
-                                                        "maximum": 1.0,
-                                                        "preset": 1,
-                                                        "unit": "",
                                                         "order": "0",
-                                                        "minimum": 0.0,
-                                                        "exponent": 1.0,
-                                                        "fromnormalized": "",
-                                                        "ctlin": -1.0,
-                                                        "displayorder": "-",
                                                         "sendinit": 1,
-                                                        "steps": 2.0,
+                                                        "minimum": 0.0,
                                                         "meta": "",
-                                                        "tonormalized": ""
+                                                        "tonormalized": "",
+                                                        "exponent": 1.0,
+                                                        "preset": 1,
+                                                        "fromnormalized": "",
+                                                        "displayorder": "-",
+                                                        "maximum": 1.0,
+                                                        "ctlin": -1.0,
+                                                        "unit": "",
+                                                        "steps": 2.0
                                                     },
-                                                    "rnbo_serial": 43,
+                                                    "rnbo_serial": 14,
                                                     "rnbo_uniqueid": "velocity-tracking",
                                                     "rnboinfo": {
                                                         "needsInstanceInfo": 1,
@@ -24362,20 +24517,20 @@
                                                     "patching_rect": [ 1502.0, 1084.0, 362.0, 23.0 ],
                                                     "rnbo_classname": "param",
                                                     "rnbo_extra_attributes": {
-                                                        "preset": 1,
-                                                        "unit": "",
                                                         "order": "0",
-                                                        "exponent": 1.0,
-                                                        "fromnormalized": "",
-                                                        "ctlin": -1.0,
-                                                        "displayorder": "-",
                                                         "sendinit": 1,
-                                                        "enum": "",
-                                                        "steps": 0.0,
                                                         "meta": "",
-                                                        "tonormalized": ""
+                                                        "tonormalized": "",
+                                                        "exponent": 1.0,
+                                                        "preset": 1,
+                                                        "fromnormalized": "",
+                                                        "displayorder": "-",
+                                                        "enum": "",
+                                                        "ctlin": -1.0,
+                                                        "unit": "",
+                                                        "steps": 0.0
                                                     },
-                                                    "rnbo_serial": 39,
+                                                    "rnbo_serial": 15,
                                                     "rnbo_uniqueid": "dcw-sustain",
                                                     "rnboinfo": {
                                                         "needsInstanceInfo": 1,
@@ -24779,19 +24934,19 @@
                                                     "patching_rect": [ 1528.0, 1112.0, 461.0, 23.0 ],
                                                     "rnbo_classname": "param",
                                                     "rnbo_extra_attributes": {
-                                                        "preset": 1,
-                                                        "unit": "",
                                                         "order": "0",
-                                                        "fromnormalized": "",
-                                                        "ctlin": -1.0,
-                                                        "displayorder": "-",
                                                         "sendinit": 1,
-                                                        "enum": "",
-                                                        "steps": 0.0,
                                                         "meta": "",
-                                                        "tonormalized": ""
+                                                        "tonormalized": "",
+                                                        "preset": 1,
+                                                        "fromnormalized": "",
+                                                        "displayorder": "-",
+                                                        "enum": "",
+                                                        "ctlin": -1.0,
+                                                        "unit": "",
+                                                        "steps": 0.0
                                                     },
-                                                    "rnbo_serial": 41,
+                                                    "rnbo_serial": 16,
                                                     "rnbo_uniqueid": "dcw-release",
                                                     "rnboinfo": {
                                                         "needsInstanceInfo": 1,
@@ -25195,19 +25350,19 @@
                                                     "patching_rect": [ 1476.0, 1057.0, 446.0, 23.0 ],
                                                     "rnbo_classname": "param",
                                                     "rnbo_extra_attributes": {
-                                                        "preset": 1,
-                                                        "unit": "",
                                                         "order": "0",
-                                                        "fromnormalized": "",
-                                                        "ctlin": -1.0,
-                                                        "displayorder": "-",
                                                         "sendinit": 1,
-                                                        "enum": "",
-                                                        "steps": 0.0,
                                                         "meta": "",
-                                                        "tonormalized": ""
+                                                        "tonormalized": "",
+                                                        "preset": 1,
+                                                        "fromnormalized": "",
+                                                        "displayorder": "-",
+                                                        "enum": "",
+                                                        "ctlin": -1.0,
+                                                        "unit": "",
+                                                        "steps": 0.0
                                                     },
-                                                    "rnbo_serial": 40,
+                                                    "rnbo_serial": 17,
                                                     "rnbo_uniqueid": "dcw-decay",
                                                     "rnboinfo": {
                                                         "needsInstanceInfo": 1,
@@ -25611,19 +25766,19 @@
                                                     "patching_rect": [ 1459.0, 1029.0, 444.0, 23.0 ],
                                                     "rnbo_classname": "param",
                                                     "rnbo_extra_attributes": {
-                                                        "preset": 1,
-                                                        "unit": "",
                                                         "order": "0",
-                                                        "fromnormalized": "",
-                                                        "ctlin": -1.0,
-                                                        "displayorder": "-",
                                                         "sendinit": 1,
-                                                        "enum": "",
-                                                        "steps": 0.0,
                                                         "meta": "",
-                                                        "tonormalized": ""
+                                                        "tonormalized": "",
+                                                        "preset": 1,
+                                                        "fromnormalized": "",
+                                                        "displayorder": "-",
+                                                        "enum": "",
+                                                        "ctlin": -1.0,
+                                                        "unit": "",
+                                                        "steps": 0.0
                                                     },
-                                                    "rnbo_serial": 38,
+                                                    "rnbo_serial": 18,
                                                     "rnbo_uniqueid": "dcw-attack",
                                                     "rnboinfo": {
                                                         "needsInstanceInfo": 1,
@@ -26218,8 +26373,8 @@
                                                     "patching_rect": [ 236.0, 1304.0, 43.0, 23.0 ],
                                                     "rnbo_classname": "out~",
                                                     "rnbo_extra_attributes": {
-                                                        "comment": "",
-                                                        "meta": ""
+                                                        "meta": "",
+                                                        "comment": ""
                                                     },
                                                     "rnbo_serial": 1,
                                                     "rnbo_uniqueid": "out~_obj-16",
@@ -26389,20 +26544,20 @@
                                                     "patching_rect": [ 345.0, 1121.0, 365.0, 23.0 ],
                                                     "rnbo_classname": "param",
                                                     "rnbo_extra_attributes": {
-                                                        "preset": 1,
-                                                        "unit": "",
                                                         "order": "0",
-                                                        "exponent": 1.0,
-                                                        "fromnormalized": "",
-                                                        "ctlin": -1.0,
-                                                        "displayorder": "-",
                                                         "sendinit": 1,
-                                                        "enum": "",
-                                                        "steps": 0.0,
                                                         "meta": "",
-                                                        "tonormalized": ""
+                                                        "tonormalized": "",
+                                                        "exponent": 1.0,
+                                                        "preset": 1,
+                                                        "fromnormalized": "",
+                                                        "displayorder": "-",
+                                                        "enum": "",
+                                                        "ctlin": -1.0,
+                                                        "unit": "",
+                                                        "steps": 0.0
                                                     },
-                                                    "rnbo_serial": 30,
+                                                    "rnbo_serial": 19,
                                                     "rnbo_uniqueid": "amp-sustain",
                                                     "rnboinfo": {
                                                         "needsInstanceInfo": 1,
@@ -26806,19 +26961,19 @@
                                                     "patching_rect": [ 371.0, 1149.0, 464.0, 23.0 ],
                                                     "rnbo_classname": "param",
                                                     "rnbo_extra_attributes": {
-                                                        "preset": 1,
-                                                        "unit": "",
                                                         "order": "0",
-                                                        "fromnormalized": "",
-                                                        "ctlin": -1.0,
-                                                        "displayorder": "-",
                                                         "sendinit": 1,
-                                                        "enum": "",
-                                                        "steps": 0.0,
                                                         "meta": "",
-                                                        "tonormalized": ""
+                                                        "tonormalized": "",
+                                                        "preset": 1,
+                                                        "fromnormalized": "",
+                                                        "displayorder": "-",
+                                                        "enum": "",
+                                                        "ctlin": -1.0,
+                                                        "unit": "",
+                                                        "steps": 0.0
                                                     },
-                                                    "rnbo_serial": 31,
+                                                    "rnbo_serial": 20,
                                                     "rnbo_uniqueid": "amp-release",
                                                     "rnboinfo": {
                                                         "needsInstanceInfo": 1,
@@ -27222,19 +27377,19 @@
                                                     "patching_rect": [ 319.0, 1094.0, 449.0, 23.0 ],
                                                     "rnbo_classname": "param",
                                                     "rnbo_extra_attributes": {
-                                                        "preset": 1,
-                                                        "unit": "",
                                                         "order": "0",
-                                                        "fromnormalized": "",
-                                                        "ctlin": -1.0,
-                                                        "displayorder": "-",
                                                         "sendinit": 1,
-                                                        "enum": "",
-                                                        "steps": 0.0,
                                                         "meta": "",
-                                                        "tonormalized": ""
+                                                        "tonormalized": "",
+                                                        "preset": 1,
+                                                        "fromnormalized": "",
+                                                        "displayorder": "-",
+                                                        "enum": "",
+                                                        "ctlin": -1.0,
+                                                        "unit": "",
+                                                        "steps": 0.0
                                                     },
-                                                    "rnbo_serial": 29,
+                                                    "rnbo_serial": 21,
                                                     "rnbo_uniqueid": "amp-decay",
                                                     "rnboinfo": {
                                                         "needsInstanceInfo": 1,
@@ -27638,19 +27793,19 @@
                                                     "patching_rect": [ 302.0, 1066.0, 447.0, 23.0 ],
                                                     "rnbo_classname": "param",
                                                     "rnbo_extra_attributes": {
-                                                        "preset": 1,
-                                                        "unit": "",
                                                         "order": "0",
-                                                        "fromnormalized": "",
-                                                        "ctlin": -1.0,
-                                                        "displayorder": "-",
                                                         "sendinit": 1,
-                                                        "enum": "",
-                                                        "steps": 0.0,
                                                         "meta": "",
-                                                        "tonormalized": ""
+                                                        "tonormalized": "",
+                                                        "preset": 1,
+                                                        "fromnormalized": "",
+                                                        "displayorder": "-",
+                                                        "enum": "",
+                                                        "ctlin": -1.0,
+                                                        "unit": "",
+                                                        "steps": 0.0
                                                     },
-                                                    "rnbo_serial": 28,
+                                                    "rnbo_serial": 22,
                                                     "rnbo_uniqueid": "amp-attack",
                                                     "rnboinfo": {
                                                         "needsInstanceInfo": 1,
@@ -28159,9 +28314,9 @@
                                                                         "text": "*",
                                                                         "patching_rect": [ 99.5, 172.0, 29.5, 22.0 ],
                                                                         "numinlets": 2,
+                                                                        "id": "obj-12",
                                                                         "numoutlets": 1,
-                                                                        "outlettype": [ "" ],
-                                                                        "id": "obj-12"
+                                                                        "outlettype": [ "" ]
                                                                     }
                                                                 },
                                                                 {
@@ -28170,9 +28325,9 @@
                                                                         "text": "+= @max 2",
                                                                         "patching_rect": [ 99.5, 135.0, 71.0, 22.0 ],
                                                                         "numinlets": 2,
+                                                                        "id": "obj-11",
                                                                         "numoutlets": 1,
-                                                                        "outlettype": [ "" ],
-                                                                        "id": "obj-11"
+                                                                        "outlettype": [ "" ]
                                                                     }
                                                                 },
                                                                 {
@@ -28181,9 +28336,9 @@
                                                                         "text": "< 0",
                                                                         "patching_rect": [ 99.5, 99.0, 26.0, 22.0 ],
                                                                         "numinlets": 1,
+                                                                        "id": "obj-10",
                                                                         "numoutlets": 1,
-                                                                        "outlettype": [ "" ],
-                                                                        "id": "obj-10"
+                                                                        "outlettype": [ "" ]
                                                                     }
                                                                 },
                                                                 {
@@ -28192,9 +28347,9 @@
                                                                         "text": "delta",
                                                                         "patching_rect": [ 99.5, 65.0, 35.0, 22.0 ],
                                                                         "numinlets": 1,
+                                                                        "id": "obj-9",
                                                                         "numoutlets": 1,
-                                                                        "outlettype": [ "" ],
-                                                                        "id": "obj-9"
+                                                                        "outlettype": [ "" ]
                                                                     }
                                                                 },
                                                                 {
@@ -28203,9 +28358,9 @@
                                                                         "text": "in 5 @comment Dual Wave Enable",
                                                                         "patching_rect": [ 187.0, 135.0, 195.0, 22.0 ],
                                                                         "numinlets": 0,
+                                                                        "id": "obj-8",
                                                                         "numoutlets": 1,
-                                                                        "outlettype": [ "" ],
-                                                                        "id": "obj-8"
+                                                                        "outlettype": [ "" ]
                                                                     }
                                                                 },
                                                                 {
@@ -28214,9 +28369,9 @@
                                                                         "text": "in 4 @comment Wave 2 (0-7)",
                                                                         "patching_rect": [ 803.0, 135.0, 165.0, 22.0 ],
                                                                         "numinlets": 0,
+                                                                        "id": "obj-7",
                                                                         "numoutlets": 1,
-                                                                        "outlettype": [ "" ],
-                                                                        "id": "obj-7"
+                                                                        "outlettype": [ "" ]
                                                                     }
                                                                 },
                                                                 {
@@ -28225,22 +28380,22 @@
                                                                         "text": "in 3 @comment Wave 1 (0-7)",
                                                                         "patching_rect": [ 612.0, 135.0, 165.0, 22.0 ],
                                                                         "numinlets": 0,
+                                                                        "id": "obj-6",
                                                                         "numoutlets": 1,
-                                                                        "outlettype": [ "" ],
-                                                                        "id": "obj-6"
+                                                                        "outlettype": [ "" ]
                                                                     }
                                                                 },
                                                                 {
                                                                     "box": {
                                                                         "maxclass": "codebox",
                                                                         "patching_rect": [ 50.0, 225.0, 541.0, 671.0 ],
-                                                                        "numinlets": 5,
                                                                         "fontname": "<Monospaced>",
-                                                                        "numoutlets": 1,
                                                                         "fontface": 0,
-                                                                        "outlettype": [ "" ],
+                                                                        "numinlets": 5,
                                                                         "id": "obj-5",
                                                                         "fontsize": 12.0,
+                                                                        "numoutlets": 1,
+                                                                        "outlettype": [ "" ],
                                                                         "code": "ncos(phase) { return cos(phase * TWOPI); }\r\ntriangle(phase) { return 2 * (0.5 - (abs(phase - 0.5))); }\r\nramp_down(phase) { return 1 - phase; }\r\nhalf_trapezoid(phase) { return min(2 + (phase * -2), 1); }\r\n    \r\nSaw(phase, dw)\n{\n    dw = clamp((1 - dw) * 0.5, 0.001, 0.5);\n    dw_i = 0.5 - dw;\n    a = phase * (dw_i / dw);\n    b = (-1 * phase + 1) * (dw_i / (1 - dw));\n    return -ncos(phase + min(a, b));\n}\r\n\r\nSquare(phase, dw)\n{\n    dw = clamp (dw, 0.001, 0.96);\n    w = 1 / (1 - dw);\n    a = phase * w;\n    b = 1 - max (phase, a) + (dw * (w / 2));\n    return -ncos(max (min (min (a, b), 0.5), 0));\n}\r\n\r\nPulse(phase, dw)\n{\n    dw = clamp (dw, 0.001, 0.97);\n    a = 1 / (1 - dw);\n    b = (a / 2) * dw;\n    return -ncos(min (max ((phase * a) - b, 0), 1));\n}\r\n\r\nDblSine (phase, dw)\n{\n    dw = clamp ((1 - dw) * 0.5, 0.005, 0.5);\n    dw_i = 0.5 - dw;\n    a = phase * (dw_i / dw);\n    b = (-1 * phase + 1) * (dw_i / (1 - dw));\n    return -ncos(( phase + min (a, b) % 1) * 2);\n}\r\n\r\nSawPulse (phase, dw)\n{\n    dw = clamp ((1 - dw) * 0.5, 0.001, 0.5);\n    a = (phase < 0.5) ? phase : 0.5 * (phase - 0.5) / dw + 0.5;\n    return -ncos(min (a, 1));\n}\r\n\r\nReso1 (phase, dw)\n{\n    dw = interp (dw, 1, 16);\n    carrier = -ncos((phase * dw) % 1);\n    win = ramp_down (phase);\n    return ((win * carrier) + win) - 1;\n}\r\n\r\nReso2 (phase, dw)\n{\n    dw = interp (dw, 1, 16);\n    carrier = -ncos((phase * dw) % 1);\n    win = triangle (phase);\n    return ((win * carrier) + win) - 1;\n}\r\n\r\nReso3 (phase, dw)\n{\n    dw = interp (dw, 1, 16);\n    carrier = -ncos((phase * dw) % 1);\n    win = half_trapezoid (phase);\n    return ((win * carrier) + win) - 1;\n}\r\n\r\nShape(phase, dw, s)\r\n{\r\n    if (s < 1) {\r\n        return Saw(phase, dw);\r\n    } else if (s < 2) {\r\n        return Square(phase, dw);\r\n    } else if (s < 3) {\r\n        return Pulse(phase, dw);\r\n    } else if (s < 4) {\r\n        return DblSine(phase, dw);\r\n    } else if (s < 5) {\r\n        return SawPulse(phase, dw);\r\n    } else if (s < 6) {\r\n        return Reso1(phase, dw);\r\n    } else if (s < 7) {\r\n        return Reso2(phase, dw);\r\n    } else {\r\n        return Reso3(phase, dw);\r\n    }\r\n}\r\n\r\nx = in1;\r\nd = in2;\r\ns1 = in3;\r\ns2 = in4;\r\nalt = in5;\r\n\r\nif (alt < 0.5) {\r\n    out1 = Shape(x, d, s1);\r\n} else {\r\n    out1 = Shape(x, d, s2);\r\n}\r\n"
                                                                     }
                                                                 },
@@ -28250,9 +28405,9 @@
                                                                         "text": "in 1 @comment Phasor",
                                                                         "patching_rect": [ 50.0, 14.0, 134.0, 22.0 ],
                                                                         "numinlets": 0,
+                                                                        "id": "obj-1",
                                                                         "numoutlets": 1,
-                                                                        "outlettype": [ "" ],
-                                                                        "id": "obj-1"
+                                                                        "outlettype": [ "" ]
                                                                     }
                                                                 },
                                                                 {
@@ -28261,9 +28416,9 @@
                                                                         "text": "in 2 @comment Distortion (0-1)",
                                                                         "patching_rect": [ 409.0, 135.0, 175.0, 22.0 ],
                                                                         "numinlets": 0,
+                                                                        "id": "obj-2",
                                                                         "numoutlets": 1,
-                                                                        "outlettype": [ "" ],
-                                                                        "id": "obj-2"
+                                                                        "outlettype": [ "" ]
                                                                     }
                                                                 },
                                                                 {
@@ -28272,8 +28427,8 @@
                                                                         "text": "out 1",
                                                                         "patching_rect": [ 50.0, 923.0, 35.0, 22.0 ],
                                                                         "numinlets": 1,
-                                                                        "numoutlets": 0,
-                                                                        "id": "obj-4"
+                                                                        "id": "obj-4",
+                                                                        "numoutlets": 0
                                                                     }
                                                                 }
                                                             ],
@@ -29259,14 +29414,14 @@
                                     "patching_rect": [ 107.0, 594.0, 127.0, 23.0 ],
                                     "rnbo_classname": "p",
                                     "rnbo_extra_attributes": {
-                                        "args": [],
-                                        "notecontroller": 0,
+                                        "exposevoiceparams": 0,
                                         "uidstyle": "auto",
                                         "receivemode": "local",
-                                        "exposevoiceparams": 0,
-                                        "voicecontrol": "simple"
+                                        "args": [],
+                                        "voicecontrol": "simple",
+                                        "notecontroller": 0
                                     },
-                                    "rnbo_serial": 11,
+                                    "rnbo_serial": 8,
                                     "rnbo_uniqueid": "ez101",
                                     "rnboinfo": {
                                         "needsInstanceInfo": 1,
@@ -30228,8 +30383,20 @@
                             },
                             {
                                 "patchline": {
+                                    "destination": [ "obj-57", 0 ],
+                                    "source": [ "obj-55", 0 ]
+                                }
+                            },
+                            {
+                                "patchline": {
                                     "destination": [ "obj-68", 0 ],
                                     "source": [ "obj-56", 0 ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [ "obj-116", 1 ],
+                                    "source": [ "obj-57", 0 ]
                                 }
                             },
                             {
@@ -30326,6 +30493,12 @@
                             },
                             {
                                 "patchline": {
+                                    "destination": [ "obj-82", 0 ],
+                                    "source": [ "obj-81", 0 ]
+                                }
+                            },
+                            {
+                                "patchline": {
                                     "destination": [ "obj-88", 0 ],
                                     "source": [ "obj-84", 0 ]
                                 }
@@ -30370,93 +30543,8 @@
                     },
                     "patching_rect": [ 226.5, 528.0, 146.0, 22.0 ],
                     "rnboattrcache": {
-                        "ez101/dcw-attack": {
-                            "label": "dcw-attack",
-                            "isEnum": 0,
-                            "parsestring": ""
-                        },
-                        "ez101/dcw-sustain": {
-                            "label": "dcw-sustain",
-                            "isEnum": 0,
-                            "parsestring": ""
-                        },
-                        "ez101/wave1": {
-                            "label": "wave1",
-                            "isEnum": 0,
-                            "parsestring": ""
-                        },
-                        "ez101/dcw-decay": {
-                            "label": "dcw-decay",
-                            "isEnum": 0,
-                            "parsestring": ""
-                        },
-                        "ez101/pitch-depth": {
-                            "label": "pitch-depth",
-                            "isEnum": 0,
-                            "parsestring": ""
-                        },
-                        "ez101/dpm-depth": {
-                            "label": "dpm-depth",
-                            "isEnum": 0,
-                            "parsestring": ""
-                        },
-                        "ez101/pitch-sustain": {
-                            "label": "pitch-sustain",
-                            "isEnum": 0,
-                            "parsestring": ""
-                        },
-                        "ez101/pitch-release": {
-                            "label": "pitch-release",
-                            "isEnum": 0,
-                            "parsestring": ""
-                        },
-                        "ez101/amp-sustain": {
-                            "label": "amp-sustain",
-                            "isEnum": 0,
-                            "parsestring": ""
-                        },
-                        "detune-octave": {
-                            "label": "detune-octave",
-                            "isEnum": 0,
-                            "parsestring": ""
-                        },
-                        "ez101/amp-attack": {
-                            "label": "amp-attack",
-                            "isEnum": 0,
-                            "parsestring": ""
-                        },
-                        "ez101/pitch-decay": {
-                            "label": "pitch-decay",
-                            "isEnum": 0,
-                            "parsestring": ""
-                        },
-                        "ez101/dcw-release": {
-                            "label": "dcw-release",
-                            "isEnum": 0,
-                            "parsestring": ""
-                        },
                         "lfo-freq": {
                             "label": "lfo-freq",
-                            "isEnum": 0,
-                            "parsestring": ""
-                        },
-                        "detune-cent": {
-                            "label": "detune-cent",
-                            "isEnum": 0,
-                            "parsestring": ""
-                        },
-                        "ez101/dcw-depth": {
-                            "label": "dcw-depth",
-                            "isEnum": 0,
-                            "parsestring": ""
-                        },
-                        "ez101/amp-decay": {
-                            "label": "amp-decay",
-                            "isEnum": 0,
-                            "parsestring": ""
-                        },
-                        "ez101/wave2": {
-                            "label": "wave2",
                             "isEnum": 0,
                             "parsestring": ""
                         },
@@ -30465,13 +30553,28 @@
                             "isEnum": 0,
                             "parsestring": ""
                         },
-                        "detune-step": {
-                            "label": "detune-step",
+                        "ez101/pitch-attack": {
+                            "label": "pitch-attack",
                             "isEnum": 0,
                             "parsestring": ""
                         },
-                        "ez101/amp-release": {
-                            "label": "amp-release",
+                        "ez101/dcw-sustain": {
+                            "label": "dcw-sustain",
+                            "isEnum": 0,
+                            "parsestring": ""
+                        },
+                        "ez101/pitch-sustain": {
+                            "label": "pitch-sustain",
+                            "isEnum": 0,
+                            "parsestring": ""
+                        },
+                        "ez101/pitch-decay": {
+                            "label": "pitch-decay",
+                            "isEnum": 0,
+                            "parsestring": ""
+                        },
+                        "ez101/amp-decay": {
+                            "label": "amp-decay",
                             "isEnum": 0,
                             "parsestring": ""
                         },
@@ -30480,13 +30583,23 @@
                             "isEnum": 0,
                             "parsestring": ""
                         },
-                        "ez101/ring-mod": {
-                            "label": "ring-mod",
+                        "ez101/pitch-depth": {
+                            "label": "pitch-depth",
                             "isEnum": 0,
                             "parsestring": ""
                         },
-                        "ez101/pitch-attack": {
-                            "label": "pitch-attack",
+                        "detune-octave": {
+                            "label": "detune-octave",
+                            "isEnum": 0,
+                            "parsestring": ""
+                        },
+                        "detune-cent": {
+                            "label": "detune-cent",
+                            "isEnum": 0,
+                            "parsestring": ""
+                        },
+                        "detune-step": {
+                            "label": "detune-step",
                             "isEnum": 0,
                             "parsestring": ""
                         },
@@ -30495,8 +30608,68 @@
                             "isEnum": 0,
                             "parsestring": ""
                         },
+                        "ez101/wave1": {
+                            "label": "wave1",
+                            "isEnum": 0,
+                            "parsestring": ""
+                        },
+                        "ez101/pitch-release": {
+                            "label": "pitch-release",
+                            "isEnum": 0,
+                            "parsestring": ""
+                        },
+                        "ez101/dcw-release": {
+                            "label": "dcw-release",
+                            "isEnum": 0,
+                            "parsestring": ""
+                        },
+                        "ez101/wave2": {
+                            "label": "wave2",
+                            "isEnum": 0,
+                            "parsestring": ""
+                        },
+                        "ez101/ring-mod": {
+                            "label": "ring-mod",
+                            "isEnum": 0,
+                            "parsestring": ""
+                        },
+                        "ez101/dcw-attack": {
+                            "label": "dcw-attack",
+                            "isEnum": 0,
+                            "parsestring": ""
+                        },
+                        "ez101/dpm-depth": {
+                            "label": "dpm-depth",
+                            "isEnum": 0,
+                            "parsestring": ""
+                        },
+                        "ez101/amp-attack": {
+                            "label": "amp-attack",
+                            "isEnum": 0,
+                            "parsestring": ""
+                        },
+                        "ez101/dcw-depth": {
+                            "label": "dcw-depth",
+                            "isEnum": 0,
+                            "parsestring": ""
+                        },
+                        "ez101/amp-release": {
+                            "label": "amp-release",
+                            "isEnum": 0,
+                            "parsestring": ""
+                        },
                         "lfo-depth": {
                             "label": "lfo-depth",
+                            "isEnum": 0,
+                            "parsestring": ""
+                        },
+                        "ez101/dcw-decay": {
+                            "label": "dcw-decay",
+                            "isEnum": 0,
+                            "parsestring": ""
+                        },
+                        "ez101/amp-sustain": {
+                            "label": "amp-sustain",
                             "isEnum": 0,
                             "parsestring": ""
                         },
@@ -30571,8 +30744,7 @@
                             },
                             "__sps": {
                                 "p_obj-6": {                                },
-                                "pad-to-index[1]": {                                },
-                                "index-to-note[2]": {                                },
+                                "index-to-note": {                                },
                                 "lfo": {                                },
                                 "p_obj-1": {
                                     "zeropressure": {
@@ -30580,7 +30752,8 @@
                                     }
                                 },
                                 "pad-to-index": {                                },
-                                "index-to-note": {                                },
+                                "index-to-note[1]": {                                },
+                                "pad-to-index[1]": {                                },
                                 "ez101": [
                                     {
                                         "__sps": {
@@ -30591,16 +30764,16 @@
                                             "value": 0.6
                                         },
                                         "dcw-decay": {
-                                            "value": 200.0
+                                            "value": 200.00000000000003
                                         },
                                         "dcw-attack": {
-                                            "value": 40.0
+                                            "value": 39.99999999999999
                                         },
                                         "velocity-tracking": {
                                             "value": 1.0
                                         },
                                         "pitch-decay": {
-                                            "value": 200.0
+                                            "value": 200.00000000000003
                                         },
                                         "pitch-sustain": {
                                             "value": 0.6
@@ -30609,13 +30782,13 @@
                                             "value": 0.0
                                         },
                                         "pitch-attack": {
-                                            "value": 40.0
+                                            "value": 39.99999999999999
                                         },
                                         "amp-attack": {
-                                            "value": 40.0
+                                            "value": 39.99999999999999
                                         },
                                         "amp-release": {
-                                            "value": 500.0
+                                            "value": 500.00000000000017
                                         },
                                         "dpm-depth": {
                                             "value": 0.0
@@ -30630,16 +30803,16 @@
                                             "value": 0.0
                                         },
                                         "pitch-release": {
-                                            "value": 500.0
+                                            "value": 500.00000000000017
                                         },
                                         "amp-sustain": {
                                             "value": 0.6
                                         },
                                         "amp-decay": {
-                                            "value": 200.0
+                                            "value": 200.00000000000003
                                         },
                                         "dcw-release": {
-                                            "value": 500.0
+                                            "value": 500.00000000000017
                                         },
                                         "wave1": {
                                             "value": 1.0
@@ -30663,16 +30836,16 @@
                                             "value": 0.6
                                         },
                                         "dcw-decay": {
-                                            "value": 200.0
+                                            "value": 200.00000000000003
                                         },
                                         "dcw-attack": {
-                                            "value": 40.0
+                                            "value": 39.99999999999999
                                         },
                                         "velocity-tracking": {
                                             "value": 1.0
                                         },
                                         "pitch-decay": {
-                                            "value": 200.0
+                                            "value": 200.00000000000003
                                         },
                                         "pitch-sustain": {
                                             "value": 0.6
@@ -30681,13 +30854,13 @@
                                             "value": 0.0
                                         },
                                         "pitch-attack": {
-                                            "value": 40.0
+                                            "value": 39.99999999999999
                                         },
                                         "amp-attack": {
-                                            "value": 40.0
+                                            "value": 39.99999999999999
                                         },
                                         "amp-release": {
-                                            "value": 500.0
+                                            "value": 500.00000000000017
                                         },
                                         "dpm-depth": {
                                             "value": 0.0
@@ -30702,16 +30875,16 @@
                                             "value": 0.0
                                         },
                                         "pitch-release": {
-                                            "value": 500.0
+                                            "value": 500.00000000000017
                                         },
                                         "amp-sustain": {
                                             "value": 0.6
                                         },
                                         "amp-decay": {
-                                            "value": 200.0
+                                            "value": 200.00000000000003
                                         },
                                         "dcw-release": {
-                                            "value": 500.0
+                                            "value": 500.00000000000017
                                         },
                                         "wave1": {
                                             "value": 1.0
@@ -30735,16 +30908,16 @@
                                             "value": 0.6
                                         },
                                         "dcw-decay": {
-                                            "value": 200.0
+                                            "value": 200.00000000000003
                                         },
                                         "dcw-attack": {
-                                            "value": 40.0
+                                            "value": 39.99999999999999
                                         },
                                         "velocity-tracking": {
                                             "value": 1.0
                                         },
                                         "pitch-decay": {
-                                            "value": 200.0
+                                            "value": 200.00000000000003
                                         },
                                         "pitch-sustain": {
                                             "value": 0.6
@@ -30753,13 +30926,13 @@
                                             "value": 0.0
                                         },
                                         "pitch-attack": {
-                                            "value": 40.0
+                                            "value": 39.99999999999999
                                         },
                                         "amp-attack": {
-                                            "value": 40.0
+                                            "value": 39.99999999999999
                                         },
                                         "amp-release": {
-                                            "value": 500.0
+                                            "value": 500.00000000000017
                                         },
                                         "dpm-depth": {
                                             "value": 0.0
@@ -30774,16 +30947,16 @@
                                             "value": 0.0
                                         },
                                         "pitch-release": {
-                                            "value": 500.0
+                                            "value": 500.00000000000017
                                         },
                                         "amp-sustain": {
                                             "value": 0.6
                                         },
                                         "amp-decay": {
-                                            "value": 200.0
+                                            "value": 200.00000000000003
                                         },
                                         "dcw-release": {
-                                            "value": 500.0
+                                            "value": 500.00000000000017
                                         },
                                         "wave1": {
                                             "value": 1.0
@@ -30807,16 +30980,16 @@
                                             "value": 0.6
                                         },
                                         "dcw-decay": {
-                                            "value": 200.0
+                                            "value": 200.00000000000003
                                         },
                                         "dcw-attack": {
-                                            "value": 40.0
+                                            "value": 39.99999999999999
                                         },
                                         "velocity-tracking": {
                                             "value": 1.0
                                         },
                                         "pitch-decay": {
-                                            "value": 200.0
+                                            "value": 200.00000000000003
                                         },
                                         "pitch-sustain": {
                                             "value": 0.6
@@ -30825,13 +30998,13 @@
                                             "value": 0.0
                                         },
                                         "pitch-attack": {
-                                            "value": 40.0
+                                            "value": 39.99999999999999
                                         },
                                         "amp-attack": {
-                                            "value": 40.0
+                                            "value": 39.99999999999999
                                         },
                                         "amp-release": {
-                                            "value": 500.0
+                                            "value": 500.00000000000017
                                         },
                                         "dpm-depth": {
                                             "value": 0.0
@@ -30846,16 +31019,16 @@
                                             "value": 0.0
                                         },
                                         "pitch-release": {
-                                            "value": 500.0
+                                            "value": 500.00000000000017
                                         },
                                         "amp-sustain": {
                                             "value": 0.6
                                         },
                                         "amp-decay": {
-                                            "value": 200.0
+                                            "value": 200.00000000000003
                                         },
                                         "dcw-release": {
-                                            "value": 500.0
+                                            "value": 500.00000000000017
                                         },
                                         "wave1": {
                                             "value": 1.0
@@ -30879,16 +31052,16 @@
                                             "value": 0.6
                                         },
                                         "dcw-decay": {
-                                            "value": 200.0
+                                            "value": 200.00000000000003
                                         },
                                         "dcw-attack": {
-                                            "value": 40.0
+                                            "value": 39.99999999999999
                                         },
                                         "velocity-tracking": {
                                             "value": 1.0
                                         },
                                         "pitch-decay": {
-                                            "value": 200.0
+                                            "value": 200.00000000000003
                                         },
                                         "pitch-sustain": {
                                             "value": 0.6
@@ -30897,13 +31070,13 @@
                                             "value": 0.0
                                         },
                                         "pitch-attack": {
-                                            "value": 40.0
+                                            "value": 39.99999999999999
                                         },
                                         "amp-attack": {
-                                            "value": 40.0
+                                            "value": 39.99999999999999
                                         },
                                         "amp-release": {
-                                            "value": 500.0
+                                            "value": 500.00000000000017
                                         },
                                         "dpm-depth": {
                                             "value": 0.0
@@ -30918,16 +31091,16 @@
                                             "value": 0.0
                                         },
                                         "pitch-release": {
-                                            "value": 500.0
+                                            "value": 500.00000000000017
                                         },
                                         "amp-sustain": {
                                             "value": 0.6
                                         },
                                         "amp-decay": {
-                                            "value": 200.0
+                                            "value": 200.00000000000003
                                         },
                                         "dcw-release": {
-                                            "value": 500.0
+                                            "value": 500.00000000000017
                                         },
                                         "wave1": {
                                             "value": 1.0
@@ -30951,16 +31124,16 @@
                                             "value": 0.6
                                         },
                                         "dcw-decay": {
-                                            "value": 200.0
+                                            "value": 200.00000000000003
                                         },
                                         "dcw-attack": {
-                                            "value": 40.0
+                                            "value": 39.99999999999999
                                         },
                                         "velocity-tracking": {
                                             "value": 1.0
                                         },
                                         "pitch-decay": {
-                                            "value": 200.0
+                                            "value": 200.00000000000003
                                         },
                                         "pitch-sustain": {
                                             "value": 0.6
@@ -30969,13 +31142,13 @@
                                             "value": 0.0
                                         },
                                         "pitch-attack": {
-                                            "value": 40.0
+                                            "value": 39.99999999999999
                                         },
                                         "amp-attack": {
-                                            "value": 40.0
+                                            "value": 39.99999999999999
                                         },
                                         "amp-release": {
-                                            "value": 500.0
+                                            "value": 500.00000000000017
                                         },
                                         "dpm-depth": {
                                             "value": 0.0
@@ -30990,16 +31163,16 @@
                                             "value": 0.0
                                         },
                                         "pitch-release": {
-                                            "value": 500.0
+                                            "value": 500.00000000000017
                                         },
                                         "amp-sustain": {
                                             "value": 0.6
                                         },
                                         "amp-decay": {
-                                            "value": 200.0
+                                            "value": 200.00000000000003
                                         },
                                         "dcw-release": {
-                                            "value": 500.0
+                                            "value": 500.00000000000017
                                         },
                                         "wave1": {
                                             "value": 1.0
@@ -31023,16 +31196,16 @@
                                             "value": 0.6
                                         },
                                         "dcw-decay": {
-                                            "value": 200.0
+                                            "value": 200.00000000000003
                                         },
                                         "dcw-attack": {
-                                            "value": 40.0
+                                            "value": 39.99999999999999
                                         },
                                         "velocity-tracking": {
                                             "value": 1.0
                                         },
                                         "pitch-decay": {
-                                            "value": 200.0
+                                            "value": 200.00000000000003
                                         },
                                         "pitch-sustain": {
                                             "value": 0.6
@@ -31041,13 +31214,13 @@
                                             "value": 0.0
                                         },
                                         "pitch-attack": {
-                                            "value": 40.0
+                                            "value": 39.99999999999999
                                         },
                                         "amp-attack": {
-                                            "value": 40.0
+                                            "value": 39.99999999999999
                                         },
                                         "amp-release": {
-                                            "value": 500.0
+                                            "value": 500.00000000000017
                                         },
                                         "dpm-depth": {
                                             "value": 0.0
@@ -31062,16 +31235,16 @@
                                             "value": 0.0
                                         },
                                         "pitch-release": {
-                                            "value": 500.0
+                                            "value": 500.00000000000017
                                         },
                                         "amp-sustain": {
                                             "value": 0.6
                                         },
                                         "amp-decay": {
-                                            "value": 200.0
+                                            "value": 200.00000000000003
                                         },
                                         "dcw-release": {
-                                            "value": 500.0
+                                            "value": 500.00000000000017
                                         },
                                         "wave1": {
                                             "value": 1.0
@@ -31095,16 +31268,16 @@
                                             "value": 0.6
                                         },
                                         "dcw-decay": {
-                                            "value": 200.0
+                                            "value": 200.00000000000003
                                         },
                                         "dcw-attack": {
-                                            "value": 40.0
+                                            "value": 39.99999999999999
                                         },
                                         "velocity-tracking": {
                                             "value": 1.0
                                         },
                                         "pitch-decay": {
-                                            "value": 200.0
+                                            "value": 200.00000000000003
                                         },
                                         "pitch-sustain": {
                                             "value": 0.6
@@ -31113,13 +31286,13 @@
                                             "value": 0.0
                                         },
                                         "pitch-attack": {
-                                            "value": 40.0
+                                            "value": 39.99999999999999
                                         },
                                         "amp-attack": {
-                                            "value": 40.0
+                                            "value": 39.99999999999999
                                         },
                                         "amp-release": {
-                                            "value": 500.0
+                                            "value": 500.00000000000017
                                         },
                                         "dpm-depth": {
                                             "value": 0.0
@@ -31134,16 +31307,16 @@
                                             "value": 0.0
                                         },
                                         "pitch-release": {
-                                            "value": 500.0
+                                            "value": 500.00000000000017
                                         },
                                         "amp-sustain": {
                                             "value": 0.6
                                         },
                                         "amp-decay": {
-                                            "value": 200.0
+                                            "value": 200.00000000000003
                                         },
                                         "dcw-release": {
-                                            "value": 500.0
+                                            "value": 500.00000000000017
                                         },
                                         "wave1": {
                                             "value": 1.0
@@ -31210,8 +31383,7 @@
                                         },
                                         "__sps": {
                                             "p_obj-6": {                                            },
-                                            "pad-to-index[1]": {                                            },
-                                            "index-to-note[2]": {                                            },
+                                            "index-to-note": {                                            },
                                             "lfo": {                                            },
                                             "p_obj-1": {
                                                 "zeropressure": {
@@ -31219,7 +31391,8 @@
                                                 }
                                             },
                                             "pad-to-index": {                                            },
-                                            "index-to-note": {                                            },
+                                            "index-to-note[1]": {                                            },
+                                            "pad-to-index[1]": {                                            },
                                             "ez101": [
                                                 {
                                                     "__sps": {
@@ -31230,16 +31403,16 @@
                                                         "value": 0.6
                                                     },
                                                     "dcw-decay": {
-                                                        "value": 200.0
+                                                        "value": 200.00000000000003
                                                     },
                                                     "dcw-attack": {
-                                                        "value": 40.0
+                                                        "value": 39.99999999999999
                                                     },
                                                     "velocity-tracking": {
                                                         "value": 1.0
                                                     },
                                                     "pitch-decay": {
-                                                        "value": 200.0
+                                                        "value": 200.00000000000003
                                                     },
                                                     "pitch-sustain": {
                                                         "value": 0.6
@@ -31248,13 +31421,13 @@
                                                         "value": 0.0
                                                     },
                                                     "pitch-attack": {
-                                                        "value": 40.0
+                                                        "value": 39.99999999999999
                                                     },
                                                     "amp-attack": {
-                                                        "value": 40.0
+                                                        "value": 39.99999999999999
                                                     },
                                                     "amp-release": {
-                                                        "value": 500.0
+                                                        "value": 500.00000000000017
                                                     },
                                                     "dpm-depth": {
                                                         "value": 0.0
@@ -31269,16 +31442,16 @@
                                                         "value": 0.0
                                                     },
                                                     "pitch-release": {
-                                                        "value": 500.0
+                                                        "value": 500.00000000000017
                                                     },
                                                     "amp-sustain": {
                                                         "value": 0.6
                                                     },
                                                     "amp-decay": {
-                                                        "value": 200.0
+                                                        "value": 200.00000000000003
                                                     },
                                                     "dcw-release": {
-                                                        "value": 500.0
+                                                        "value": 500.00000000000017
                                                     },
                                                     "wave1": {
                                                         "value": 1.0
@@ -31302,16 +31475,16 @@
                                                         "value": 0.6
                                                     },
                                                     "dcw-decay": {
-                                                        "value": 200.0
+                                                        "value": 200.00000000000003
                                                     },
                                                     "dcw-attack": {
-                                                        "value": 40.0
+                                                        "value": 39.99999999999999
                                                     },
                                                     "velocity-tracking": {
                                                         "value": 1.0
                                                     },
                                                     "pitch-decay": {
-                                                        "value": 200.0
+                                                        "value": 200.00000000000003
                                                     },
                                                     "pitch-sustain": {
                                                         "value": 0.6
@@ -31320,13 +31493,13 @@
                                                         "value": 0.0
                                                     },
                                                     "pitch-attack": {
-                                                        "value": 40.0
+                                                        "value": 39.99999999999999
                                                     },
                                                     "amp-attack": {
-                                                        "value": 40.0
+                                                        "value": 39.99999999999999
                                                     },
                                                     "amp-release": {
-                                                        "value": 500.0
+                                                        "value": 500.00000000000017
                                                     },
                                                     "dpm-depth": {
                                                         "value": 0.0
@@ -31341,16 +31514,16 @@
                                                         "value": 0.0
                                                     },
                                                     "pitch-release": {
-                                                        "value": 500.0
+                                                        "value": 500.00000000000017
                                                     },
                                                     "amp-sustain": {
                                                         "value": 0.6
                                                     },
                                                     "amp-decay": {
-                                                        "value": 200.0
+                                                        "value": 200.00000000000003
                                                     },
                                                     "dcw-release": {
-                                                        "value": 500.0
+                                                        "value": 500.00000000000017
                                                     },
                                                     "wave1": {
                                                         "value": 1.0
@@ -31374,16 +31547,16 @@
                                                         "value": 0.6
                                                     },
                                                     "dcw-decay": {
-                                                        "value": 200.0
+                                                        "value": 200.00000000000003
                                                     },
                                                     "dcw-attack": {
-                                                        "value": 40.0
+                                                        "value": 39.99999999999999
                                                     },
                                                     "velocity-tracking": {
                                                         "value": 1.0
                                                     },
                                                     "pitch-decay": {
-                                                        "value": 200.0
+                                                        "value": 200.00000000000003
                                                     },
                                                     "pitch-sustain": {
                                                         "value": 0.6
@@ -31392,13 +31565,13 @@
                                                         "value": 0.0
                                                     },
                                                     "pitch-attack": {
-                                                        "value": 40.0
+                                                        "value": 39.99999999999999
                                                     },
                                                     "amp-attack": {
-                                                        "value": 40.0
+                                                        "value": 39.99999999999999
                                                     },
                                                     "amp-release": {
-                                                        "value": 500.0
+                                                        "value": 500.00000000000017
                                                     },
                                                     "dpm-depth": {
                                                         "value": 0.0
@@ -31413,16 +31586,16 @@
                                                         "value": 0.0
                                                     },
                                                     "pitch-release": {
-                                                        "value": 500.0
+                                                        "value": 500.00000000000017
                                                     },
                                                     "amp-sustain": {
                                                         "value": 0.6
                                                     },
                                                     "amp-decay": {
-                                                        "value": 200.0
+                                                        "value": 200.00000000000003
                                                     },
                                                     "dcw-release": {
-                                                        "value": 500.0
+                                                        "value": 500.00000000000017
                                                     },
                                                     "wave1": {
                                                         "value": 1.0
@@ -31446,16 +31619,16 @@
                                                         "value": 0.6
                                                     },
                                                     "dcw-decay": {
-                                                        "value": 200.0
+                                                        "value": 200.00000000000003
                                                     },
                                                     "dcw-attack": {
-                                                        "value": 40.0
+                                                        "value": 39.99999999999999
                                                     },
                                                     "velocity-tracking": {
                                                         "value": 1.0
                                                     },
                                                     "pitch-decay": {
-                                                        "value": 200.0
+                                                        "value": 200.00000000000003
                                                     },
                                                     "pitch-sustain": {
                                                         "value": 0.6
@@ -31464,13 +31637,13 @@
                                                         "value": 0.0
                                                     },
                                                     "pitch-attack": {
-                                                        "value": 40.0
+                                                        "value": 39.99999999999999
                                                     },
                                                     "amp-attack": {
-                                                        "value": 40.0
+                                                        "value": 39.99999999999999
                                                     },
                                                     "amp-release": {
-                                                        "value": 500.0
+                                                        "value": 500.00000000000017
                                                     },
                                                     "dpm-depth": {
                                                         "value": 0.0
@@ -31485,16 +31658,16 @@
                                                         "value": 0.0
                                                     },
                                                     "pitch-release": {
-                                                        "value": 500.0
+                                                        "value": 500.00000000000017
                                                     },
                                                     "amp-sustain": {
                                                         "value": 0.6
                                                     },
                                                     "amp-decay": {
-                                                        "value": 200.0
+                                                        "value": 200.00000000000003
                                                     },
                                                     "dcw-release": {
-                                                        "value": 500.0
+                                                        "value": 500.00000000000017
                                                     },
                                                     "wave1": {
                                                         "value": 1.0
@@ -31518,16 +31691,16 @@
                                                         "value": 0.6
                                                     },
                                                     "dcw-decay": {
-                                                        "value": 200.0
+                                                        "value": 200.00000000000003
                                                     },
                                                     "dcw-attack": {
-                                                        "value": 40.0
+                                                        "value": 39.99999999999999
                                                     },
                                                     "velocity-tracking": {
                                                         "value": 1.0
                                                     },
                                                     "pitch-decay": {
-                                                        "value": 200.0
+                                                        "value": 200.00000000000003
                                                     },
                                                     "pitch-sustain": {
                                                         "value": 0.6
@@ -31536,13 +31709,13 @@
                                                         "value": 0.0
                                                     },
                                                     "pitch-attack": {
-                                                        "value": 40.0
+                                                        "value": 39.99999999999999
                                                     },
                                                     "amp-attack": {
-                                                        "value": 40.0
+                                                        "value": 39.99999999999999
                                                     },
                                                     "amp-release": {
-                                                        "value": 500.0
+                                                        "value": 500.00000000000017
                                                     },
                                                     "dpm-depth": {
                                                         "value": 0.0
@@ -31557,16 +31730,16 @@
                                                         "value": 0.0
                                                     },
                                                     "pitch-release": {
-                                                        "value": 500.0
+                                                        "value": 500.00000000000017
                                                     },
                                                     "amp-sustain": {
                                                         "value": 0.6
                                                     },
                                                     "amp-decay": {
-                                                        "value": 200.0
+                                                        "value": 200.00000000000003
                                                     },
                                                     "dcw-release": {
-                                                        "value": 500.0
+                                                        "value": 500.00000000000017
                                                     },
                                                     "wave1": {
                                                         "value": 1.0
@@ -31590,16 +31763,16 @@
                                                         "value": 0.6
                                                     },
                                                     "dcw-decay": {
-                                                        "value": 200.0
+                                                        "value": 200.00000000000003
                                                     },
                                                     "dcw-attack": {
-                                                        "value": 40.0
+                                                        "value": 39.99999999999999
                                                     },
                                                     "velocity-tracking": {
                                                         "value": 1.0
                                                     },
                                                     "pitch-decay": {
-                                                        "value": 200.0
+                                                        "value": 200.00000000000003
                                                     },
                                                     "pitch-sustain": {
                                                         "value": 0.6
@@ -31608,13 +31781,13 @@
                                                         "value": 0.0
                                                     },
                                                     "pitch-attack": {
-                                                        "value": 40.0
+                                                        "value": 39.99999999999999
                                                     },
                                                     "amp-attack": {
-                                                        "value": 40.0
+                                                        "value": 39.99999999999999
                                                     },
                                                     "amp-release": {
-                                                        "value": 500.0
+                                                        "value": 500.00000000000017
                                                     },
                                                     "dpm-depth": {
                                                         "value": 0.0
@@ -31629,16 +31802,16 @@
                                                         "value": 0.0
                                                     },
                                                     "pitch-release": {
-                                                        "value": 500.0
+                                                        "value": 500.00000000000017
                                                     },
                                                     "amp-sustain": {
                                                         "value": 0.6
                                                     },
                                                     "amp-decay": {
-                                                        "value": 200.0
+                                                        "value": 200.00000000000003
                                                     },
                                                     "dcw-release": {
-                                                        "value": 500.0
+                                                        "value": 500.00000000000017
                                                     },
                                                     "wave1": {
                                                         "value": 1.0
@@ -31662,16 +31835,16 @@
                                                         "value": 0.6
                                                     },
                                                     "dcw-decay": {
-                                                        "value": 200.0
+                                                        "value": 200.00000000000003
                                                     },
                                                     "dcw-attack": {
-                                                        "value": 40.0
+                                                        "value": 39.99999999999999
                                                     },
                                                     "velocity-tracking": {
                                                         "value": 1.0
                                                     },
                                                     "pitch-decay": {
-                                                        "value": 200.0
+                                                        "value": 200.00000000000003
                                                     },
                                                     "pitch-sustain": {
                                                         "value": 0.6
@@ -31680,13 +31853,13 @@
                                                         "value": 0.0
                                                     },
                                                     "pitch-attack": {
-                                                        "value": 40.0
+                                                        "value": 39.99999999999999
                                                     },
                                                     "amp-attack": {
-                                                        "value": 40.0
+                                                        "value": 39.99999999999999
                                                     },
                                                     "amp-release": {
-                                                        "value": 500.0
+                                                        "value": 500.00000000000017
                                                     },
                                                     "dpm-depth": {
                                                         "value": 0.0
@@ -31701,16 +31874,16 @@
                                                         "value": 0.0
                                                     },
                                                     "pitch-release": {
-                                                        "value": 500.0
+                                                        "value": 500.00000000000017
                                                     },
                                                     "amp-sustain": {
                                                         "value": 0.6
                                                     },
                                                     "amp-decay": {
-                                                        "value": 200.0
+                                                        "value": 200.00000000000003
                                                     },
                                                     "dcw-release": {
-                                                        "value": 500.0
+                                                        "value": 500.00000000000017
                                                     },
                                                     "wave1": {
                                                         "value": 1.0
@@ -31734,16 +31907,16 @@
                                                         "value": 0.6
                                                     },
                                                     "dcw-decay": {
-                                                        "value": 200.0
+                                                        "value": 200.00000000000003
                                                     },
                                                     "dcw-attack": {
-                                                        "value": 40.0
+                                                        "value": 39.99999999999999
                                                     },
                                                     "velocity-tracking": {
                                                         "value": 1.0
                                                     },
                                                     "pitch-decay": {
-                                                        "value": 200.0
+                                                        "value": 200.00000000000003
                                                     },
                                                     "pitch-sustain": {
                                                         "value": 0.6
@@ -31752,13 +31925,13 @@
                                                         "value": 0.0
                                                     },
                                                     "pitch-attack": {
-                                                        "value": 40.0
+                                                        "value": 39.99999999999999
                                                     },
                                                     "amp-attack": {
-                                                        "value": 40.0
+                                                        "value": 39.99999999999999
                                                     },
                                                     "amp-release": {
-                                                        "value": 500.0
+                                                        "value": 500.00000000000017
                                                     },
                                                     "dpm-depth": {
                                                         "value": 0.0
@@ -31773,16 +31946,16 @@
                                                         "value": 0.0
                                                     },
                                                     "pitch-release": {
-                                                        "value": 500.0
+                                                        "value": 500.00000000000017
                                                     },
                                                     "amp-sustain": {
                                                         "value": 0.6
                                                     },
                                                     "amp-decay": {
-                                                        "value": 200.0
+                                                        "value": 200.00000000000003
                                                     },
                                                     "dcw-release": {
-                                                        "value": 500.0
+                                                        "value": 500.00000000000017
                                                     },
                                                     "wave1": {
                                                         "value": 1.0
@@ -32528,6 +32701,14 @@
             "obj-93": [ "ez101/dcw-sustain", "ez101/dcw-sustain", 0 ],
             "obj-94": [ "ez101/dcw-decay", "ez101/dcw-decay", 0 ],
             "obj-95": [ "ez101/dcw-attack", "ez101/dcw-attack", 0 ],
+            "parameterbanks": {
+                "0": {
+                    "index": 0,
+                    "name": "",
+                    "parameters": [ "-", "-", "-", "-", "-", "-", "-", "-" ],
+                    "buttons": [ "-", "-", "-", "-", "-", "-", "-", "-" ]
+                }
+            },
             "inherited_shortname": 1
         },
         "autosave": 0
