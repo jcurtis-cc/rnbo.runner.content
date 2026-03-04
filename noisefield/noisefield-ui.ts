@@ -4,6 +4,8 @@
 //listout1 goes to outports for offsets
 //listout2 goes to LEDS
 
+@param offsetmul = 0.5;
+
 //setup initial colors
 function in2(_v: number) {
   //triggers
@@ -33,10 +35,8 @@ function in2(_v: number) {
 
 let m = listin1;
 
-let mul = 0.1;
-
 let addr = m[0];
-let value = (m[1] / 127.0) * mul;
+let value = (m[1] / 127.0) * offsetmul;
 
 //lower buttons go down, upper buttons go up
 if (addr < 8) {
