@@ -433,7 +433,7 @@
                         "classnamespace": "rnbo",
                         "rect": [ 109.0, 100.0, 1072.0, 928.0 ],
                         "default_fontname": "Lato",
-                        "title": "poli-container",
+                        "title": "ls-poli-mono",
                         "boxes": [
                             {
                                 "box": {
@@ -42859,7 +42859,7 @@
                                     "numinlets": 2,
                                     "numoutlets": 2,
                                     "outlettype": [ "", "" ],
-                                    "patching_rect": [ 978.0, 1087.5, 261.0, 37.0 ],
+                                    "patching_rect": [ 978.0, 1087.5, 262.0, 37.0 ],
                                     "rnbo_classname": "param",
                                     "rnbo_extra_attributes": {
                                         "order": "",
@@ -42874,7 +42874,7 @@
                                         "steps": 0.0,
                                         "fromnormalized": ""
                                     },
-                                    "rnbo_serial": 50,
+                                    "rnbo_serial": 67,
                                     "rnbo_uniqueid": "osc_noise_amp",
                                     "rnboinfo": {
                                         "needsInstanceInfo": 1,
@@ -43264,7 +43264,7 @@
                                         "versionId": -1093178486,
                                         "changesPatcherIO": 0
                                     },
-                                    "text": "param @name osc_noise_amp @min 0. @max 1. @value 0. @exponent 0. @displayorder 15",
+                                    "text": "param @name osc_noise_amp @min 0. @max 1. @value 0. @exponent 0.8 @displayorder 15",
                                     "varname": "osc_noise_amp"
                                 }
                             },
@@ -45042,7 +45042,7 @@
                             }
                         ]
                     },
-                    "patching_rect": [ 60.0, 496.0, 149.0, 22.0 ],
+                    "patching_rect": [ 60.0, 496.0, 142.0, 22.0 ],
                     "rnboattrcache": {
                         "mod_env_sustain": {
                             "label": "mod_env_sustain",
@@ -45355,7 +45355,7 @@
                             "osc_pitch_lfo_amt": {
                                 "value": 0.0
                             },
-                            "__presetid": "poli-container"
+                            "__presetid": "ls-poli-mono"
                         },
                         "snapshotlist": {
                             "current_snapshot": 0,
@@ -45365,7 +45365,7 @@
                                     "version": 2,
                                     "minorversion": 0,
                                     "name": "untitled",
-                                    "origin": "poli-container",
+                                    "origin": "ls-poli-mono",
                                     "type": "rnbo",
                                     "subtype": "",
                                     "embed": 1,
@@ -45505,20 +45505,20 @@
                                         "osc_pitch_lfo_amt": {
                                             "value": 0.0
                                         },
-                                        "__presetid": "poli-container"
+                                        "__presetid": "ls-poli-mono"
                                     },
                                     "fileref": {
                                         "name": "untitled",
-                                        "filename": "untitled_20260304.maxsnap",
+                                        "filename": "untitled_20260304_1.maxsnap",
                                         "filepath": "~/Documents/Max 9/Snapshots",
                                         "filepos": -1,
-                                        "snapshotfileid": "d586bdd7337ee352b6fdd7872ffdb921"
+                                        "snapshotfileid": "117c283494ca933f17f46ebcfcb4386e"
                                     }
                                 }
                             ]
                         }
                     },
-                    "text": "rnbo~ @title poli-container",
+                    "text": "rnbo~ @title ls-poli-mono",
                     "varname": "rnbo~"
                 }
             },
