@@ -6,29 +6,84 @@
 
 @param offsetmul = 0.5;
 
-//setup initial colors
-function in2(_v: number) {
+@state cur = new FixedFloatArray(5);
+@state last = new FixedFloatArray(5);
+@state xfade = new xfademul();
+
+function init() {
+  for (let i = 0; i < 5; i++) {
+    cur[i] = 0.5;
+    last[i] = 0.0;
+  }
+}
+
+function drawoffsets(index: Index) {
+  let color = new FixedFloatArray(3);
+  switch (index) {
+    case 0:
+      color[0] = 1.0;
+      break;
+    case 1:
+      color[1] = 1.0;
+      break;
+    case 2:
+      color[2] = 1.0;
+      break;
+    case 3:
+      color[0] = 1.0;
+      color[1] = 1.0;
+      break;
+    case 4:
+      //is this gonna work??
+      color[0] = 1.0;
+      color[1] = 1.0;
+      color[2] = 1.0;
+      break;
+  }
+
+
+  let pos = cur[index];
+
+  let upmul = xfade.next(0, pos);
+  let downmul = xfade.next(1, pos);
+
+  listout2 = [0, 8 + index, upmul * color[0], upmul * color[1], upmul * color[2]];
+  listout2 = [0, 0 + index, downmul * color[0], downmul * color[1], downmul * color[2]];
+
+}
+
+//macro and level values
+function listin2(v: list) {
+  let index = v[0];
+  let value = v[1];
+  cur[index] = value;
+}
+
+//metro 
+function in3(_v: number) {
+  for (let i = 0; i < 5; i++) {
+    if (cur[i] != last[i]) {
+      last[i] = cur[i];
+      drawoffsets(i);
+    }
+  }
+}
+
+function in4(_v: number) {
+  //setup initial colors
+  
   //triggers
   listout2 = [0, 24 + 0, 1, 0, 0];
   listout2 = [0, 24 + 1, 0, 1, 0];
   listout2 = [0, 24 + 2, 0, 0, 1];
   listout2 = [0, 24 + 3, 1, 1, 0];
 
-  //aftertouch
-  listout2 = [0, 0 + 0, 0.2, 0, 0];
-  listout2 = [0, 0 + 1, 0, 0.2, 0];
-  listout2 = [0, 0 + 2, 0, 0, 0.2];
-  listout2 = [0, 0 + 3, 0.2, 0.2, 0];
-  listout2 = [0, 0 + 4, 0.2, 0.2, 0.2];
-
-  listout2 = [0, 8 + 0, 0.2, 0, 0];
-  listout2 = [0, 8 + 1, 0, 0.2, 0];
-  listout2 = [0, 8 + 2, 0, 0, 0.2];
-  listout2 = [0, 8 + 3, 0.2, 0.2, 0];
-  listout2 = [0, 8 + 4, 0.2, 0.2, 0.2];
-
   //randomize
   listout2 = [0, 31, 0.5, 0.5, 0.5];
+
+  for (let i = 0; i < 5; i++) {
+    drawoffsets(i);
+  }
 }
 
 //process aftertouch to send OSC
