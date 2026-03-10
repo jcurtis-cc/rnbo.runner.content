@@ -1,8 +1,8 @@
 {
-    "name": "ez101",
+    "name": "progression-generator",
     "version": 1,
-    "creationdate": 3855410695,
-    "modificationdate": 3856021078,
+    "creationdate": 3855928387,
+    "modificationdate": 3855928449,
     "viewrect": [ 25.0, 119.0, 300.0, 500.0 ],
     "autoorganize": 1,
     "hideprojectwindow": 0,
@@ -10,18 +10,10 @@
     "autolocalize": 0,
     "contents": {
         "patchers": {
-            "ez101.maxpat": {
+            "progression-generator.maxpat": {
                 "kind": "patcher",
                 "local": 1,
                 "toplevel": 1
-            },
-            "input-driver.rnbopat": {
-                "kind": "rnbopat",
-                "local": 1,
-                "singleton": {
-                    "bootpath": "~/c74/rnbo.move.templates/patchers",
-                    "projectrelativepath": "../../rnbo.move.templates/patchers"
-                }
             },
             "led-driver.rnbopat": {
                 "kind": "rnbopat",
@@ -31,18 +23,15 @@
                     "projectrelativepath": "../../rnbo.move.templates/patchers"
                 }
             },
-            "flusher.maxpat": {
-                "kind": "patcher",
-                "local": 1
+            "input-driver.rnbopat": {
+                "kind": "rnbopat",
+                "local": 1,
+                "singleton": {
+                    "bootpath": "~/c74/rnbo.move.templates/patchers",
+                    "projectrelativepath": "../../rnbo.move.templates/patchers"
+                }
             }
-        },
-        "code": {
-            "pdosc.gendsp": {
-                "kind": "gendsp",
-                "local": 1
-            }
-        },
-        "data": {        }
+        }
     },
     "layout": {    },
     "searchpath": {    },

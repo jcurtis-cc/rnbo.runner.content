@@ -1,8 +1,8 @@
 {
-    "name": "ez101",
+    "name": "tuned-stepper",
     "version": 1,
-    "creationdate": 3855410695,
-    "modificationdate": 3856021078,
+    "creationdate": 3855997604,
+    "modificationdate": 3856021973,
     "viewrect": [ 25.0, 119.0, 300.0, 500.0 ],
     "autoorganize": 1,
     "hideprojectwindow": 0,
@@ -10,14 +10,10 @@
     "autolocalize": 0,
     "contents": {
         "patchers": {
-            "ez101.maxpat": {
-                "kind": "patcher",
-                "local": 1,
-                "toplevel": 1
-            },
             "input-driver.rnbopat": {
                 "kind": "rnbopat",
                 "local": 1,
+                "toplevel": 1,
                 "singleton": {
                     "bootpath": "~/c74/rnbo.move.templates/patchers",
                     "projectrelativepath": "../../rnbo.move.templates/patchers"
@@ -31,14 +27,13 @@
                     "projectrelativepath": "../../rnbo.move.templates/patchers"
                 }
             },
-            "flusher.maxpat": {
+            "tuned-stepper.maxpat": {
                 "kind": "patcher",
-                "local": 1
-            }
-        },
-        "code": {
-            "pdosc.gendsp": {
-                "kind": "gendsp",
+                "local": 1,
+                "toplevel": 1
+            },
+            "sequence-indicator.maxpat": {
+                "kind": "patcher",
                 "local": 1
             }
         },

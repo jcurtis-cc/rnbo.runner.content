@@ -3,8 +3,8 @@
         "fileversion": 1,
         "appversion": {
             "major": 9,
-            "minor": 2,
-            "revision": 0,
+            "minor": 1,
+            "revision": 1,
             "architecture": "x64",
             "modernui": 1
         },
@@ -75,8 +75,8 @@
                         "fileversion": 1,
                         "appversion": {
                             "major": 9,
-                            "minor": 2,
-                            "revision": 0,
+                            "minor": 1,
+                            "revision": 1,
                             "architecture": "x64",
                             "modernui": 1
                         },
@@ -87,16 +87,30 @@
                         "boxes": [
                             {
                                 "box": {
+                                    "id": "obj-23",
+                                    "maxclass": "newobj",
+                                    "numinlets": 2,
+                                    "numoutlets": 8,
+                                    "outlettype": [ "", "", "", "", "", "", "", "" ],
+                                    "patching_rect": [ 235.0, 203.0, 92.5, 23.0 ],
+                                    "rnbo_classname": "transport",
+                                    "rnbo_serial": 2,
+                                    "rnbo_uniqueid": "transport_obj-23",
+                                    "text": "transport"
+                                }
+                            },
+                            {
+                                "box": {
                                     "id": "obj-15",
                                     "maxclass": "newobj",
                                     "numinlets": 2,
                                     "numoutlets": 1,
                                     "outlettype": [ "" ],
-                                    "patching_rect": [ 114.0, 157.0, 60.0, 23.0 ],
+                                    "patching_rect": [ 235.0, 160.0, 60.0, 23.0 ],
                                     "rnbo_classname": "delay",
-                                    "rnbo_serial": 1,
+                                    "rnbo_serial": 2,
                                     "rnbo_uniqueid": "delay_obj-15",
-                                    "text": "delay 100"
+                                    "text": "delay 250"
                                 }
                             },
                             {
@@ -523,8 +537,8 @@
                                     "patching_rect": [ 711.0, 846.0, 52.0, 23.0 ],
                                     "rnbo_classname": "pack",
                                     "rnbo_extra_attributes": {
-                                        "length": 0.0,
-                                        "list": ""
+                                        "list": "",
+                                        "length": 0.0
                                     },
                                     "rnbo_serial": 1,
                                     "rnbo_uniqueid": "pack_obj-12",
@@ -707,9 +721,9 @@
                                     "patching_rect": [ 717.0, 605.0, 51.0, 23.0 ],
                                     "rnbo_classname": "cycle~",
                                     "rnbo_extra_attributes": {
-                                        "index": "freq",
                                         "interp": "linear",
-                                        "buffername": "RNBODefaultSinus"
+                                        "buffername": "RNBODefaultSinus",
+                                        "index": "freq"
                                     },
                                     "rnbo_serial": 1,
                                     "rnbo_uniqueid": "cycle~_obj-2",
@@ -1162,7 +1176,7 @@
                                     "rnbo_extra_attributes": {
                                         "mode": "default"
                                     },
-                                    "rnbo_serial": 2,
+                                    "rnbo_serial": 1,
                                     "rnbo_uniqueid": "change_obj-20",
                                     "text": "change -1"
                                 }
@@ -1177,8 +1191,8 @@
                                     "patching_rect": [ 177.0, 392.0, 38.0, 23.0 ],
                                     "rnbo_classname": "pak",
                                     "rnbo_extra_attributes": {
-                                        "length": 0.0,
-                                        "list": ""
+                                        "list": "",
+                                        "length": 0.0
                                     },
                                     "rnbo_serial": 1,
                                     "rnbo_uniqueid": "pak_obj-19",
@@ -1647,7 +1661,7 @@
                                     "numinlets": 1,
                                     "numoutlets": 1,
                                     "outlettype": [ "" ],
-                                    "patching_rect": [ 114.0, 110.0, 57.0, 23.0 ],
+                                    "patching_rect": [ 235.0, 113.0, 57.0, 23.0 ],
                                     "rnbo_classname": "loadbang",
                                     "rnbo_serial": 1,
                                     "rnbo_uniqueid": "loadbang_obj-8",
@@ -1697,12 +1711,12 @@
                                     "rnbo_classname": "p",
                                     "rnbo_extra_attributes": {
                                         "receivemode": "local",
-                                        "voicecontrol": "simple",
                                         "exposevoiceparams": 0,
                                         "args": [],
                                         "notecontroller": 0,
+                                        "polyphony": -1.0,
                                         "uidstyle": "auto",
-                                        "polyphony": -1.0
+                                        "voicecontrol": "simple"
                                     },
                                     "rnbo_serial": 1,
                                     "rnbo_uniqueid": "p_obj-4",
@@ -1924,12 +1938,12 @@
                                     "rnbo_classname": "p",
                                     "rnbo_extra_attributes": {
                                         "receivemode": "local",
-                                        "voicecontrol": "simple",
                                         "exposevoiceparams": 0,
                                         "args": [],
                                         "notecontroller": 0,
+                                        "polyphony": -1.0,
                                         "uidstyle": "auto",
-                                        "polyphony": -1.0
+                                        "voicecontrol": "simple"
                                     },
                                     "rnbo_serial": 2,
                                     "rnbo_uniqueid": "p_obj-3",
@@ -2168,7 +2182,7 @@
                             },
                             {
                                 "patchline": {
-                                    "destination": [ "obj-5", 0 ],
+                                    "destination": [ "obj-23", 0 ],
                                     "source": [ "obj-15", 0 ]
                                 }
                             },
@@ -2239,6 +2253,12 @@
                                 "patchline": {
                                     "destination": [ "obj-27", 0 ],
                                     "source": [ "obj-22", 1 ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [ "obj-19", 0 ],
+                                    "source": [ "obj-23", 6 ]
                                 }
                             },
                             {
@@ -2482,14 +2502,6 @@
         ],
         "parameters": {
             "obj-1": [ "rnbo~", "rnbo~", 0 ],
-            "parameterbanks": {
-                "0": {
-                    "index": 0,
-                    "name": "",
-                    "parameters": [ "-", "-", "-", "-", "-", "-", "-", "-" ],
-                    "buttons": [ "-", "-", "-", "-", "-", "-", "-", "-" ]
-                }
-            },
             "inherited_shortname": 1
         },
         "autosave": 0
