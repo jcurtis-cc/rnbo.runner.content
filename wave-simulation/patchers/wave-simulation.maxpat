@@ -132,6 +132,435 @@
                         "boxes": [
                             {
                                 "box": {
+                                    "id": "obj-34",
+                                    "maxclass": "newobj",
+                                    "numinlets": 2,
+                                    "numoutlets": 0,
+                                    "patching_rect": [ 843.0, 962.0, 49.0, 23.0 ],
+                                    "rnbo_classname": "midiout",
+                                    "rnbo_serial": 1,
+                                    "rnbo_uniqueid": "midiout_obj-34",
+                                    "text": "midiout"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-33",
+                                    "maxclass": "newobj",
+                                    "numinlets": 2,
+                                    "numoutlets": 1,
+                                    "outlettype": [ "" ],
+                                    "patching_rect": [ 843.0, 866.0, 44.0, 23.0 ],
+                                    "rnbo_classname": "pack",
+                                    "rnbo_extra_attributes": {
+                                        "length": 0.0,
+                                        "list": ""
+                                    },
+                                    "rnbo_serial": 3,
+                                    "rnbo_uniqueid": "pack_obj-33",
+                                    "rnboinfo": {
+                                        "needsInstanceInfo": 1,
+                                        "argnames": {
+                                            "out": {
+                                                "attrOrProp": 1,
+                                                "digest": "out",
+                                                "isalias": 0,
+                                                "aliases": [],
+                                                "attachable": 0,
+                                                "isparam": 0,
+                                                "deprecated": 0,
+                                                "touched": 0,
+                                                "outlet": 1,
+                                                "type": "list"
+                                            },
+                                            "in1": {
+                                                "attrOrProp": 1,
+                                                "digest": "number to be list element 1",
+                                                "defaultarg": 1,
+                                                "isalias": 0,
+                                                "aliases": [],
+                                                "attachable": 0,
+                                                "isparam": 0,
+                                                "deprecated": 0,
+                                                "touched": 0,
+                                                "inlet": 1,
+                                                "type": "number"
+                                            },
+                                            "in2": {
+                                                "attrOrProp": 1,
+                                                "digest": "number to be list element 2",
+                                                "defaultarg": 2,
+                                                "isalias": 0,
+                                                "aliases": [],
+                                                "attachable": 0,
+                                                "isparam": 0,
+                                                "deprecated": 0,
+                                                "touched": 0,
+                                                "inlet": 1,
+                                                "type": "number"
+                                            },
+                                            "length": {
+                                                "attrOrProp": 2,
+                                                "digest": "how many things to pack",
+                                                "isalias": 0,
+                                                "aliases": [],
+                                                "settable": 1,
+                                                "attachable": 0,
+                                                "isparam": 0,
+                                                "deprecated": 0,
+                                                "touched": 0,
+                                                "type": "number"
+                                            },
+                                            "list": {
+                                                "attrOrProp": 2,
+                                                "digest": "the list to initialize the {@objectname} object with",
+                                                "isalias": 0,
+                                                "aliases": [],
+                                                "settable": 1,
+                                                "attachable": 0,
+                                                "isparam": 0,
+                                                "deprecated": 0,
+                                                "touched": 0,
+                                                "type": "list"
+                                            }
+                                        },
+                                        "inputs": [
+                                            {
+                                                "name": "in1",
+                                                "type": [ "number", "bang" ],
+                                                "digest": "number to be list element 1",
+                                                "defaultarg": 1,
+                                                "hot": 1,
+                                                "docked": 0
+                                            },
+                                            {
+                                                "name": "in2",
+                                                "type": "number",
+                                                "digest": "number to be list element 2",
+                                                "defaultarg": 2,
+                                                "docked": 0
+                                            }
+                                        ],
+                                        "outputs": [
+                                            {
+                                                "name": "out",
+                                                "type": "list",
+                                                "digest": "out",
+                                                "docked": 0
+                                            }
+                                        ],
+                                        "helpname": "pack",
+                                        "aliasOf": "pack",
+                                        "classname": "pack",
+                                        "operator": 0,
+                                        "versionId": 1331432417,
+                                        "changesPatcherIO": 0
+                                    },
+                                    "text": "pack i i"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-32",
+                                    "maxclass": "newobj",
+                                    "numinlets": 7,
+                                    "numoutlets": 1,
+                                    "outlettype": [ "" ],
+                                    "patching_rect": [ 843.0, 906.0, 82.0, 23.0 ],
+                                    "rnbo_classname": "midiformat",
+                                    "rnbo_extra_attributes": {
+                                        "bendmode": "float"
+                                    },
+                                    "rnbo_serial": 1,
+                                    "rnbo_uniqueid": "midiformat_obj-32",
+                                    "rnboinfo": {
+                                        "needsInstanceInfo": 1,
+                                        "argnames": {
+                                            "midimessage": {
+                                                "attrOrProp": 1,
+                                                "digest": "MIDI Message Output",
+                                                "isalias": 0,
+                                                "aliases": [],
+                                                "attachable": 0,
+                                                "isparam": 0,
+                                                "deprecated": 0,
+                                                "touched": 0,
+                                                "outlet": 1,
+                                                "type": "number"
+                                            },
+                                            "noteonoroff": {
+                                                "attrOrProp": 1,
+                                                "digest": "Note-on or Note-off (list: pitch, velocity)",
+                                                "isalias": 0,
+                                                "aliases": [],
+                                                "attachable": 0,
+                                                "isparam": 0,
+                                                "deprecated": 0,
+                                                "touched": 0,
+                                                "inlet": 1,
+                                                "type": "list"
+                                            },
+                                            "polypressure": {
+                                                "attrOrProp": 1,
+                                                "digest": "Poly Key Pressure (list: Key, Value)",
+                                                "isalias": 0,
+                                                "aliases": [],
+                                                "attachable": 0,
+                                                "isparam": 0,
+                                                "deprecated": 0,
+                                                "touched": 0,
+                                                "inlet": 1,
+                                                "type": "list"
+                                            },
+                                            "controlchange": {
+                                                "attrOrProp": 1,
+                                                "digest": "Control Change (list: Controller Number, Value)",
+                                                "isalias": 0,
+                                                "aliases": [],
+                                                "attachable": 0,
+                                                "isparam": 0,
+                                                "deprecated": 0,
+                                                "touched": 0,
+                                                "inlet": 1,
+                                                "type": "list"
+                                            },
+                                            "programchange": {
+                                                "attrOrProp": 1,
+                                                "digest": "Program Change",
+                                                "isalias": 0,
+                                                "aliases": [],
+                                                "attachable": 0,
+                                                "isparam": 0,
+                                                "deprecated": 0,
+                                                "touched": 0,
+                                                "inlet": 1,
+                                                "type": "number"
+                                            },
+                                            "aftertouch": {
+                                                "attrOrProp": 1,
+                                                "digest": "After Touch",
+                                                "isalias": 0,
+                                                "aliases": [],
+                                                "attachable": 0,
+                                                "isparam": 0,
+                                                "deprecated": 0,
+                                                "touched": 0,
+                                                "inlet": 1,
+                                                "type": "number"
+                                            },
+                                            "pitchbend": {
+                                                "attrOrProp": 1,
+                                                "digest": "Pitch Bend (0 to 127)",
+                                                "isalias": 0,
+                                                "aliases": [],
+                                                "settable": 1,
+                                                "attachable": 0,
+                                                "isparam": 0,
+                                                "deprecated": 0,
+                                                "touched": 0,
+                                                "inlet": 1,
+                                                "type": "number",
+                                                "defaultValue": "64"
+                                            },
+                                            "channel": {
+                                                "attrOrProp": 1,
+                                                "digest": "Set MIDI Channel",
+                                                "defaultarg": 1,
+                                                "isalias": 0,
+                                                "aliases": [],
+                                                "settable": 1,
+                                                "attachable": 0,
+                                                "isparam": 0,
+                                                "deprecated": 0,
+                                                "touched": 0,
+                                                "inlet": 1,
+                                                "type": "number"
+                                            },
+                                            "bendmode": {
+                                                "attrOrProp": 2,
+                                                "digest": "Set pitch bend scaling",
+                                                "isalias": 0,
+                                                "aliases": [],
+                                                "settable": 1,
+                                                "attachable": 0,
+                                                "isparam": 0,
+                                                "deprecated": 0,
+                                                "touched": 0,
+                                                "enum": [ "lores", "float", "hires" ],
+                                                "type": "enum",
+                                                "defaultValue": "float"
+                                            }
+                                        },
+                                        "inputs": [
+                                            {
+                                                "name": "noteonoroff",
+                                                "type": "list",
+                                                "digest": "Note-on or Note-off (list: pitch, velocity)",
+                                                "hot": 1,
+                                                "docked": 0
+                                            },
+                                            {
+                                                "name": "polypressure",
+                                                "type": "list",
+                                                "digest": "Poly Key Pressure (list: Key, Value)",
+                                                "hot": 1,
+                                                "docked": 0
+                                            },
+                                            {
+                                                "name": "controlchange",
+                                                "type": "list",
+                                                "digest": "Control Change (list: Controller Number, Value)",
+                                                "hot": 1,
+                                                "docked": 0
+                                            },
+                                            {
+                                                "name": "programchange",
+                                                "type": "number",
+                                                "digest": "Program Change",
+                                                "hot": 1,
+                                                "docked": 0
+                                            },
+                                            {
+                                                "name": "aftertouch",
+                                                "type": "number",
+                                                "digest": "After Touch",
+                                                "hot": 1,
+                                                "docked": 0
+                                            },
+                                            {
+                                                "name": "pitchbend",
+                                                "type": "number",
+                                                "digest": "Pitch Bend (0 to 127)",
+                                                "hot": 1,
+                                                "docked": 0
+                                            },
+                                            {
+                                                "name": "channel",
+                                                "type": "number",
+                                                "digest": "Set MIDI Channel",
+                                                "defaultarg": 1,
+                                                "docked": 0
+                                            }
+                                        ],
+                                        "outputs": [
+                                            {
+                                                "name": "midimessage",
+                                                "type": "number",
+                                                "digest": "MIDI Message Output",
+                                                "docked": 0
+                                            }
+                                        ],
+                                        "helpname": "midiformat",
+                                        "aliasOf": "midiformat",
+                                        "classname": "midiformat",
+                                        "operator": 0,
+                                        "versionId": 370909632,
+                                        "changesPatcherIO": 0
+                                    },
+                                    "text": "midiformat"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-30",
+                                    "maxclass": "newobj",
+                                    "numinlets": 3,
+                                    "numoutlets": 2,
+                                    "outlettype": [ "", "" ],
+                                    "patching_rect": [ 843.0, 828.0, 107.0, 23.0 ],
+                                    "rnbo_classname": "makenote",
+                                    "rnbo_extra_attributes": {
+                                        "repeatmode": "none"
+                                    },
+                                    "rnbo_serial": 1,
+                                    "rnbo_uniqueid": "makenote_obj-30",
+                                    "text": "makenote 127 250"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-28",
+                                    "maxclass": "newobj",
+                                    "numinlets": 2,
+                                    "numoutlets": 1,
+                                    "outlettype": [ "" ],
+                                    "patching_rect": [ 843.0, 782.0, 32.0, 23.0 ],
+                                    "rnbo_classname": "+",
+                                    "rnbo_extra_attributes": {
+                                        "hot": 0
+                                    },
+                                    "rnbo_serial": 1,
+                                    "rnbo_uniqueid": "+_obj-28",
+                                    "text": "+ 36"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-27",
+                                    "maxclass": "newobj",
+                                    "numinlets": 2,
+                                    "numoutlets": 1,
+                                    "outlettype": [ "" ],
+                                    "patching_rect": [ 843.0, 748.0, 29.5, 23.0 ],
+                                    "rnbo_classname": "/",
+                                    "rnbo_extra_attributes": {
+                                        "hot": 0
+                                    },
+                                    "rnbo_serial": 1,
+                                    "rnbo_uniqueid": "/_obj-27",
+                                    "text": "/ 5"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-26",
+                                    "maxclass": "newobj",
+                                    "numinlets": 2,
+                                    "numoutlets": 1,
+                                    "outlettype": [ "" ],
+                                    "patching_rect": [ 843.0, 711.0, 30.0, 23.0 ],
+                                    "rnbo_classname": "*",
+                                    "rnbo_extra_attributes": {
+                                        "hot": 0
+                                    },
+                                    "rnbo_serial": 4,
+                                    "rnbo_uniqueid": "*_obj-26",
+                                    "text": "* 12"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-24",
+                                    "maxclass": "newobj",
+                                    "numinlets": 3,
+                                    "numoutlets": 1,
+                                    "outlettype": [ "" ],
+                                    "patching_rect": [ 982.0, 701.0, 59.0, 23.0 ],
+                                    "rnbo_classname": "clip",
+                                    "rnbo_extra_attributes": {
+                                        "hot": 0
+                                    },
+                                    "rnbo_serial": 4,
+                                    "rnbo_uniqueid": "clip_obj-24",
+                                    "text": "clip 1 127"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-19",
+                                    "maxclass": "newobj",
+                                    "numinlets": 2,
+                                    "numoutlets": 2,
+                                    "outlettype": [ "", "" ],
+                                    "patching_rect": [ 843.0, 617.0, 57.0, 23.0 ],
+                                    "rnbo_classname": "stripnote",
+                                    "rnbo_serial": 2,
+                                    "rnbo_uniqueid": "stripnote_obj-19",
+                                    "text": "stripnote"
+                                }
+                            },
+                            {
+                                "box": {
                                     "id": "obj-25",
                                     "maxclass": "newobj",
                                     "numinlets": 6,
@@ -1202,24 +1631,24 @@
                             },
                             {
                                 "box": {
-                                    "code": "@state pos = [];\r\n@state vel = [];\r\n\r\nconst nrows = 4;\r\nconst ncols = 8;\r\nconst kd = 0.98;\r\nconst kc = 0.01;\r\nconst vmin = 0.001;\r\n\r\nfunction init() {\r\n    for (let i = 0; i < 32; i++) {\r\n        pos.push(0);\r\n        vel.push(0);\r\n    \r\n    }\r\n}\r\n\r\nfunction in2(i) {\r\n    pos[i] = 10;\r\n}\r\n\r\nfunction lookup2d(l: list, row, col) {\r\n    if ((row < 0) || (col < 0) || (row >= nrows) || (col >= ncols)) {\r\n        return 0;\r\n    }\r\n    return l[row * ncols + col];\r\n}\r\n\r\nfunction update() {\r\n    let next_pos: list = pos.slice(); // copy\r\n    let next_vel: list = vel.slice();\r\n    for (let r = 0; r < nrows; r++) {\r\n        for (let c = 0; c < ncols; c++) {\r\n            let address = r * ncols + c;\r\n            next_vel[address] = next_vel[address] + kc * (\r\n                lookup2d(pos, r - 1, c) +\r\n                lookup2d(pos, r + 1, c) +\r\n                lookup2d(pos, r, c - 1) +\r\n                lookup2d(pos, r, c + 1) +\r\n                0.5 * lookup2d(pos, r + 1, c + 1) +\r\n                0.5 * lookup2d(pos, r + 1, c - 1) +\r\n                0.5 * lookup2d(pos, r - 1, c + 1) +\r\n                0.5 * lookup2d(pos, r - 1, c - 1) -\r\n                6 * lookup2d(pos, r, c)\r\n            );\r\n            next_vel[address] = kd * next_vel[address];\r\n            next_pos[address] = next_pos[address] +  next_vel[address];\r\n            if (abs(next_vel[address]) < vmin) {\r\n                next_pos[address] = 0;\r\n                next_vel[address] = 0;\r\n            }\r\n        }\r\n    }\r\n    pos = next_pos;\r\n    vel = next_vel;\r\n}\r\n\r\nlet dummy = in1;\r\nupdate();\r\nlistout1 = pos;",
+                                    "code": "@state pos = [];\r\n@state vel = [];\r\n\r\nconst nrows = 4;\r\nconst ncols = 8;\r\nconst kd = 0.99;\r\nconst kc = 0.01;\r\nconst vmin = 0.001;\r\n\r\nfunction init() {\r\n    for (let i = 0; i < 32; i++) {\r\n        pos.push(0);\r\n        vel.push(0);\r\n    \r\n    }\r\n}\r\n\r\nfunction in2(i) {\r\n    pos[i] = 10;\r\n    listout2 = [i, 127];\r\n}\r\n\r\nfunction lookup2d(l: list, row, col) {\r\n    if ((row < 0) || (col < 0) || (row >= nrows) || (col >= ncols)) {\r\n        return 0;\r\n    }\r\n    return l[row * ncols + col];\r\n}\r\n\r\nfunction update() {\r\n    let next_pos: list = pos.slice(); // copy\r\n    let next_vel: list = vel.slice();\r\n    for (let r = 0; r < nrows; r++) {\r\n        for (let c = 0; c < ncols; c++) {\r\n            let address = r * ncols + c;\r\n            next_vel[address] = next_vel[address] + kc * (\r\n                lookup2d(pos, r - 1, c) +\r\n                lookup2d(pos, r + 1, c) +\r\n                lookup2d(pos, r, c - 1) +\r\n                lookup2d(pos, r, c + 1) +\r\n                0.5 * lookup2d(pos, r + 1, c + 1) +\r\n                0.5 * lookup2d(pos, r + 1, c - 1) +\r\n                0.5 * lookup2d(pos, r - 1, c + 1) +\r\n                0.5 * lookup2d(pos, r - 1, c - 1) -\r\n                6 * lookup2d(pos, r, c)\r\n            );\r\n            let old_pos = next_pos[address];\r\n            next_vel[address] = kd * next_vel[address];\r\n            next_pos[address] = next_pos[address] +  next_vel[address];\r\n            if ((old_pos <= 0) && (next_pos[address] > 0)) {\r\n                listout2 = [address, floor(scale(next_vel[address], 0, 2, 1, 127, 0.5))];\r\n            }\r\n     \r\n            if (abs(next_vel[address]) < vmin) {\r\n                next_pos[address] = 0;\r\n                next_vel[address] = 0;\r\n            }\r\n        }\r\n    }\r\n    pos = next_pos;\r\n    vel = next_vel;\r\n}\r\n\r\nlet dummy = in1;\r\nupdate();\r\nlistout1 = pos;",
                                     "fontface": 0,
                                     "fontname": "<Monospaced>",
                                     "fontsize": 12.0,
                                     "id": "obj-3",
                                     "maxclass": "codebox",
                                     "numinlets": 2,
-                                    "numoutlets": 1,
-                                    "outlettype": [ "" ],
+                                    "numoutlets": 2,
+                                    "outlettype": [ "", "" ],
                                     "patching_rect": [ 81.0, 147.0, 623.0, 720.0 ],
                                     "rnbo_classname": "codebox",
                                     "rnbo_extra_attributes": {
                                         "hot": 0,
                                         "nocache": 0,
-                                        "code": "@state pos = [];\r\n@state vel = [];\r\n\r\nconst nrows = 4;\r\nconst ncols = 8;\r\nconst kd = 0.98;\r\nconst kc = 0.01;\r\nconst vmin = 0.001;\r\n\r\nfunction init() {\r\n    for (let i = 0; i < 32; i++) {\r\n        pos.push(0);\r\n        vel.push(0);\r\n    \r\n    }\r\n}\r\n\r\nfunction in2(i) {\r\n    pos[i] = 10;\r\n}\r\n\r\nfunction lookup2d(l: list, row, col) {\r\n    if ((row < 0) || (col < 0) || (row >= nrows) || (col >= ncols)) {\r\n        return 0;\r\n    }\r\n    return l[row * ncols + col];\r\n}\r\n\r\nfunction update() {\r\n    let next_pos: list = pos.slice(); // copy\r\n    let next_vel: list = vel.slice();\r\n    for (let r = 0; r < nrows; r++) {\r\n        for (let c = 0; c < ncols; c++) {\r\n            let address = r * ncols + c;\r\n            next_vel[address] = next_vel[address] + kc * (\r\n                lookup2d(pos, r - 1, c) +\r\n                lookup2d(pos, r + 1, c) +\r\n                lookup2d(pos, r, c - 1) +\r\n                lookup2d(pos, r, c + 1) +\r\n                0.5 * lookup2d(pos, r + 1, c + 1) +\r\n                0.5 * lookup2d(pos, r + 1, c - 1) +\r\n                0.5 * lookup2d(pos, r - 1, c + 1) +\r\n                0.5 * lookup2d(pos, r - 1, c - 1) -\r\n                6 * lookup2d(pos, r, c)\r\n            );\r\n            next_vel[address] = kd * next_vel[address];\r\n            next_pos[address] = next_pos[address] +  next_vel[address];\r\n            if (abs(next_vel[address]) < vmin) {\r\n                next_pos[address] = 0;\r\n                next_vel[address] = 0;\r\n            }\r\n        }\r\n    }\r\n    pos = next_pos;\r\n    vel = next_vel;\r\n}\r\n\r\nlet dummy = in1;\r\nupdate();\r\nlistout1 = pos;",
+                                        "code": "@state pos = [];\r\n@state vel = [];\r\n\r\nconst nrows = 4;\r\nconst ncols = 8;\r\nconst kd = 0.99;\r\nconst kc = 0.01;\r\nconst vmin = 0.001;\r\n\r\nfunction init() {\r\n    for (let i = 0; i < 32; i++) {\r\n        pos.push(0);\r\n        vel.push(0);\r\n    \r\n    }\r\n}\r\n\r\nfunction in2(i) {\r\n    pos[i] = 10;\r\n    listout2 = [i, 127];\r\n}\r\n\r\nfunction lookup2d(l: list, row, col) {\r\n    if ((row < 0) || (col < 0) || (row >= nrows) || (col >= ncols)) {\r\n        return 0;\r\n    }\r\n    return l[row * ncols + col];\r\n}\r\n\r\nfunction update() {\r\n    let next_pos: list = pos.slice(); // copy\r\n    let next_vel: list = vel.slice();\r\n    for (let r = 0; r < nrows; r++) {\r\n        for (let c = 0; c < ncols; c++) {\r\n            let address = r * ncols + c;\r\n            next_vel[address] = next_vel[address] + kc * (\r\n                lookup2d(pos, r - 1, c) +\r\n                lookup2d(pos, r + 1, c) +\r\n                lookup2d(pos, r, c - 1) +\r\n                lookup2d(pos, r, c + 1) +\r\n                0.5 * lookup2d(pos, r + 1, c + 1) +\r\n                0.5 * lookup2d(pos, r + 1, c - 1) +\r\n                0.5 * lookup2d(pos, r - 1, c + 1) +\r\n                0.5 * lookup2d(pos, r - 1, c - 1) -\r\n                6 * lookup2d(pos, r, c)\r\n            );\r\n            let old_pos = next_pos[address];\r\n            next_vel[address] = kd * next_vel[address];\r\n            next_pos[address] = next_pos[address] +  next_vel[address];\r\n            if ((old_pos <= 0) && (next_pos[address] > 0)) {\r\n                listout2 = [address, floor(scale(next_vel[address], 0, 2, 1, 127, 0.5))];\r\n            }\r\n     \r\n            if (abs(next_vel[address]) < vmin) {\r\n                next_pos[address] = 0;\r\n                next_vel[address] = 0;\r\n            }\r\n        }\r\n    }\r\n    pos = next_pos;\r\n    vel = next_vel;\r\n}\r\n\r\nlet dummy = in1;\r\nupdate();\r\nlistout1 = pos;",
                                         "safemath": 1
                                     },
-                                    "rnbo_serial": 1,
+                                    "rnbo_serial": 17,
                                     "rnbo_uniqueid": "codebox_obj-3",
                                     "rnboinfo": {
                                         "needsInstanceInfo": 1,
@@ -1264,6 +1693,19 @@
                                             "out1": {
                                                 "attrOrProp": 1,
                                                 "digest": "out1",
+                                                "isalias": 0,
+                                                "aliases": [],
+                                                "settable": 0,
+                                                "attachable": 0,
+                                                "isparam": 0,
+                                                "deprecated": 0,
+                                                "touched": 0,
+                                                "outlet": 1,
+                                                "type": "list"
+                                            },
+                                            "out2": {
+                                                "attrOrProp": 1,
+                                                "digest": "out2",
                                                 "isalias": 0,
                                                 "aliases": [],
                                                 "settable": 0,
@@ -1348,6 +1790,12 @@
                                                 "name": "out1",
                                                 "type": "list",
                                                 "digest": "out1",
+                                                "docked": 0
+                                            },
+                                            {
+                                                "name": "out2",
+                                                "type": "list",
+                                                "digest": "out2",
                                                 "docked": 0
                                             }
                                         ],
@@ -1846,6 +2294,18 @@
                             },
                             {
                                 "patchline": {
+                                    "destination": [ "obj-24", 0 ],
+                                    "source": [ "obj-19", 1 ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [ "obj-26", 0 ],
+                                    "source": [ "obj-19", 0 ]
+                                }
+                            },
+                            {
+                                "patchline": {
                                     "destination": [ "obj-4", 0 ],
                                     "source": [ "obj-2", 0 ]
                                 }
@@ -1866,6 +2326,12 @@
                                 "patchline": {
                                     "destination": [ "obj-15", 4 ],
                                     "source": [ "obj-22", 0 ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [ "obj-30", 1 ],
+                                    "source": [ "obj-24", 0 ]
                                 }
                             },
                             {
@@ -1891,9 +2357,57 @@
                             },
                             {
                                 "patchline": {
+                                    "destination": [ "obj-27", 0 ],
+                                    "source": [ "obj-26", 0 ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [ "obj-28", 0 ],
+                                    "source": [ "obj-27", 0 ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [ "obj-30", 0 ],
+                                    "source": [ "obj-28", 0 ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [ "obj-19", 0 ],
+                                    "source": [ "obj-3", 1 ]
+                                }
+                            },
+                            {
+                                "patchline": {
                                     "destination": [ "obj-8", 0 ],
                                     "midpoints": [ 90.5, 903.31640625, 752.9765625, 903.31640625, 752.9765625, 144.0, 817.5, 144.0 ],
                                     "source": [ "obj-3", 0 ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [ "obj-33", 1 ],
+                                    "source": [ "obj-30", 1 ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [ "obj-33", 0 ],
+                                    "source": [ "obj-30", 0 ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [ "obj-34", 0 ],
+                                    "source": [ "obj-32", 0 ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [ "obj-32", 0 ],
+                                    "source": [ "obj-33", 0 ]
                                 }
                             },
                             {
