@@ -4,7 +4,7 @@
         "appversion": {
             "major": 9,
             "minor": 1,
-            "revision": 1,
+            "revision": 3,
             "architecture": "x64",
             "modernui": 1
         },
@@ -13,23 +13,23 @@
         "boxes": [
             {
                 "box": {
-                    "id": "obj-3",
-                    "maxclass": "newobj",
+                    "id": "obj-4",
+                    "linecount": 3,
+                    "maxclass": "comment",
                     "numinlets": 1,
                     "numoutlets": 0,
-                    "patching_rect": [ 185.5, 202.0, 47.0, 22.0 ],
-                    "text": "midiout"
+                    "patching_rect": [ 81.0, 75.0, 150.0, 47.0 ],
+                    "text": "Simply shows on the steps LEDs the current 16th note count."
                 }
             },
             {
                 "box": {
-                    "id": "obj-2",
+                    "id": "obj-3",
                     "maxclass": "newobj",
                     "numinlets": 1,
-                    "numoutlets": 1,
-                    "outlettype": [ "int" ],
-                    "patching_rect": [ 195.0, 52.0, 40.0, 22.0 ],
-                    "text": "midiin"
+                    "numoutlets": 0,
+                    "patching_rect": [ 81.0, 184.0, 47.0, 22.0 ],
+                    "text": "midiout"
                 }
             },
             {
@@ -58,7 +58,7 @@
                         "appversion": {
                             "major": 9,
                             "minor": 1,
-                            "revision": 1,
+                            "revision": 3,
                             "architecture": "x64",
                             "modernui": 1
                         },
@@ -76,15 +76,15 @@
                                     "patching_rect": [ 637.0, 584.0, 98.0, 23.0 ],
                                     "rnbo_classname": "p",
                                     "rnbo_extra_attributes": {
-                                        "receivemode": "local",
                                         "exposevoiceparams": 0,
-                                        "args": [],
-                                        "notecontroller": 0,
-                                        "polyphony": -1.0,
                                         "uidstyle": "auto",
-                                        "voicecontrol": "simple"
+                                        "voicecontrol": "simple",
+                                        "notecontroller": 0,
+                                        "args": [],
+                                        "polyphony": -1.0,
+                                        "receivemode": "local"
                                     },
-                                    "rnbo_serial": 3,
+                                    "rnbo_serial": 1,
                                     "rnbo_uniqueid": "p_obj-19",
                                     "rnboinfo": {
                                         "needsInstanceInfo": 1,
@@ -269,38 +269,6 @@
                             },
                             {
                                 "box": {
-                                    "id": "obj-20",
-                                    "maxclass": "message",
-                                    "numinlets": 2,
-                                    "numoutlets": 1,
-                                    "outlettype": [ "" ],
-                                    "patching_rect": [ 351.0, 691.0, 46.0, 23.0 ],
-                                    "rnbo_classname": "message",
-                                    "rnbo_extra_attributes": {
-                                        "storeempty": 0,
-                                        "text": ""
-                                    },
-                                    "rnbo_serial": 2,
-                                    "rnbo_uniqueid": "message_obj-20",
-                                    "text": "60 127"
-                                }
-                            },
-                            {
-                                "box": {
-                                    "id": "obj-18",
-                                    "maxclass": "newobj",
-                                    "numinlets": 5,
-                                    "numoutlets": 1,
-                                    "outlettype": [ "" ],
-                                    "patching_rect": [ 351.0, 750.0, 61.0, 23.0 ],
-                                    "rnbo_classname": "noteout",
-                                    "rnbo_serial": 1,
-                                    "rnbo_uniqueid": "noteout_obj-18",
-                                    "text": "noteout"
-                                }
-                            },
-                            {
-                                "box": {
                                     "id": "obj-16",
                                     "maxclass": "newobj",
                                     "numinlets": 2,
@@ -329,7 +297,7 @@
                                         "storeempty": 0,
                                         "text": ""
                                     },
-                                    "rnbo_serial": 3,
+                                    "rnbo_serial": 2,
                                     "rnbo_uniqueid": "message_obj-15",
                                     "text": "0.2 0.2 0.2"
                                 }
@@ -347,7 +315,7 @@
                                         "storeempty": 0,
                                         "text": ""
                                     },
-                                    "rnbo_serial": 4,
+                                    "rnbo_serial": 3,
                                     "rnbo_uniqueid": "message_obj-13",
                                     "text": "1 1 1"
                                 }
@@ -559,9 +527,6 @@
                                     "outlettype": [ "", "" ],
                                     "patching_rect": [ 637.0, 318.0, 29.5, 23.0 ],
                                     "rnbo_classname": "t",
-                                    "rnbo_extra_attributes": {
-                                        "triggers": ""
-                                    },
                                     "rnbo_serial": 1,
                                     "rnbo_uniqueid": "t_obj-7",
                                     "rnboinfo": {
@@ -651,9 +616,6 @@
                                     "outlettype": [ "", "" ],
                                     "patching_rect": [ 643.0, 180.0, 29.5, 23.0 ],
                                     "rnbo_classname": "t",
-                                    "rnbo_extra_attributes": {
-                                        "triggers": ""
-                                    },
                                     "rnbo_serial": 2,
                                     "rnbo_uniqueid": "t_obj-6",
                                     "rnboinfo": {
@@ -1160,12 +1122,6 @@
                             },
                             {
                                 "patchline": {
-                                    "destination": [ "obj-18", 0 ],
-                                    "source": [ "obj-20", 0 ]
-                                }
-                            },
-                            {
-                                "patchline": {
                                     "destination": [ "obj-208", 1 ],
                                     "source": [ "obj-207", 0 ]
                                 }
@@ -1286,9 +1242,9 @@
                             }
                         ]
                     },
-                    "patching_rect": [ 103.0, 114.0, 212.0, 22.0 ],
+                    "patching_rect": [ 81.0, 133.0, 212.0, 22.0 ],
                     "rnboattrcache": {                    },
-                    "rnboversion": "1.4.3-control.2",
+                    "rnboversion": "1.4.3",
                     "saved_attribute_attributes": {
                         "valueof": {
                             "parameter_invisible": 1,

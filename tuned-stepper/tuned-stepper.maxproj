@@ -2,8 +2,8 @@
     "name": "tuned-stepper",
     "version": 1,
     "creationdate": 3855997604,
-    "modificationdate": 3856021973,
-    "viewrect": [ 25.0, 119.0, 300.0, 500.0 ],
+    "modificationdate": 3856264664,
+    "viewrect": [ 160.0, 209.0, 300.0, 500.0 ],
     "autoorganize": 1,
     "hideprojectwindow": 0,
     "showdependencies": 1,
@@ -30,14 +30,11 @@
             "tuned-stepper.maxpat": {
                 "kind": "patcher",
                 "local": 1,
-                "toplevel": 1
-            },
-            "sequence-indicator.maxpat": {
-                "kind": "patcher",
-                "local": 1
+                "toplevel": 1,
+                "disclosed": 0
             }
         },
-        "data": {        }
+        "other": {        }
     },
     "layout": {    },
     "searchpath": {    },
