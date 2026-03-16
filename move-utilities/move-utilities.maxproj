@@ -2,7 +2,7 @@
     "name": "move-utilities",
     "version": 1,
     "creationdate": 3856028575,
-    "modificationdate": 3856265475,
+    "modificationdate": 3856518317,
     "viewrect": [ 25.0, 119.0, 300.0, 500.0 ],
     "autoorganize": 1,
     "hideprojectwindow": 0,
@@ -16,11 +16,7 @@
             },
             "transport-controller-rnbo.maxpat": {
                 "kind": "patcher",
-                "local": 1,
-                "singleton": {
-                    "bootpath": "~/c74/rnbo.runner.content/chill-sunset/patchers",
-                    "projectrelativepath": "../chill-sunset/patchers"
-                }
+                "local": 1
             },
             "sequence-indicator.maxpat": {
                 "kind": "patcher",
@@ -51,6 +47,10 @@
                 "local": 1
             },
             "simple-track-controller.maxpat": {
+                "kind": "patcher",
+                "local": 1
+            },
+            "view-midi-gate.maxpat": {
                 "kind": "patcher",
                 "local": 1
             }
