@@ -2,6 +2,12 @@
 
 This repo has several patches that we've built for the [rnbo.oscquery.runner](https://github.com/Cycling74/rnbo.oscquery.runner) aka "rnbo runner". Some of these are designed specifically to work with the [RNBO Move Takeover](https://cycling74.com/products/rnbo/move), and support custom interaction with the Move interface. In fact, the built-in example Graph Sets that come with the RNBO Move Takeover Installer were built using the examples in this repository. However, most examples patchers will run on a regular Raspberry Pi without issue, and many (especially synthesizers and effects) are particularly useful on that target as well.
 
+## Usage with Move
+
+Many of these examples are designed specifically to run on Ableton Move. For example, Granulator 3, NoiseField, and EZ101 are all designed for Move, and support interaction with the LEDs and screen on that platform. However, the patcher itself is usually part of a larger setup, with multiple patches running together in a single graph. You can build graphs like this yourself using the [RNBO Graph Editor](https://rnbo.cycling74.com/learn/patching-for-the-move#web-interface-and-move). If you export one of these examples to the Move, you might hear the sound you expect, but you won't necessarily see the full behavior.
+
+The full graphs for these examples are available on the [Releases page of this repository](https://github.com/Cycling74/rnbo.runner.content/releases). To run these on the Move, import the `.rnbopack` file. You can read more about [importing and exporting packages here](https://rnbo.cycling74.com/learn/importing-and-exporting-packages).
+
 ## Installation
 
 The Max projects contained in this repository do not need to be installed in any particular location, and you should be able to open them anywhere. However, many examples use templates from the [RNBO Move Templates](https://github.com/Cycling74/rnbo.move.templates) package, and you should install this first.
