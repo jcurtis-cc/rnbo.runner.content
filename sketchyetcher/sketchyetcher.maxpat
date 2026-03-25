@@ -66,6 +66,51 @@
                         "boxes": [
                             {
                                 "box": {
+                                    "id": "obj-19",
+                                    "linecount": 3,
+                                    "maxclass": "comment",
+                                    "numinlets": 1,
+                                    "numoutlets": 0,
+                                    "patching_rect": [ 149.0, 104.0, 150.0, 50.0 ],
+                                    "text": "invert direction as the turn doesn't make sense otherwise"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-17",
+                                    "maxclass": "newobj",
+                                    "numinlets": 1,
+                                    "numoutlets": 1,
+                                    "outlettype": [ "" ],
+                                    "patching_rect": [ 105.0, 140.0, 26.0, 23.0 ],
+                                    "rnbo_classname": "abs",
+                                    "rnbo_extra_attributes": {
+                                        "hot": 0
+                                    },
+                                    "rnbo_serial": 1,
+                                    "rnbo_uniqueid": "abs_obj-17",
+                                    "text": "abs"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-6",
+                                    "maxclass": "newobj",
+                                    "numinlets": 2,
+                                    "numoutlets": 1,
+                                    "outlettype": [ "" ],
+                                    "patching_rect": [ 105.0, 113.0, 30.0, 23.0 ],
+                                    "rnbo_classname": "-",
+                                    "rnbo_extra_attributes": {
+                                        "hot": 0
+                                    },
+                                    "rnbo_serial": 2,
+                                    "rnbo_uniqueid": "-_obj-6",
+                                    "text": "- 63"
+                                }
+                            },
+                            {
+                                "box": {
                                     "id": "obj-27",
                                     "maxclass": "newobj",
                                     "numinlets": 1,
@@ -73,9 +118,6 @@
                                     "outlettype": [ "" ],
                                     "patching_rect": [ 707.0, 651.0, 23.0, 23.0 ],
                                     "rnbo_classname": "t",
-                                    "rnbo_extra_attributes": {
-                                        "triggers": ""
-                                    },
                                     "rnbo_serial": 1,
                                     "rnbo_uniqueid": "t_obj-27",
                                     "rnboinfo": {
@@ -281,13 +323,13 @@
                                     "patching_rect": [ 788.0, 609.0, 99.0, 23.0 ],
                                     "rnbo_classname": "p",
                                     "rnbo_extra_attributes": {
-                                        "receivemode": "local",
-                                        "voicecontrol": "simple",
-                                        "exposevoiceparams": 0,
-                                        "args": [],
-                                        "notecontroller": 0,
                                         "uidstyle": "auto",
-                                        "polyphony": -1.0
+                                        "notecontroller": 0,
+                                        "polyphony": -1.0,
+                                        "voicecontrol": "simple",
+                                        "args": [],
+                                        "receivemode": "local",
+                                        "exposevoiceparams": 0
                                     },
                                     "rnbo_serial": 1,
                                     "rnbo_uniqueid": "p_obj-15",
@@ -760,13 +802,13 @@
                                     "patching_rect": [ 621.0, 80.0, 110.0, 23.0 ],
                                     "rnbo_classname": "p",
                                     "rnbo_extra_attributes": {
-                                        "receivemode": "local",
-                                        "voicecontrol": "simple",
-                                        "exposevoiceparams": 0,
-                                        "args": [],
-                                        "notecontroller": 0,
                                         "uidstyle": "auto",
-                                        "polyphony": -1.0
+                                        "notecontroller": 0,
+                                        "polyphony": -1.0,
+                                        "voicecontrol": "simple",
+                                        "args": [],
+                                        "receivemode": "local",
+                                        "exposevoiceparams": 0
                                     },
                                     "rnbo_serial": 2,
                                     "rnbo_uniqueid": "p_obj-7",
@@ -985,7 +1027,7 @@
                                     "numinlets": 1,
                                     "numoutlets": 1,
                                     "outlettype": [ "" ],
-                                    "patching_rect": [ 105.0, 102.0, 33.0, 23.0 ],
+                                    "patching_rect": [ 103.5, 170.0, 33.0, 23.0 ],
                                     "rnbo_classname": "set",
                                     "rnbo_serial": 1,
                                     "rnbo_uniqueid": "set_obj-5",
@@ -1118,9 +1160,9 @@
                                     "rnbo_classname": "data",
                                     "rnbo_extra_attributes": {
                                         "fill": "",
+                                        "samplerate": 0.0,
                                         "file": "",
-                                        "preset": 0,
-                                        "samplerate": 0.0
+                                        "preset": 0
                                     },
                                     "rnbo_serial": 1,
                                     "rnbo_uniqueid": "data_obj-12",
@@ -1435,8 +1477,8 @@
                                     "patching_rect": [ 47.0, 237.0, 591.0, 449.0 ],
                                     "rnbo_classname": "codebox",
                                     "rnbo_extra_attributes": {
-                                        "safemath": 1,
                                         "hot": 0,
+                                        "safemath": 1,
                                         "nocache": 0,
                                         "code": "@state clear = 1;\n@state draw = new display(\"display\", 128, 64);\n\n@param x = 64;\n@param y = 32;\n@state x_last = 64;\n@state y_last = 31;\n\nfunction in2(_v) {\n  clear = 1;\n}\n\nlet _dummy = in1;\n\n// Bresenham's line algorithm\n// Original Source: https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm\n// Authors: Wikipedia contributors\n// License: CC BY-SA 4.0 (https://creativecommons.org)\n// Modifications: modified for RNBO Script\n\nfunction plotlow(x0: Int, y0: Int, x1: Int, y1: Int) {\n  let dx: Int = x1 - x0;\n  let dy: Int = y1 - y0;\n  let yi: Int = 1;\n  if (dy < 0) {\n    yi = -1;\n    dy = -dy;\n  }\n  let D: Int = (2 * dy) - dx;\n  let y_cur: Int = y0;\n\n  //x0 is always than x1 or equal to\n  for (let x_cur: Int = x0; x_cur <= x1; x_cur++) {\n    draw.setpixel(y_cur, x_cur, 1);\n    if (D > 0) {\n      y_cur = y_cur + yi;\n      D = D + (2 * (dy - dx));\n    } else {\n      D = D + 2 * dy;\n    }\n  }\n}\n\nfunction plothigh(x0: Int, y0: Int, x1: Int, y1: Int) {\n  let dx: Int = x1 - x0;\n  let dy: Int = y1 - y0;\n  let xi: Int = 1;\n  if (dx < 0) {\n    xi = -1\n    dx = -dx\n  }\n  let D: Int = (2 * dx) - dy;\n  let x_cur: Int = x0;\n\n  //y0 is always <= y1\n  for (let y_cur: Int = y0; y_cur <= y1; y_cur++) {\n    draw.setpixel(y_cur, x_cur, 1);\n    if (D > 0) {\n      x_cur = x_cur + xi;\n      D = D + (2 * (dx - dy));\n    } else {\n      D = D + 2*dx;\n    }\n  }\n}\n\nfunction plot(x0: Int, y0: Int, x1: Int, y1: Int) {\n  if (abs(y1 - y0) < abs(x1 - x0)) {\n    if (x0 > x1) {\n      plotlow(x1, y1, x0, y0);\n    } else {\n      plotlow(x0, y0, x1, y1);\n    }\n  } else {\n    if (y0 > y1) {\n      plothigh(x1, y1, x0, y0);\n    } else {\n      plothigh(x0, y0, x1, y1);\n    }\n  }\n}\n\n// end of Bresenham's line algorithm\n\nif (draw.ready() && (clear || x != x_last || y != y_last)) {\n  if (clear) {\n    clear = 0;\n    draw.clear();\n    draw.setpixel(y, x, 1);\n  } else {\n    plot(x_last, y_last, x, y);\n  }\n  x_last = x;\n  y_last = y;\n\n  draw.markdirty();\n}\n"
                                     },
@@ -1597,16 +1639,16 @@
                                     "patching_rect": [ 105.0, 71.0, 422.0, 23.0 ],
                                     "rnbo_classname": "param",
                                     "rnbo_extra_attributes": {
+                                        "order": "0",
                                         "tonormalized": "",
                                         "displayname": "",
-                                        "unit": "",
-                                        "order": "0",
-                                        "fromnormalized": "",
                                         "meta": "",
-                                        "enum": "",
+                                        "ctlin": -1.0,
                                         "sendinit": 1,
+                                        "fromnormalized": "",
                                         "exponent": 1.0,
-                                        "ctlin": -1.0
+                                        "enum": "",
+                                        "unit": ""
                                     },
                                     "rnbo_serial": 1,
                                     "rnbo_uniqueid": "y",
@@ -2012,16 +2054,16 @@
                                     "patching_rect": [ 47.0, 40.0, 436.0, 23.0 ],
                                     "rnbo_classname": "param",
                                     "rnbo_extra_attributes": {
+                                        "order": "0",
                                         "tonormalized": "",
                                         "displayname": "",
-                                        "unit": "",
-                                        "order": "0",
-                                        "fromnormalized": "",
                                         "meta": "",
-                                        "enum": "",
+                                        "ctlin": -1.0,
                                         "sendinit": 1,
+                                        "fromnormalized": "",
                                         "exponent": 1.0,
-                                        "ctlin": -1.0
+                                        "enum": "",
+                                        "unit": ""
                                     },
                                     "rnbo_serial": 2,
                                     "rnbo_uniqueid": "x",
@@ -2458,6 +2500,12 @@
                             {
                                 "patchline": {
                                     "destination": [ "obj-5", 0 ],
+                                    "source": [ "obj-17", 0 ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [ "obj-6", 0 ],
                                     "source": [ "obj-2", 0 ]
                                 }
                             },
@@ -2489,6 +2537,12 @@
                                 "patchline": {
                                     "destination": [ "obj-3", 0 ],
                                     "source": [ "obj-5", 0 ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [ "obj-17", 0 ],
+                                    "source": [ "obj-6", 0 ]
                                 }
                             },
                             {
@@ -2606,9 +2660,16 @@
         "lines": [],
         "parameters": {
             "obj-1": [ "rnbo~", "rnbo~", 0 ],
+            "parameterbanks": {
+                "0": {
+                    "index": 0,
+                    "name": "",
+                    "parameters": [ "-", "-", "-", "-", "-", "-", "-", "-" ],
+                    "buttons": [ "-", "-", "-", "-", "-", "-", "-", "-" ]
+                }
+            },
             "inherited_shortname": 1
         },
-        "autosave": 0,
-        "oscsendudpport": 8001
+        "autosave": 0
     }
 }
